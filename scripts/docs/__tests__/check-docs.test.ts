@@ -15,6 +15,7 @@ import {
   checkRedundantSidebarTitle,
   checkBareUrls,
   checkSnippetCsfOrder,
+  checkSnippetCsfNextTitle,
   runAllChecks,
 } from '../check-docs';
 import { fixSnippetCsfOrder } from '../fix-snippet-order';
@@ -369,28 +370,28 @@ describe('check-docs', () => {
         `renderer="${renderer}" language="${language}" tabTitle="${title}"`,
         `${renderer} ${title}`
       );
-    const next = (renderer = 'react', language = 'ts', title = 'CSF Next 🧪') =>
+    const csf4 = (renderer = 'react', language = 'ts', title = 'CSF 4') =>
       block(
         `renderer="${renderer}" language="${language}" tabTitle="${title}"`,
         `${renderer} ${title}`
       );
 
-    it('passes when CSF Next comes first', async () => {
-      await writeFile(path.join(snippetsDir, 'foo.md'), [next(), csf3()].join('\n\n'));
+    it('passes when CSF 4 comes first', async () => {
+      await writeFile(path.join(snippetsDir, 'foo.md'), [csf4(), csf3()].join('\n\n'));
       const errors = await checkSnippetCsfOrder(docsDir);
       expect(errors).toEqual([]);
     });
     it('errors when CSF 3 comes first', async () => {
-      await writeFile(path.join(snippetsDir, 'foo.md'), [csf3(), next()].join('\n\n'));
+      await writeFile(path.join(snippetsDir, 'foo.md'), [csf3(), csf4()].join('\n\n'));
       const errors = await checkSnippetCsfOrder(docsDir);
       expect(errors.length).toBe(1);
       expect(errors[0].line).toBe(1);
-      expect(errors[0].message).toContain('CSF 3 snippet comes before its CSF Next snippet');
+      expect(errors[0].message).toContain('CSF 3 snippet comes before its CSF 4 snippet');
     });
     it('compares only blocks with the same renderer and language', async () => {
       await writeFile(
         path.join(snippetsDir, 'foo.md'),
-        [csf3('vue'), next('react'), csf3('react', 'js'), next('react', 'ts')].join('\n\n')
+        [csf3('vue'), csf4('react'), csf3('react', 'js'), csf4('react', 'ts')].join('\n\n')
       );
       const errors = await checkSnippetCsfOrder(docsDir);
       expect(errors).toEqual([]);
@@ -400,17 +401,17 @@ describe('check-docs', () => {
         path.join(snippetsDir, 'foo.md'),
         [
           csf3('react', 'ts', 'Head (CSF 3)'),
-          next('react', 'ts', 'Body (CSF Next 🧪)'),
-          next('react', 'ts', 'Head (CSF Next 🧪)'),
+          csf4('react', 'ts', 'Body (CSF 4)'),
+          csf4('react', 'ts', 'Head (CSF 4)'),
         ].join('\n\n')
       );
       const errors = await checkSnippetCsfOrder(docsDir);
       expect(errors.length).toBe(1);
     });
-    it('errors when a common CSF 3 block comes before a renderer CSF Next block', async () => {
+    it('errors when a common CSF 3 block comes before a renderer CSF 4 block', async () => {
       await writeFile(
         path.join(snippetsDir, 'foo.md'),
-        [csf3('common'), next('react')].join('\n\n')
+        [csf3('common'), csf4('react')].join('\n\n')
       );
       const errors = await checkSnippetCsfOrder(docsDir);
       expect(errors.length).toBe(1);
@@ -420,13 +421,13 @@ describe('check-docs', () => {
       const file = path.join(snippetsDir, 'foo.md');
       await writeFile(
         file,
-        [csf3('common'), next('react'), next('vue'), block('renderer="svelte"'), ''].join('\n\n')
+        [csf3('common'), csf4('react'), csf4('vue'), block('renderer="svelte"'), ''].join('\n\n')
       );
 
       await fixSnippetCsfOrder(docsDir);
 
       expect(await fs.readFile(file, 'utf8')).toBe(
-        [next('react'), next('vue'), csf3('common'), block('renderer="svelte"'), ''].join('\n\n')
+        [csf4('react'), csf4('vue'), csf3('common'), block('renderer="svelte"'), ''].join('\n\n')
       );
       expect(await checkSnippetCsfOrder(docsDir)).toEqual([]);
     });
@@ -438,8 +439,8 @@ describe('check-docs', () => {
           csf3('react', 'js'),
           csf3('react', 'ts'),
           block('renderer="vue" language="ts"'),
-          next('react', 'ts'),
-          '<!-- comment -->\n\n' + next('react', 'js'),
+          csf4('react', 'ts'),
+          '<!-- comment -->\n\n' + csf4('react', 'js'),
           '',
         ].join('\n\n')
       );
@@ -449,8 +450,8 @@ describe('check-docs', () => {
       expect(changed).toEqual([file]);
       expect(await fs.readFile(file, 'utf8')).toBe(
         [
-          '<!-- comment -->\n\n' + next('react', 'js'),
-          next('react', 'ts'),
+          '<!-- comment -->\n\n' + csf4('react', 'js'),
+          csf4('react', 'ts'),
           block('renderer="vue" language="ts"'),
           csf3('react', 'ts'),
           csf3('react', 'js'),
@@ -459,6 +460,26 @@ describe('check-docs', () => {
       );
       expect(await checkSnippetCsfOrder(docsDir)).toEqual([]);
       expect(await fixSnippetCsfOrder(docsDir)).toEqual([]);
+    });
+  });
+
+  describe('checkSnippetCsfNextTitle', () => {
+    it('passes for CSF 4 tab titles', async () => {
+      await writeFile(
+        path.join(snippetsDir, 'foo.md'),
+        '```ts renderer="react" language="ts" tabTitle="Head (CSF 4)"\ncode\n```'
+      );
+      const errors = await checkSnippetCsfNextTitle(docsDir);
+      expect(errors).toEqual([]);
+    });
+    it('errors for CSF Next tab titles', async () => {
+      await writeFile(
+        path.join(snippetsDir, 'foo.md'),
+        '```ts renderer="react" language="ts" tabTitle="Head (CSF Next 🧪)"\ncode\n```'
+      );
+      const errors = await checkSnippetCsfNextTitle(docsDir);
+      expect(errors.length).toBe(1);
+      expect(errors[0].message).toContain('Use "CSF 4" instead');
     });
   });
 

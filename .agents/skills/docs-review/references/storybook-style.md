@@ -112,7 +112,8 @@ This file owns Storybook-specific editorial, MDX component, frontmatter, and val
 
 - `<If renderer={[...]}>` / `<If notRenderer={[...]}>` — conditional rendering.
 - `<CodeSnippets path="..." />` — path must exist in `docs/_snippets/`. `[auto]`
-  - In a snippet file, a `tabTitle="CSF Next 🧪"` block must come before its `tabTitle="CSF 3"` counterpart (same `renderer` and `language`). Fix with `yarn --cwd scripts docs:fix-snippet-order`. `[auto]`
+  - In a snippet file, a `tabTitle="CSF 4"` block must come before its `tabTitle="CSF 3"` counterpart (same `renderer` and `language`). Fix with `yarn --cwd scripts docs:fix-snippet-order`. `[auto]`
+  - Snippet tab titles use `CSF 4`, not `CSF Next`. `[auto]`
 - `<Video src="..." />` — embedded video.
 - `<YouTubeCallout id="..." title="..." />` — YouTube embed.
 
