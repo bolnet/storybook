@@ -473,8 +473,6 @@ export const Submitted = meta.story({
 });
 ```
 
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
-
 ```js filename="Form.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
 import { expect, fn, waitFor } from 'storybook/test';
 
@@ -547,8 +545,6 @@ export const Submitted = meta.story({
   },
 });
 ```
-
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
 
 ```js filename="Form.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
 import { expect, fn, waitFor } from 'storybook/test';

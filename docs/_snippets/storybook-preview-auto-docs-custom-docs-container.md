@@ -79,8 +79,6 @@ export default definePreview({
 });
 ```
 
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
-
 ```jsx filename=".storybook/preview.jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
 import * as React from 'react';
 
@@ -136,8 +134,6 @@ export default definePreview({
   },
 });
 ```
-
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
 
 ```jsx filename=".storybook/preview.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
 import * as React from 'react';
@@ -219,8 +215,6 @@ export default definePreview({
   },
 });
 ```
-
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
 
 ```jsx filename=".storybook/preview.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
 import * as React from 'react';

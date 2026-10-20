@@ -400,8 +400,6 @@ export const SaveFlow = meta.story({
 });
 ```
 
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
-
 ```js filename="NoteUI.stories.js" renderer="react" language="js" tabTitle="CSF Next 🧪"
 import { expect } from 'storybook/test';
 
@@ -463,8 +461,6 @@ export const SaveFlow = meta.story({
   },
 });
 ```
-
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
 
 ```js filename="NoteUI.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
 import { expect } from 'storybook/test';

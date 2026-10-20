@@ -85,8 +85,6 @@ export const StyledHighlight: Story = {
 };
 ```
 
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
-
 ```js filename="MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
 import { useChannel } from 'storybook/preview-api';
 import { HIGHLIGHT } from 'storybook/highlight';
@@ -340,8 +338,6 @@ export const StyledHighlight: Story = {
   ],
 };
 ```
-
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
 
 ```js filename="MyComponent.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
 import { useChannel } from 'storybook/preview-api';

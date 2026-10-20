@@ -69,8 +69,6 @@ export default defineMain({
 });
 ```
 
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
-
 ```js filename=".storybook/main.js" renderer="react" language="js" tabTitle="CSF Next 🧪"
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -115,8 +113,6 @@ export default defineMain({
   ],
 });
 ```
-
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
 
 ```js filename=".storybook/main.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
 import { dirname, join } from 'node:path';
@@ -183,8 +179,6 @@ export default defineMain({
   ],
 });
 ```
-
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
 
 ```js filename=".storybook/main.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
 import { dirname, join } from 'node:path';

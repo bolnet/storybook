@@ -132,8 +132,6 @@ const meta = preview.meta({
 });
 ```
 
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
-
 ```js filename="Button.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
 import { fn } from 'storybook/test';
 
@@ -161,8 +159,6 @@ const meta = preview.meta({
   args: { onClick: fn() },
 });
 ```
-
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
 
 ```js filename="Button.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
 import { fn } from 'storybook/test';

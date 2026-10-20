@@ -106,8 +106,6 @@ export const OneItem: Story = {
 };
 ```
 
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
-
 ```jsx filename="List.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
 import preview from '../.storybook/preview';
 
@@ -336,8 +334,6 @@ export const OneItem = {
   {template}
 />
 ```
-
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
 
 ```js filename="List.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
 import preview from '../.storybook/preview';

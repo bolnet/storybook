@@ -159,8 +159,6 @@ export const Colors = meta.story({
 });
 ```
 
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
-
 ```jsx filename="MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
 import { ColorItem, ColorPalette } from '@storybook/addon-docs/blocks';
 

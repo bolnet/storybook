@@ -347,8 +347,6 @@ export const FilledForm = meta.story({
 });
 ```
 
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
-
 ```js filename="LoginForm.stories.js" renderer="react" language="js" tabTitle="CSF Next 🧪"
 import { fn, expect } from 'storybook/test';
 
@@ -402,8 +400,6 @@ export const FilledForm = meta.story({
   },
 });
 ```
-
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
 
 ```js filename="LoginForm.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
 import { fn, expect } from 'storybook/test';
