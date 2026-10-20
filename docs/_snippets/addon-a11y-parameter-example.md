@@ -1,3 +1,30 @@
+```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Button } from './button.component';
+
+const meta = preview.meta({
+  component: Button,
+  parameters: {
+    // 👇 Applies to all stories in this file
+    a11y: { test: 'error' },
+  },
+});
+
+// 👇 This story will use the 'error' value and fail on accessibility violations
+export const Primary = meta.story({
+  args: { primary: true },
+});
+
+// 👇 This story will not fail on accessibility violations
+//    (but will still run the tests and show warnings)
+export const NoA11yFail = meta.story({
+  parameters: {
+    a11y: { test: 'todo' },
+  },
+});
+```
+
 ```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -26,33 +53,6 @@ export const NoA11yFail: Story = {
     a11y: { test: 'todo' },
   },
 };
-```
-
-```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { Button } from './button.component';
-
-const meta = preview.meta({
-  component: Button,
-  parameters: {
-    // 👇 Applies to all stories in this file
-    a11y: { test: 'error' },
-  },
-});
-
-// 👇 This story will use the 'error' value and fail on accessibility violations
-export const Primary = meta.story({
-  args: { primary: true },
-});
-
-// 👇 This story will not fail on accessibility violations
-//    (but will still run the tests and show warnings)
-export const NoA11yFail = meta.story({
-  parameters: {
-    a11y: { test: 'todo' },
-  },
-});
 ```
 
 ```ts filename="Button.stories.ts" renderer="common" language="ts" tabTitle="CSF 3"
@@ -229,55 +229,29 @@ export const NoA11yFail = {
 };
 ```
 
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
 
-const meta: Meta = {
+const meta = preview.meta({
   component: 'demo-button',
   parameters: {
     // 👇 Applies to all stories in this file
     a11y: { test: 'error' },
   },
-};
-export default meta;
-
-type Story = StoryObj;
+});
 
 // 👇 This story will use the 'error' value and fail on accessibility violations
-export const Primary: Story = {
+export const Primary = meta.story({
   args: { primary: true },
-};
+});
 
 // 👇 This story will not fail on accessibility violations
 //    (but will still run the tests and show warnings)
-export const NoA11yFail: Story = {
+export const NoA11yFail = meta.story({
   parameters: {
     a11y: { test: 'todo' },
   },
-};
-```
-
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
-  component: 'demo-button',
-  parameters: {
-    // 👇 Applies to all stories in this file
-    a11y: { test: 'error' },
-  },
-};
-
-// 👇 This story will use the 'error' value and fail on accessibility violations
-export const Primary = {
-  args: { primary: true },
-};
-
-// 👇 This story will not fail on accessibility violations
-//    (but will still run the tests and show warnings)
-export const NoA11yFail = {
-  parameters: {
-    a11y: { test: 'todo' },
-  },
-};
+});
 ```
 
 ```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
@@ -305,29 +279,55 @@ export const NoA11yFail = meta.story({
 });
 ```
 
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
   component: 'demo-button',
   parameters: {
     // 👇 Applies to all stories in this file
     a11y: { test: 'error' },
   },
-});
+};
 
 // 👇 This story will use the 'error' value and fail on accessibility violations
-export const Primary = meta.story({
+export const Primary = {
   args: { primary: true },
-});
+};
 
 // 👇 This story will not fail on accessibility violations
 //    (but will still run the tests and show warnings)
-export const NoA11yFail = meta.story({
+export const NoA11yFail = {
   parameters: {
     a11y: { test: 'todo' },
   },
-});
+};
+```
+
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+
+const meta: Meta = {
+  component: 'demo-button',
+  parameters: {
+    // 👇 Applies to all stories in this file
+    a11y: { test: 'error' },
+  },
+};
+export default meta;
+
+type Story = StoryObj;
+
+// 👇 This story will use the 'error' value and fail on accessibility violations
+export const Primary: Story = {
+  args: { primary: true },
+};
+
+// 👇 This story will not fail on accessibility violations
+//    (but will still run the tests and show warnings)
+export const NoA11yFail: Story = {
+  parameters: {
+    a11y: { test: 'todo' },
+  },
+};
 ```
 
 ```ts filename="Button.stories.ts" renderer="react" language="ts" tabTitle="CSF Next 🧪"

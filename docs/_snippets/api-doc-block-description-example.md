@@ -1,3 +1,38 @@
+```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Button } from './button.component';
+
+/**
+ * Button stories
+ * These stories showcase the button
+ */
+const meta = preview.meta({
+  component: Button,
+  parameters: {
+    docs: {
+      description: {
+        component: 'Another description, overriding the comments',
+      },
+    },
+  },
+});
+
+/**
+ * Primary Button
+ * This is the primary button
+ */
+export const Primary = meta.story({
+  parameters: {
+    docs: {
+      description: {
+        story: 'Another description on the story, overriding the comments',
+      },
+    },
+  },
+});
+```
+
 ```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -34,41 +69,6 @@ export const Primary: Story = {
     },
   },
 };
-```
-
-```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { Button } from './button.component';
-
-/**
- * Button stories
- * These stories showcase the button
- */
-const meta = preview.meta({
-  component: Button,
-  parameters: {
-    docs: {
-      description: {
-        component: 'Another description, overriding the comments',
-      },
-    },
-  },
-});
-
-/**
- * Primary Button
- * This is the primary button
- */
-export const Primary = meta.story({
-  parameters: {
-    docs: {
-      description: {
-        story: 'Another description on the story, overriding the comments',
-      },
-    },
-  },
-});
 ```
 
 ```svelte filename="Button.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -291,6 +291,74 @@ export const Primary: Story = {
 };
 ```
 
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+/**
+ * Button stories
+ * These stories showcase the button
+ */
+const meta = preview.meta({
+  title: 'Button',
+  component: 'demo-button',
+  parameters: {
+    docs: {
+      description: {
+        component: 'Another description, overriding the comments',
+      },
+    },
+  },
+});
+
+/**
+ * # Button stories
+ * These stories showcase the button
+ */
+export const Primary = meta.story({
+  parameters: {
+    docs: {
+      description: {
+        story: 'Another description on the story, overriding the comments',
+      },
+    },
+  },
+});
+```
+
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+/**
+ * Button stories
+ * These stories showcase the button
+ */
+const meta = preview.meta({
+  title: 'Button',
+  component: 'demo-button',
+  parameters: {
+    docs: {
+      description: {
+        component: 'Another description, overriding the comments',
+      },
+    },
+  },
+});
+
+/**
+ * Primary Button
+ * This is the primary button
+ */
+export const Primary = meta.story({
+  parameters: {
+    docs: {
+      description: {
+        story: 'Another description on the story, overriding the comments',
+      },
+    },
+  },
+});
+```
+
 ```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
 /**
  * Button stories
@@ -358,74 +426,6 @@ export const Primary: Story = {
     },
   },
 };
-```
-
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-/**
- * Button stories
- * These stories showcase the button
- */
-const meta = preview.meta({
-  title: 'Button',
-  component: 'demo-button',
-  parameters: {
-    docs: {
-      description: {
-        component: 'Another description, overriding the comments',
-      },
-    },
-  },
-});
-
-/**
- * # Button stories
- * These stories showcase the button
- */
-export const Primary = meta.story({
-  parameters: {
-    docs: {
-      description: {
-        story: 'Another description on the story, overriding the comments',
-      },
-    },
-  },
-});
-```
-
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-/**
- * Button stories
- * These stories showcase the button
- */
-const meta = preview.meta({
-  title: 'Button',
-  component: 'demo-button',
-  parameters: {
-    docs: {
-      description: {
-        component: 'Another description, overriding the comments',
-      },
-    },
-  },
-});
-
-/**
- * Primary Button
- * This is the primary button
- */
-export const Primary = meta.story({
-  parameters: {
-    docs: {
-      description: {
-        story: 'Another description on the story, overriding the comments',
-      },
-    },
-  },
-});
 ```
 
 ```ts filename="Button.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"

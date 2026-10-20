@@ -1,3 +1,27 @@
+```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Button } from './button.component';
+
+const meta = preview.meta({
+  component: Button,
+});
+
+export const Primary = meta.story({
+  args: {
+    primary: true,
+    label: 'Button',
+  },
+});
+
+export const Secondary = meta.story({
+  args: {
+    ...Primary.input.args,
+    primary: false,
+  },
+});
+```
+
 ```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -23,30 +47,6 @@ export const Secondary: Story = {
     primary: false,
   },
 };
-```
-
-```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { Button } from './button.component';
-
-const meta = preview.meta({
-  component: Button,
-});
-
-export const Primary = meta.story({
-  args: {
-    primary: true,
-    label: 'Button',
-  },
-});
-
-export const Secondary = meta.story({
-  args: {
-    ...Primary.input.args,
-    primary: false,
-  },
-});
 ```
 
 ```svelte filename="Button.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -191,6 +191,50 @@ export const Secondary: Story = {
 };
 ```
 
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-button',
+});
+
+export const Primary = meta.story({
+  args: {
+    primary: true,
+    label: 'Button',
+  },
+});
+
+export const Secondary = meta.story({
+  args: {
+    ...Primary.input.args,
+    primary: false,
+  },
+});
+```
+
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-button',
+});
+
+export const Primary = meta.story({
+  args: {
+    primary: true,
+    label: 'Button',
+  },
+});
+
+export const Secondary = meta.story({
+  args: {
+    ...Primary.input.args,
+    primary: false,
+  },
+});
+```
+
 ```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
 export default {
   component: 'demo-button',
@@ -234,50 +278,6 @@ export const Secondary: Story = {
     primary: false,
   },
 };
-```
-
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-button',
-});
-
-export const Primary = meta.story({
-  args: {
-    primary: true,
-    label: 'Button',
-  },
-});
-
-export const Secondary = meta.story({
-  args: {
-    ...Primary.input.args,
-    primary: false,
-  },
-});
-```
-
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-button',
-});
-
-export const Primary = meta.story({
-  args: {
-    primary: true,
-    label: 'Button',
-  },
-});
-
-export const Secondary = meta.story({
-  args: {
-    ...Primary.input.args,
-    primary: false,
-  },
-});
 ```
 
 ```ts filename="Button.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"

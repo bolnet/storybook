@@ -1,3 +1,18 @@
+```ts filename="Example.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Example } from './example.component';
+
+const meta = preview.meta({
+  component: Example,
+  argTypes: {
+    value: {
+      description: 'The value of the slider',
+    },
+  },
+});
+```
+
 ```ts filename="Example.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta } from '@storybook/angular';
 
@@ -13,21 +28,6 @@ const meta: Meta<Example> = {
 };
 
 export default meta;
-```
-
-```ts filename="Example.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { Example } from './example.component';
-
-const meta = preview.meta({
-  component: Example,
-  argTypes: {
-    value: {
-      description: 'The value of the slider',
-    },
-  },
-});
 ```
 
 ```svelte filename="Example.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -126,32 +126,6 @@ const meta = {
 export default meta;
 ```
 
-```js filename="Example.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
-  component: 'demo-example',
-  argTypes: {
-    value: {
-      description: 'The value of the slider',
-    },
-  },
-};
-```
-
-```ts filename="Example.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
-import type { Meta } from '@storybook/web-components-vite';
-
-const meta: Meta = {
-  component: 'demo-example',
-  argTypes: {
-    value: {
-      description: 'The value of the slider',
-    },
-  },
-};
-
-export default meta;
-```
-
 ```js filename="Example.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
 import preview from '../.storybook/preview';
 
@@ -176,6 +150,32 @@ const meta = preview.meta({
     },
   },
 });
+```
+
+```js filename="Example.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
+  component: 'demo-example',
+  argTypes: {
+    value: {
+      description: 'The value of the slider',
+    },
+  },
+};
+```
+
+```ts filename="Example.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
+import type { Meta } from '@storybook/web-components-vite';
+
+const meta: Meta = {
+  component: 'demo-example',
+  argTypes: {
+    value: {
+      description: 'The value of the slider',
+    },
+  },
+};
+
+export default meta;
 ```
 
 ```ts filename="Example.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"

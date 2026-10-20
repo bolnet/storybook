@@ -1,3 +1,18 @@
+```ts filename="DataTable.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { DataTable } from './data-table.component';
+
+const meta = preview.meta({
+  component: DataTable,
+  parameters: {
+    // 👇 This component's accessibility tests will not fail
+    //    Instead, they display warnings in the Storybook UI
+    a11y: { test: 'todo' },
+  },
+});
+```
+
 ```ts filename="DataTable.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import { Meta } from '@storybook/angular';
 
@@ -12,21 +27,6 @@ const meta: Meta<DataTable> = {
   },
 };
 export default meta;
-```
-
-```ts filename="DataTable.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { DataTable } from './data-table.component';
-
-const meta = preview.meta({
-  component: DataTable,
-  parameters: {
-    // 👇 This component's accessibility tests will not fail
-    //    Instead, they display warnings in the Storybook UI
-    a11y: { test: 'todo' },
-  },
-});
 ```
 
 ```ts filename="DataTable.stories.ts" renderer="common" language="ts" tabTitle="CSF 3"
@@ -123,29 +123,17 @@ export default {
 };
 ```
 
-```ts filename="DataTable.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
-import { Meta } from '@storybook/web-components-vite';
+```ts filename="DataTable.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
 
-const meta: Meta<DataTable> = {
+const meta = preview.meta({
   component: 'demo-data-table',
   parameters: {
     // 👇 This component's accessibility tests will not fail
     //    Instead, they display warnings in the Storybook UI
     a11y: { test: 'todo' },
   },
-};
-export default meta;
-```
-
-```js filename="DataTable.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
-  component: 'demo-data-table',
-  parameters: {
-    // 👇 This component's accessibility tests will not fail
-    //    Instead, they display warnings in the Storybook UI
-    a11y: { test: 'todo' },
-  },
-};
+});
 ```
 
 ```js filename="DataTable.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
@@ -161,17 +149,29 @@ const meta = preview.meta({
 });
 ```
 
-```ts filename="DataTable.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
+```js filename="DataTable.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
   component: 'demo-data-table',
   parameters: {
     // 👇 This component's accessibility tests will not fail
     //    Instead, they display warnings in the Storybook UI
     a11y: { test: 'todo' },
   },
-});
+};
+```
+
+```ts filename="DataTable.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
+import { Meta } from '@storybook/web-components-vite';
+
+const meta: Meta<DataTable> = {
+  component: 'demo-data-table',
+  parameters: {
+    // 👇 This component's accessibility tests will not fail
+    //    Instead, they display warnings in the Storybook UI
+    a11y: { test: 'todo' },
+  },
+};
+export default meta;
 ```
 
 ```ts filename="DataTable.stories.ts" renderer="react" language="ts" tabTitle="CSF Next 🧪"

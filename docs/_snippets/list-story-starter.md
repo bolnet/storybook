@@ -1,3 +1,31 @@
+```ts filename="List.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import { CommonModule } from '@angular/common';
+
+import { moduleMetadata } from '@storybook/angular';
+
+import preview from '../.storybook/preview';
+
+import { List } from './list.component';
+
+const meta = preview.meta({
+  component: List,
+  decorators: [
+    moduleMetadata({
+      declarations: [List],
+      imports: [CommonModule],
+    }),
+  ],
+});
+
+// Always an empty list, not super interesting
+export const Empty = meta.story({
+  render: (args) => ({
+    props: args,
+    template: `<app-list></app-list>`,
+  }),
+});
+```
+
 ```ts filename="List.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular';
 
@@ -25,34 +53,6 @@ export const Empty: Story = {
     template: `<app-list></app-list>`,
   }),
 };
-```
-
-```ts filename="List.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import { CommonModule } from '@angular/common';
-
-import { moduleMetadata } from '@storybook/angular';
-
-import preview from '../.storybook/preview';
-
-import { List } from './list.component';
-
-const meta = preview.meta({
-  component: List,
-  decorators: [
-    moduleMetadata({
-      declarations: [List],
-      imports: [CommonModule],
-    }),
-  ],
-});
-
-// Always an empty list, not super interesting
-export const Empty = meta.story({
-  render: (args) => ({
-    props: args,
-    template: `<app-list></app-list>`,
-  }),
-});
 ```
 
 ```js filename="List.stories.js" renderer="html" language="js"
@@ -94,32 +94,32 @@ export const Empty: Story = {
 };
 ```
 
-```js filename="List.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 3"
+<!-- JS snippets still needed while providing both CSF 3 & Next -->
+
+```js filename="List.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
 import { List } from './List';
 
-export default {
+const meta = preview.meta({
   component: List,
-};
+});
 
 // Always an empty list, not super interesting
-export const Empty = {};
+export const Empty = meta.story();
 ```
 
-```ts filename="List.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 3"
-// Replace your-framework with the framework you are using, e.g. react-vite, nextjs, nextjs-vite, etc.
-import type { Meta, StoryObj } from '@storybook/your-framework';
+```ts filename="List.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
 
 import { List } from './List';
 
-const meta = {
+const meta = preview.meta({
   component: List,
-} satisfies Meta<typeof List>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
+});
 
 // Always an empty list, not super interesting
-export const Empty: Story = {};
+export const Empty = meta.story();
 ```
 
 ```js filename="List.stories.js|jsx" renderer="solid" language="js"
@@ -207,20 +207,42 @@ type Story = StoryObj<typeof meta>;
 export const Empty: Story = {};
 ```
 
-```js filename="List.stories.js" renderer="vue" language="js" tabTitle="CSF 3"
+<!-- JS snippets still needed while providing both CSF 3 & Next -->
+
+```js filename="List.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
 import List from './ListComponent.vue';
 
-export default {
+const meta = preview.meta({
   component: List,
-};
+});
 
 // Always an empty list, not super interesting
-export const Empty = {
+export const Empty = meta.story({
   render: () => ({
     components: { List },
     template: '<List/>',
   }),
-};
+});
+```
+
+```ts filename="List.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import List from './ListComponent.vue';
+
+const meta = preview.meta({
+  component: List,
+});
+
+// Always an empty list, not super interesting
+export const Empty = meta.story({
+  render: () => ({
+    components: { List },
+    template: '<List/>',
+  }),
+});
 ```
 
 ```ts filename="List.stories.ts" renderer="vue" language="ts" tabTitle="CSF 3"
@@ -244,55 +266,50 @@ export const Empty: Story = {
 };
 ```
 
-```ts filename="List.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
+```js filename="List.stories.js" renderer="vue" language="js" tabTitle="CSF 3"
 import List from './ListComponent.vue';
-
-const meta = preview.meta({
-  component: List,
-});
-
-// Always an empty list, not super interesting
-export const Empty = meta.story({
-  render: () => ({
-    components: { List },
-    template: '<List/>',
-  }),
-});
-```
-
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
-
-```js filename="List.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import List from './ListComponent.vue';
-
-const meta = preview.meta({
-  component: List,
-});
-
-// Always an empty list, not super interesting
-export const Empty = meta.story({
-  render: () => ({
-    components: { List },
-    template: '<List/>',
-  }),
-});
-```
-
-```js filename="List.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-import { html } from 'lit';
 
 export default {
-  component: 'demo-list',
+  component: List,
 };
 
 // Always an empty list, not super interesting
 export const Empty = {
-  render: () => html`<demo-list></demo-list>`,
+  render: () => ({
+    components: { List },
+    template: '<List/>',
+  }),
 };
+```
+
+```js filename="List.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import { html } from 'lit';
+
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-list',
+});
+
+// Always an empty list, not super interesting
+export const Empty = meta.story({
+  render: () => html`<demo-list></demo-list>`,
+});
+```
+
+```ts filename="List.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import { html } from 'lit';
+
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-list',
+});
+
+// Always an empty list, not super interesting
+export const Empty = meta.story({
+  render: () => html`<demo-list></demo-list>`,
+});
 ```
 
 ```ts filename="List.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
@@ -311,60 +328,43 @@ export const Empty: Story = {
 };
 ```
 
-```ts filename="List.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```js filename="List.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
 import { html } from 'lit';
 
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
+export default {
   component: 'demo-list',
-});
+};
 
 // Always an empty list, not super interesting
-export const Empty = meta.story({
+export const Empty = {
   render: () => html`<demo-list></demo-list>`,
-});
+};
 ```
 
-```js filename="List.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import { html } from 'lit';
-
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-list',
-});
-
-// Always an empty list, not super interesting
-export const Empty = meta.story({
-  render: () => html`<demo-list></demo-list>`,
-});
-```
-
-```ts filename="List.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
+```ts filename="List.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 3"
+// Replace your-framework with the framework you are using, e.g. react-vite, nextjs, nextjs-vite, etc.
+import type { Meta, StoryObj } from '@storybook/your-framework';
 
 import { List } from './List';
 
-const meta = preview.meta({
+const meta = {
   component: List,
-});
+} satisfies Meta<typeof List>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 // Always an empty list, not super interesting
-export const Empty = meta.story();
+export const Empty: Story = {};
 ```
 
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
-
-```js filename="List.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
+```js filename="List.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 3"
 import { List } from './List';
 
-const meta = preview.meta({
+export default {
   component: List,
-});
+};
 
 // Always an empty list, not super interesting
-export const Empty = meta.story();
+export const Empty = {};
 ```

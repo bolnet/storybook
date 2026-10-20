@@ -1,3 +1,24 @@
+```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Button } from './button.component';
+
+const meta = preview.meta({
+  component: Button,
+  globals: {
+    // 👇 Set viewport for all component stories
+    viewport: { value: 'tablet', isRotated: false },
+  },
+});
+
+export const OnPhone = meta.story({
+  globals: {
+    // 👇 Override viewport for this story
+    viewport: { value: 'mobile1', isRotated: false },
+  },
+});
+```
+
 ```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -20,27 +41,6 @@ export const OnPhone: Story = {
     viewport: { value: 'mobile1', isRotated: false },
   },
 };
-```
-
-```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { Button } from './button.component';
-
-const meta = preview.meta({
-  component: Button,
-  globals: {
-    // 👇 Set viewport for all component stories
-    viewport: { value: 'tablet', isRotated: false },
-  },
-});
-
-export const OnPhone = meta.story({
-  globals: {
-    // 👇 Override viewport for this story
-    viewport: { value: 'mobile1', isRotated: false },
-  },
-});
 ```
 
 ```svelte filename="Button.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -177,6 +177,44 @@ export const OnPhone: Story = {
 };
 ```
 
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-button',
+  globals: {
+    // 👇 Set viewport for all component stories
+    viewport: { value: 'tablet', isRotated: false },
+  },
+});
+
+export const OnPhone = meta.story({
+  globals: {
+    // 👇 Override viewport for this story
+    viewport: { value: 'mobile1', isRotated: false },
+  },
+});
+```
+
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-button',
+  globals: {
+    // 👇 Set viewport for all component stories
+    viewport: { value: 'tablet', isRotated: false },
+  },
+});
+
+export const OnPhone = meta.story({
+  globals: {
+    // 👇 Override viewport for this story
+    viewport: { value: 'mobile1', isRotated: false },
+  },
+});
+```
+
 ```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
 export default {
   component: 'demo-button',
@@ -214,44 +252,6 @@ export const OnPhone: Story = {
     viewport: { value: 'mobile1', isRotated: false },
   },
 };
-```
-
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-button',
-  globals: {
-    // 👇 Set viewport for all component stories
-    viewport: { value: 'tablet', isRotated: false },
-  },
-});
-
-export const OnPhone = meta.story({
-  globals: {
-    // 👇 Override viewport for this story
-    viewport: { value: 'mobile1', isRotated: false },
-  },
-});
-```
-
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-button',
-  globals: {
-    // 👇 Set viewport for all component stories
-    viewport: { value: 'tablet', isRotated: false },
-  },
-});
-
-export const OnPhone = meta.story({
-  globals: {
-    // 👇 Override viewport for this story
-    viewport: { value: 'mobile1', isRotated: false },
-  },
-});
 ```
 
 ```ts filename="Button.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"

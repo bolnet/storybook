@@ -1,3 +1,20 @@
+```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Button } from './Button.component';
+
+const meta = preview.meta({
+  component: Button,
+  //👇 Enables auto-generated documentation for this component and includes all stories in this file
+  tags: ['autodocs'],
+});
+
+export const UndocumentedStory = meta.story({
+  // 👇 Removes this story from auto-generated documentation
+  tags: ['!autodocs'],
+});
+```
+
 ```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -16,23 +33,6 @@ export const UndocumentedStory: Story = {
   // 👇 Removes this story from auto-generated documentation
   tags: ['!autodocs'],
 };
-```
-
-```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { Button } from './Button.component';
-
-const meta = preview.meta({
-  component: Button,
-  //👇 Enables auto-generated documentation for this component and includes all stories in this file
-  tags: ['autodocs'],
-});
-
-export const UndocumentedStory = meta.story({
-  // 👇 Removes this story from auto-generated documentation
-  tags: ['!autodocs'],
-});
 ```
 
 ```svelte filename="Button.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -141,18 +141,34 @@ export const UndocumentedStory: Story = {
 };
 ```
 
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
-  title: 'Button',
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
   component: 'demo-button',
   //👇 Enables auto-generated documentation for this component and includes all stories in this file
   tags: ['autodocs'],
-};
+});
 
-export const UndocumentedStory = {
+export const UndocumentedStory = meta.story({
   // 👇 Removes this story from auto-generated documentation
   tags: ['!autodocs'],
-};
+});
+```
+
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-button',
+  //👇 Enables auto-generated documentation for this component and includes all stories in this file
+  tags: ['autodocs'],
+});
+
+export const UndocumentedStory = meta.story({
+  // 👇 Removes this story from auto-generated documentation
+  tags: ['!autodocs'],
+});
 ```
 
 ```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
@@ -174,34 +190,18 @@ export const UndocumentedStory: Story = {
 };
 ```
 
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
+  title: 'Button',
   component: 'demo-button',
   //👇 Enables auto-generated documentation for this component and includes all stories in this file
   tags: ['autodocs'],
-});
+};
 
-export const UndocumentedStory = meta.story({
+export const UndocumentedStory = {
   // 👇 Removes this story from auto-generated documentation
   tags: ['!autodocs'],
-});
-```
-
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-button',
-  //👇 Enables auto-generated documentation for this component and includes all stories in this file
-  tags: ['autodocs'],
-});
-
-export const UndocumentedStory = meta.story({
-  // 👇 Removes this story from auto-generated documentation
-  tags: ['!autodocs'],
-});
+};
 ```
 
 ```ts filename="Button.stories.ts" renderer="react" language="ts" tabTitle="CSF Next 🧪"

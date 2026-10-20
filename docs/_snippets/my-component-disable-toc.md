@@ -1,3 +1,21 @@
+```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { MyComponent } from './my-component.component';
+
+const meta = preview.meta({
+  component: MyComponent,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      toc: {
+        disable: true, // 👈 Disables the table of contents
+      },
+    },
+  },
+});
+```
+
 ```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta } from '@storybook/angular';
 
@@ -16,24 +34,6 @@ const meta: Meta<MyComponent> = {
 };
 
 export default meta;
-```
-
-```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { MyComponent } from './my-component.component';
-
-const meta = preview.meta({
-  component: MyComponent,
-  tags: ['autodocs'],
-  parameters: {
-    docs: {
-      toc: {
-        disable: true, // 👈 Disables the table of contents
-      },
-    },
-  },
-});
 ```
 
 ```svelte filename="MyComponent.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -150,8 +150,10 @@ const meta = {
 export default meta;
 ```
 
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
   component: 'my-component',
   tags: ['autodocs'],
   parameters: {
@@ -161,7 +163,23 @@ export default {
       },
     },
   },
-};
+});
+```
+
+```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'my-component',
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      toc: {
+        disable: true, // 👈 Disables the table of contents
+      },
+    },
+  },
+});
 ```
 
 ```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
@@ -182,10 +200,8 @@ const meta: Meta = {
 export default meta;
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
   component: 'my-component',
   tags: ['autodocs'],
   parameters: {
@@ -195,23 +211,7 @@ const meta = preview.meta({
       },
     },
   },
-});
-```
-
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'my-component',
-  tags: ['autodocs'],
-  parameters: {
-    docs: {
-      toc: {
-        disable: true, // 👈 Disables the table of contents
-      },
-    },
-  },
-});
+};
 ```
 
 ```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"

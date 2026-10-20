@@ -1,17 +1,3 @@
-```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
-import type { Meta } from '@storybook/angular';
-
-import { Button } from './button.component';
-
-const meta: Meta<Button> = {
-  component: Button,
-  // Sets the layout parameter component wide.
-  parameters: {
-    layout: 'centered',
-  },
-};
-```
-
 ```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
 import preview from '../.storybook/preview';
 
@@ -24,6 +10,20 @@ const meta = preview.meta({
     layout: 'centered',
   },
 });
+```
+
+```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
+import type { Meta } from '@storybook/angular';
+
+import { Button } from './button.component';
+
+const meta: Meta<Button> = {
+  component: Button,
+  // Sets the layout parameter component wide.
+  parameters: {
+    layout: 'centered',
+  },
+};
 ```
 
 ```svelte filename="Button.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -99,30 +99,6 @@ const meta = {
 export default meta;
 ```
 
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
-  component: 'demo-button',
-  // Sets the layout parameter component wide.
-  parameters: {
-    layout: 'centered',
-  },
-};
-```
-
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
-import type { Meta } from '@storybook/web-components-vite';
-
-const meta: Meta = {
-  component: 'demo-button',
-  // Sets the layout parameter component wide.
-  parameters: {
-    layout: 'centered',
-  },
-};
-
-export default meta;
-```
-
 ```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
 import preview from '../.storybook/preview';
 
@@ -145,6 +121,30 @@ const meta = preview.meta({
     layout: 'centered',
   },
 });
+```
+
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
+  component: 'demo-button',
+  // Sets the layout parameter component wide.
+  parameters: {
+    layout: 'centered',
+  },
+};
+```
+
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
+import type { Meta } from '@storybook/web-components-vite';
+
+const meta: Meta = {
+  component: 'demo-button',
+  // Sets the layout parameter component wide.
+  parameters: {
+    layout: 'centered',
+  },
+};
+
+export default meta;
 ```
 
 ```ts filename="Button.stories.ts|tsx" renderer="common" language="ts" tabTitle="CSF 3"

@@ -1,3 +1,34 @@
+```ts filename="AuthButton.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import { expect, mocked } from 'storybook/test';
+
+import preview from '../.storybook/preview';
+
+import { AuthButton } from './auth-button.component';
+
+import { v4 as uuidv4 } from 'uuid';
+import { getUserFromSession } from '../lib/session';
+
+const meta = preview.meta({
+  component: AuthButton,
+  // 👇 This will run before each story is rendered
+  beforeEach: async () => {
+    // 👇 Force known, consistent behavior for mocked modules
+    mocked(uuidv4).mockReturnValue('1234-5678-90ab-cdef');
+    mocked(getUserFromSession).mockReturnValue({ name: 'John Doe' });
+  },
+});
+
+export const LogIn = meta.story({
+  play: async ({ canvas, userEvent }) => {
+    const button = canvas.getByRole('button', { name: 'Sign in' });
+    userEvent.click(button);
+
+    // Assert that the getUserFromSession function was called
+    expect(getUserFromSession).toHaveBeenCalled();
+  },
+});
+```
+
 ```ts filename="AuthButton.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 import { expect, mocked } from 'storybook/test';
@@ -29,37 +60,6 @@ export const LogIn: Story = {
     expect(getUserFromSession).toHaveBeenCalled();
   },
 };
-```
-
-```ts filename="AuthButton.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import { expect, mocked } from 'storybook/test';
-
-import preview from '../.storybook/preview';
-
-import { AuthButton } from './auth-button.component';
-
-import { v4 as uuidv4 } from 'uuid';
-import { getUserFromSession } from '../lib/session';
-
-const meta = preview.meta({
-  component: AuthButton,
-  // 👇 This will run before each story is rendered
-  beforeEach: async () => {
-    // 👇 Force known, consistent behavior for mocked modules
-    mocked(uuidv4).mockReturnValue('1234-5678-90ab-cdef');
-    mocked(getUserFromSession).mockReturnValue({ name: 'John Doe' });
-  },
-});
-
-export const LogIn = meta.story({
-  play: async ({ canvas, userEvent }) => {
-    const button = canvas.getByRole('button', { name: 'Sign in' });
-    userEvent.click(button);
-
-    // Assert that the getUserFromSession function was called
-    expect(getUserFromSession).toHaveBeenCalled();
-  },
-});
 ```
 
 ```ts filename="AuthButton.stories.ts" renderer="common" language="ts" tabTitle="CSF 3"
@@ -254,64 +254,6 @@ export const LogIn = {
 };
 ```
 
-```ts filename="AuthButton.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
-import { expect, mocked } from 'storybook/test';
-
-import { v4 as uuidv4 } from 'uuid';
-import { getUserFromSession } from '../lib/session';
-
-const meta: Meta = {
-  component: 'demo-auth-button',
-  // 👇 This will run before each story is rendered
-  beforeEach: async () => {
-    // 👇 Force known, consistent behavior for mocked modules
-    mocked(uuidv4).mockReturnValue('1234-5678-90ab-cdef');
-    mocked(getUserFromSession).mockReturnValue({ name: 'John Doe' });
-  },
-};
-export default meta;
-
-type Story = StoryObj;
-
-export const LogIn: Story = {
-  play: async ({ canvas, userEvent }) => {
-    const button = canvas.getByRole('button', { name: 'Sign in' });
-    userEvent.click(button);
-
-    // Assert that the getUserFromSession function was called
-    expect(getUserFromSession).toHaveBeenCalled();
-  },
-};
-```
-
-```js filename="AuthButton.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-import { expect } from 'storybook/test';
-
-import { v4 as uuidv4 } from 'uuid';
-import { getUserFromSession } from '../lib/session';
-
-export default {
-  component: 'demo-auth-button',
-  // 👇 This will run before each story is rendered
-  beforeEach: async () => {
-    // 👇 Force known, consistent behavior for mocked modules
-    uuidv4.mockReturnValue('1234-5678-90ab-cdef');
-    getUserFromSession.mockReturnValue({ name: 'John Doe' });
-  },
-};
-
-export const LogIn = {
-  play: async ({ canvas, userEvent }) => {
-    const button = canvas.getByRole('button', { name: 'Sign in' });
-    userEvent.click(button);
-
-    // Assert that the getUserFromSession function was called
-    expect(getUserFromSession).toHaveBeenCalled();
-  },
-};
-```
-
 ```ts filename="AuthButton.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
 import { expect, mocked } from 'storybook/test';
 
@@ -368,6 +310,64 @@ export const LogIn = meta.story({
     expect(getUserFromSession).toHaveBeenCalled();
   },
 });
+```
+
+```ts filename="AuthButton.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import { expect, mocked } from 'storybook/test';
+
+import { v4 as uuidv4 } from 'uuid';
+import { getUserFromSession } from '../lib/session';
+
+const meta: Meta = {
+  component: 'demo-auth-button',
+  // 👇 This will run before each story is rendered
+  beforeEach: async () => {
+    // 👇 Force known, consistent behavior for mocked modules
+    mocked(uuidv4).mockReturnValue('1234-5678-90ab-cdef');
+    mocked(getUserFromSession).mockReturnValue({ name: 'John Doe' });
+  },
+};
+export default meta;
+
+type Story = StoryObj;
+
+export const LogIn: Story = {
+  play: async ({ canvas, userEvent }) => {
+    const button = canvas.getByRole('button', { name: 'Sign in' });
+    userEvent.click(button);
+
+    // Assert that the getUserFromSession function was called
+    expect(getUserFromSession).toHaveBeenCalled();
+  },
+};
+```
+
+```js filename="AuthButton.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+import { expect } from 'storybook/test';
+
+import { v4 as uuidv4 } from 'uuid';
+import { getUserFromSession } from '../lib/session';
+
+export default {
+  component: 'demo-auth-button',
+  // 👇 This will run before each story is rendered
+  beforeEach: async () => {
+    // 👇 Force known, consistent behavior for mocked modules
+    uuidv4.mockReturnValue('1234-5678-90ab-cdef');
+    getUserFromSession.mockReturnValue({ name: 'John Doe' });
+  },
+};
+
+export const LogIn = {
+  play: async ({ canvas, userEvent }) => {
+    const button = canvas.getByRole('button', { name: 'Sign in' });
+    userEvent.click(button);
+
+    // Assert that the getUserFromSession function was called
+    expect(getUserFromSession).toHaveBeenCalled();
+  },
+};
 ```
 
 ```ts filename="AuthButton.stories.ts" renderer="react" language="ts" tabTitle="CSF Next 🧪"

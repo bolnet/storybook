@@ -107,46 +107,6 @@ const meta = {
 export default meta;
 ```
 
-```js filename="Example.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-import { html } from 'lit';
-
-export default {
-  component: 'demo-example',
-  argTypes: {
-    label: {
-      control: { type: 'select' },
-      options: ['Normal', 'Bold', 'Italic'],
-      mapping: {
-        Bold: html`<b>Bold</b>`,
-        Italic: html`<i>Italic</i>`,
-      },
-    },
-  },
-};
-```
-
-```ts filename="Example.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
-import type { Meta } from '@storybook/web-components-vite';
-
-import { html } from 'lit';
-
-const meta: Meta = {
-  component: 'demo-example',
-  argTypes: {
-    label: {
-      control: { type: 'select' },
-      options: ['Normal', 'Bold', 'Italic'],
-      mapping: {
-        Bold: html`<b>Bold</b>`,
-        Italic: html`<i>Italic</i>`,
-      },
-    },
-  },
-};
-
-export default meta;
-```
-
 ```js filename="Example.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
 import { html } from 'lit';
 
@@ -185,6 +145,46 @@ const meta = preview.meta({
     },
   },
 });
+```
+
+```js filename="Example.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+import { html } from 'lit';
+
+export default {
+  component: 'demo-example',
+  argTypes: {
+    label: {
+      control: { type: 'select' },
+      options: ['Normal', 'Bold', 'Italic'],
+      mapping: {
+        Bold: html`<b>Bold</b>`,
+        Italic: html`<i>Italic</i>`,
+      },
+    },
+  },
+};
+```
+
+```ts filename="Example.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
+import type { Meta } from '@storybook/web-components-vite';
+
+import { html } from 'lit';
+
+const meta: Meta = {
+  component: 'demo-example',
+  argTypes: {
+    label: {
+      control: { type: 'select' },
+      options: ['Normal', 'Bold', 'Italic'],
+      mapping: {
+        Bold: html`<b>Bold</b>`,
+        Italic: html`<i>Italic</i>`,
+      },
+    },
+  },
+};
+
+export default meta;
 ```
 
 ```ts filename="Example.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"

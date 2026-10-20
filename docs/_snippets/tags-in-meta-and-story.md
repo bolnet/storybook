@@ -1,3 +1,31 @@
+```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Button } from './Button.component';
+
+const meta = preview.meta({
+  component: Button,
+  /*
+   * All stories in this file will have these tags applied:
+   * - autodocs
+   * - dev (implicit default, inherited from preview)
+   * - test (implicit default, inherited from preview)
+   */
+  tags: ['autodocs'],
+});
+
+export const ExperimentalFeatureStory = meta.story({
+  /*
+   * This particular story will have these tags applied:
+   * - experimental
+   * - autodocs (inherited from meta)
+   * - dev (inherited from meta)
+   * - test (inherited from meta)
+   */
+  tags: ['experimental'],
+});
+```
+
 ```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -27,34 +55,6 @@ export const ExperimentalFeatureStory: Story = {
    */
   tags: ['experimental'],
 };
-```
-
-```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { Button } from './Button.component';
-
-const meta = preview.meta({
-  component: Button,
-  /*
-   * All stories in this file will have these tags applied:
-   * - autodocs
-   * - dev (implicit default, inherited from preview)
-   * - test (implicit default, inherited from preview)
-   */
-  tags: ['autodocs'],
-});
-
-export const ExperimentalFeatureStory = meta.story({
-  /*
-   * This particular story will have these tags applied:
-   * - experimental
-   * - autodocs (inherited from meta)
-   * - dev (inherited from meta)
-   * - test (inherited from meta)
-   */
-  tags: ['experimental'],
-});
 ```
 
 ```svelte filename="Button.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -229,9 +229,10 @@ export const ExperimentalFeatureStory: Story = {
 };
 ```
 
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
-  title: 'Button',
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
   component: 'demo-button',
   /*
    * All stories in this file will have these tags applied:
@@ -240,9 +241,9 @@ export default {
    * - test (implicit default, inherited from preview)
    */
   tags: ['autodocs'],
-};
+});
 
-export const ExperimentalFeatureStory = {
+export const ExperimentalFeatureStory = meta.story({
   /*
    * This particular story will have these tags applied:
    * - experimental
@@ -251,7 +252,33 @@ export const ExperimentalFeatureStory = {
    * - test (inherited from meta)
    */
   tags: ['experimental'],
-};
+});
+```
+
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-button',
+  /*
+   * All stories in this file will have these tags applied:
+   * - autodocs
+   * - dev (implicit default, inherited from preview)
+   * - test (implicit default, inherited from preview)
+   */
+  tags: ['autodocs'],
+});
+
+export const ExperimentalFeatureStory = meta.story({
+  /*
+   * This particular story will have these tags applied:
+   * - experimental
+   * - autodocs (inherited from meta)
+   * - dev (inherited from meta)
+   * - test (inherited from meta)
+   */
+  tags: ['experimental'],
+});
 ```
 
 ```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
@@ -284,10 +311,9 @@ export const ExperimentalFeatureStory: Story = {
 };
 ```
 
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
+  title: 'Button',
   component: 'demo-button',
   /*
    * All stories in this file will have these tags applied:
@@ -296,9 +322,9 @@ const meta = preview.meta({
    * - test (implicit default, inherited from preview)
    */
   tags: ['autodocs'],
-});
+};
 
-export const ExperimentalFeatureStory = meta.story({
+export const ExperimentalFeatureStory = {
   /*
    * This particular story will have these tags applied:
    * - experimental
@@ -307,33 +333,7 @@ export const ExperimentalFeatureStory = meta.story({
    * - test (inherited from meta)
    */
   tags: ['experimental'],
-});
-```
-
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-button',
-  /*
-   * All stories in this file will have these tags applied:
-   * - autodocs
-   * - dev (implicit default, inherited from preview)
-   * - test (implicit default, inherited from preview)
-   */
-  tags: ['autodocs'],
-});
-
-export const ExperimentalFeatureStory = meta.story({
-  /*
-   * This particular story will have these tags applied:
-   * - experimental
-   * - autodocs (inherited from meta)
-   * - dev (inherited from meta)
-   * - test (inherited from meta)
-   */
-  tags: ['experimental'],
-});
+};
 ```
 
 ```ts filename="Button.stories.ts" renderer="react" language="ts" tabTitle="CSF Next 🧪"

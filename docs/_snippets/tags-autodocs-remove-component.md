@@ -1,3 +1,15 @@
+```ts filename="Page.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Page } from './Page.component';
+
+const meta = preview.meta({
+  component: Page,
+  // 👇 Disable auto-generated documentation for this component
+  tags: ['!autodocs'],
+});
+```
+
 ```ts filename="Page.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta } from '@storybook/angular';
 
@@ -9,18 +21,6 @@ const meta: Meta<Page> = {
   tags: ['!autodocs'],
 };
 export default meta;
-```
-
-```ts filename="Page.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { Page } from './Page.component';
-
-const meta = preview.meta({
-  component: Page,
-  // 👇 Disable auto-generated documentation for this component
-  tags: ['!autodocs'],
-});
 ```
 
 ```svelte filename="Page.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -99,13 +99,24 @@ const meta = {
 export default meta;
 ```
 
-```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
-  title: 'Page',
+```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
   component: 'demo-page',
   // 👇 Disable auto-generated documentation for this component
   tags: ['!autodocs'],
-};
+});
+```
+
+```ts filename="Page.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-page',
+  // 👇 Disable auto-generated documentation for this component
+  tags: ['!autodocs'],
+});
 ```
 
 ```ts filename="Page.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
@@ -120,24 +131,13 @@ const meta: Meta = {
 export default meta;
 ```
 
-```ts filename="Page.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
+```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
+  title: 'Page',
   component: 'demo-page',
   // 👇 Disable auto-generated documentation for this component
   tags: ['!autodocs'],
-});
-```
-
-```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-page',
-  // 👇 Disable auto-generated documentation for this component
-  tags: ['!autodocs'],
-});
+};
 ```
 
 ```ts filename="Page.stories.ts" renderer="react" language="ts" tabTitle="CSF Next 🧪"

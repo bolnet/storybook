@@ -1,3 +1,23 @@
+```ts filename="Page.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Page } from './page.component';
+
+const meta = preview.meta({
+  component: Page,
+  // 👇 Runs after each story in this file
+  async afterEach(context) {
+    console.log(`✅ Tested ${context.name} story`);
+  },
+});
+
+export const Basic = meta.story({
+  async play({ canvas }) {
+    // ...
+  },
+});
+```
+
 ```ts filename="Page.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -19,26 +39,6 @@ export const Basic: Story = {
     // ...
   },
 };
-```
-
-```ts filename="Page.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { Page } from './page.component';
-
-const meta = preview.meta({
-  component: Page,
-  // 👇 Runs after each story in this file
-  async afterEach(context) {
-    console.log(`✅ Tested ${context.name} story`);
-  },
-});
-
-export const Basic = meta.story({
-  async play({ canvas }) {
-    // ...
-  },
-});
 ```
 
 ```svelte filename="Page.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -167,6 +167,42 @@ export const Basic: Story = {
 };
 ```
 
+```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'my-page',
+  // 👇 Runs after each story in this file
+  async afterEach(context) {
+    console.log(`✅ Tested ${context.name} story`);
+  },
+});
+
+export const Basic = meta.story({
+  async play({ canvas }) {
+    // ...
+  },
+});
+```
+
+```ts filename="Page.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'my-page',
+  // 👇 Runs after each story in this file
+  async afterEach(context) {
+    console.log(`✅ Tested ${context.name} story`);
+  },
+});
+
+export const Basic = meta.story({
+  async play({ canvas }) {
+    // ...
+  },
+});
+```
+
 ```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
 export default {
   component: 'my-page',
@@ -202,42 +238,6 @@ export const Basic: Story = {
     // ...
   },
 };
-```
-
-```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'my-page',
-  // 👇 Runs after each story in this file
-  async afterEach(context) {
-    console.log(`✅ Tested ${context.name} story`);
-  },
-});
-
-export const Basic = meta.story({
-  async play({ canvas }) {
-    // ...
-  },
-});
-```
-
-```ts filename="Page.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'my-page',
-  // 👇 Runs after each story in this file
-  async afterEach(context) {
-    console.log(`✅ Tested ${context.name} story`);
-  },
-});
-
-export const Basic = meta.story({
-  async play({ canvas }) {
-    // ...
-  },
-});
 ```
 
 ```ts filename="Page.stories.ts" renderer="react" language="ts" tabTitle="CSF Next 🧪"

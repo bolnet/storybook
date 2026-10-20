@@ -1,3 +1,25 @@
+```ts filename="Page.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import { mocked } from 'storybook/test';
+
+import preview from '../.storybook/preview';
+
+// 👇 Automocked module resolves to '../lib/__mocks__/session'
+import { getUserFromSession } from '../lib/session';
+
+import { Page } from './Page.component';
+
+const meta = preview.meta({
+  component: Page,
+});
+
+export const Basic = meta.story({
+  async beforeEach() {
+    // 👇 Set the return value for the getUserFromSession function
+    mocked(getUserFromSession).mockReturnValue({ id: '1', name: 'Alice' });
+  },
+});
+```
+
 ```ts filename="Page.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 import { mocked } from 'storybook/test';
@@ -20,28 +42,6 @@ export const Basic: Story = {
     mocked(getUserFromSession).mockReturnValue({ id: '1', name: 'Alice' });
   },
 };
-```
-
-```ts filename="Page.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import { mocked } from 'storybook/test';
-
-import preview from '../.storybook/preview';
-
-// 👇 Automocked module resolves to '../lib/__mocks__/session'
-import { getUserFromSession } from '../lib/session';
-
-import { Page } from './Page.component';
-
-const meta = preview.meta({
-  component: Page,
-});
-
-export const Basic = meta.story({
-  async beforeEach() {
-    // 👇 Set the return value for the getUserFromSession function
-    mocked(getUserFromSession).mockReturnValue({ id: '1', name: 'Alice' });
-  },
-});
 ```
 
 ```svelte filename="Page.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -173,44 +173,6 @@ export const Basic: Story = {
 };
 ```
 
-```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-// 👇 Automocked module resolves to '../lib/__mocks__/session'
-import { getUserFromSession } from '../lib/session';
-
-export default {
-  component: 'my-page',
-};
-
-export const Basic = {
-  async beforeEach() {
-    // 👇 Set the return value for the getUserFromSession function
-    getUserFromSession.mockReturnValue({ id: '1', name: 'Alice' });
-  },
-};
-```
-
-```ts filename="Page.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
-import { mocked } from 'storybook/test';
-
-// 👇 Automocked module resolves to '../lib/__mocks__/session'
-import { getUserFromSession } from '../lib/session';
-
-const meta: Meta = {
-  component: 'my-page',
-};
-export default meta;
-
-type Story = StoryObj;
-
-export const Basic: Story = {
-  async beforeEach() {
-    // 👇 Set the return value for the getUserFromSession function
-    mocked(getUserFromSession).mockReturnValue({ id: '1', name: 'Alice' });
-  },
-};
-```
-
 ```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
 import preview from '../.storybook/preview';
 
@@ -247,6 +209,44 @@ export const Basic = meta.story({
     mocked(getUserFromSession).mockReturnValue({ id: '1', name: 'Alice' });
   },
 });
+```
+
+```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+// 👇 Automocked module resolves to '../lib/__mocks__/session'
+import { getUserFromSession } from '../lib/session';
+
+export default {
+  component: 'my-page',
+};
+
+export const Basic = {
+  async beforeEach() {
+    // 👇 Set the return value for the getUserFromSession function
+    getUserFromSession.mockReturnValue({ id: '1', name: 'Alice' });
+  },
+};
+```
+
+```ts filename="Page.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import { mocked } from 'storybook/test';
+
+// 👇 Automocked module resolves to '../lib/__mocks__/session'
+import { getUserFromSession } from '../lib/session';
+
+const meta: Meta = {
+  component: 'my-page',
+};
+export default meta;
+
+type Story = StoryObj;
+
+export const Basic: Story = {
+  async beforeEach() {
+    // 👇 Set the return value for the getUserFromSession function
+    mocked(getUserFromSession).mockReturnValue({ id: '1', name: 'Alice' });
+  },
+};
 ```
 
 ```ts filename="Page.stories.ts" renderer="react" language="ts" tabTitle="CSF Next 🧪"

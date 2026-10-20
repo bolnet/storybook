@@ -1,3 +1,16 @@
+```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Button } from './button.component';
+
+const meta = preview.meta({
+  component: Button,
+  parameters: {
+    myAddon: { disable: true }, // Disables the addon
+  },
+});
+```
+
 ```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta } from '@storybook/angular';
 
@@ -11,19 +24,6 @@ const meta: Meta<Button> = {
 };
 
 export default meta;
-```
-
-```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { Button } from './button.component';
-
-const meta = preview.meta({
-  component: Button,
-  parameters: {
-    myAddon: { disable: true }, // Disables the addon
-  },
-});
 ```
 
 ```js filename="Button.stories.js|jsx" renderer="common" language="js" tabTitle="CSF 3"
@@ -63,28 +63,6 @@ const meta = {
 export default meta;
 ```
 
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
-  component: 'demo-button',
-  parameters: {
-    myAddon: { disable: true }, // Disables the addon
-  },
-};
-```
-
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
-import type { Meta } from '@storybook/web-components-vite';
-
-const meta: Meta = {
-  component: 'demo-button',
-  parameters: {
-    myAddon: { disable: true }, // Disables the addon
-  },
-};
-
-export default meta;
-```
-
 ```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
 import preview from '../.storybook/preview';
 
@@ -105,6 +83,28 @@ const meta = preview.meta({
     myAddon: { disable: true }, // Disables the addon
   },
 });
+```
+
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
+  component: 'demo-button',
+  parameters: {
+    myAddon: { disable: true }, // Disables the addon
+  },
+};
+```
+
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
+import type { Meta } from '@storybook/web-components-vite';
+
+const meta: Meta = {
+  component: 'demo-button',
+  parameters: {
+    myAddon: { disable: true }, // Disables the addon
+  },
+};
+
+export default meta;
 ```
 
 ```ts filename="Button.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"

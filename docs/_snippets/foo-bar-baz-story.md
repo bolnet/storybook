@@ -1,3 +1,20 @@
+```ts filename="FooBar.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Foo } from './foo.component';
+
+const meta = preview.meta({
+  /* 👇 The title prop is optional.
+   * See https://storybook.js.org/docs/configure/#configure-story-loading
+   * to learn how to generate automatic titles
+   */
+  title: 'Foo/Bar',
+  component: Foo,
+});
+
+export const Baz = meta.story();
+```
+
 ```ts filename="FooBar.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -16,23 +33,6 @@ export default meta;
 type Story = StoryObj<Foo>;
 
 export const Baz: Story = {};
-```
-
-```ts filename="FooBar.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { Foo } from './foo.component';
-
-const meta = preview.meta({
-  /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/configure/#configure-story-loading
-   * to learn how to generate automatic titles
-   */
-  title: 'Foo/Bar',
-  component: Foo,
-});
-
-export const Baz = meta.story();
 ```
 
 ```svelte filename="FooBar.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -217,6 +217,36 @@ const meta = preview.meta({
 export const Baz = meta.story();
 ```
 
+```js filename="FooBar.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  /* 👇 The title prop is optional.
+   * See https://storybook.js.org/docs/configure/#configure-story-loading
+   * to learn how to generate automatic titles
+   */
+  title: 'Foo/Bar',
+  component: 'demo-foo',
+});
+
+export const Baz = meta.story();
+```
+
+```ts filename="FooBar.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  /* 👇 The title prop is optional.
+   * See https://storybook.js.org/docs/configure/#configure-story-loading
+   * to learn how to generate automatic titles
+   */
+  title: 'Foo/Bar',
+  component: 'demo-foo',
+});
+
+export const Baz = meta.story();
+```
+
 ```js filename="FooBar.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
 export default {
   /* 👇 The title prop is optional.
@@ -246,34 +276,4 @@ export default meta;
 type Story = StoryObj;
 
 export const Baz: Story = {};
-```
-
-```js filename="FooBar.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/configure/#configure-story-loading
-   * to learn how to generate automatic titles
-   */
-  title: 'Foo/Bar',
-  component: 'demo-foo',
-});
-
-export const Baz = meta.story();
-```
-
-```ts filename="FooBar.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/configure/#configure-story-loading
-   * to learn how to generate automatic titles
-   */
-  title: 'Foo/Bar',
-  component: 'demo-foo',
-});
-
-export const Baz = meta.story();
 ```

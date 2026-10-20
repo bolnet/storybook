@@ -1,3 +1,19 @@
+```ts filename="Checkbox.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Checkbox } from './checkbox.component';
+
+const meta = preview.meta({
+  component: Checkbox,
+});
+
+export const Unchecked = meta.story({
+  args: {
+    label: 'Unchecked',
+  },
+});
+```
+
 ```ts filename="Checkbox.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -15,22 +31,6 @@ export const Unchecked: Story = {
     label: 'Unchecked',
   },
 };
-```
-
-```ts filename="Checkbox.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { Checkbox } from './checkbox.component';
-
-const meta = preview.meta({
-  component: Checkbox,
-});
-
-export const Unchecked = meta.story({
-  args: {
-    label: 'Unchecked',
-  },
-});
 ```
 
 ```svelte filename="Checkbox.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -139,6 +139,34 @@ export const Unchecked: Story = {
 };
 ```
 
+```js filename="Checkbox.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-checkbox',
+});
+
+export const Unchecked = meta.story({
+  args: {
+    label: 'Unchecked',
+  },
+});
+```
+
+```ts filename="Checkbox.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-checkbox',
+});
+
+export const Unchecked = meta.story({
+  args: {
+    label: 'Unchecked',
+  },
+});
+```
+
 ```js filename="Checkbox.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
 export default {
   component: 'demo-checkbox',
@@ -166,34 +194,6 @@ export const Unchecked: Story = {
     label: 'Unchecked',
   },
 };
-```
-
-```js filename="Checkbox.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-checkbox',
-});
-
-export const Unchecked = meta.story({
-  args: {
-    label: 'Unchecked',
-  },
-});
-```
-
-```ts filename="Checkbox.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-checkbox',
-});
-
-export const Unchecked = meta.story({
-  args: {
-    label: 'Unchecked',
-  },
-});
 ```
 
 ```ts filename="Checkbox.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"

@@ -1,3 +1,19 @@
+```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { MyComponent } from './my-component.component';
+
+const meta = preview.meta({
+  component: MyComponent,
+});
+
+export const ExampleStory = meta.story({
+  args: {
+    propertyA: process.env.STORYBOOK_DATA_KEY,
+  },
+});
+```
+
 ```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -15,22 +31,6 @@ export const ExampleStory: Story = {
     propertyA: process.env.STORYBOOK_DATA_KEY,
   },
 };
-```
-
-```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { MyComponent } from './my-component.component';
-
-const meta = preview.meta({
-  component: MyComponent,
-});
-
-export const ExampleStory = meta.story({
-  args: {
-    propertyA: process.env.STORYBOOK_DATA_KEY,
-  },
-});
 ```
 
 ```svelte filename="MyComponent.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -139,16 +139,32 @@ export const ExampleStory: Story = {
 };
 ```
 
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
-  component: 'my-component',
-};
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
 
-export const ExampleStory = {
+const meta = preview.meta({
+  component: 'my-component',
+});
+
+export const ExampleStory = meta.story({
   args: {
     propertyA: process.env.STORYBOOK_DATA_KEY,
   },
-};
+});
+```
+
+```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'my-component',
+});
+
+export const ExampleStory = meta.story({
+  args: {
+    propertyA: process.env.STORYBOOK_DATA_KEY,
+  },
+});
 ```
 
 ```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
@@ -168,32 +184,16 @@ export const ExampleStory: Story = {
 };
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
   component: 'my-component',
-});
+};
 
-export const ExampleStory = meta.story({
+export const ExampleStory = {
   args: {
     propertyA: process.env.STORYBOOK_DATA_KEY,
   },
-});
-```
-
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'my-component',
-});
-
-export const ExampleStory = meta.story({
-  args: {
-    propertyA: process.env.STORYBOOK_DATA_KEY,
-  },
-});
+};
 ```
 
 ```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"

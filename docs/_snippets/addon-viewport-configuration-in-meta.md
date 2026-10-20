@@ -33,6 +33,24 @@ const meta = {
 export default meta;
 ```
 
+```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import { INITIAL_VIEWPORTS } from 'storybook/viewport';
+
+import preview from '../.storybook/preview';
+
+import { MyComponent } from './my-component.component';
+
+const meta = preview.meta({
+  component: MyComponent,
+  parameters: {
+    viewport: {
+      //👇 Set available viewports for every story in the file
+      options: INITIAL_VIEWPORTS,
+    },
+  },
+});
+```
+
 ```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta } from '@storybook/angular';
 
@@ -53,12 +71,14 @@ const meta: Meta<MyComponent> = {
 export default meta;
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+<!-- JS snippets still needed while providing both CSF 3 & Next -->
+
+```js filename="MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 
 import preview from '../.storybook/preview';
 
-import { MyComponent } from './my-component.component';
+import { MyComponent } from './MyComponent';
 
 const meta = preview.meta({
   component: MyComponent,
@@ -71,12 +91,14 @@ const meta = preview.meta({
 });
 ```
 
-```js filename="MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 3"
+```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
+
+import preview from '../.storybook/preview';
 
 import { MyComponent } from './MyComponent';
 
-export default {
+const meta = preview.meta({
   component: MyComponent,
   parameters: {
     viewport: {
@@ -84,28 +106,7 @@ export default {
       options: INITIAL_VIEWPORTS,
     },
   },
-};
-```
-
-```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 3"
-// Replace your-framework with the framework you are using, e.g. react-vite, nextjs, nextjs-vite, etc.
-import type { Meta } from '@storybook/your-framework';
-
-import { INITIAL_VIEWPORTS } from 'storybook/viewport';
-
-import { MyComponent } from './MyComponent';
-
-const meta = {
-  component: MyComponent,
-  parameters: {
-    viewport: {
-      //👇 Set available viewports for every story in the file
-      options: INITIAL_VIEWPORTS,
-    },
-  },
-} satisfies Meta<typeof MyComponent>;
-
-export default meta;
+});
 ```
 
 ```svelte filename="MyComponent.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -185,12 +186,16 @@ const meta = {
 export default meta;
 ```
 
-```js filename="MyComponent.stories.js" renderer="vue" language="js" tabTitle="CSF 3"
+<!-- JS snippets still needed while providing both CSF 3 & Next -->
+
+```js filename="MyComponent.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
+
+import preview from '../.storybook/preview';
 
 import MyComponent from './MyComponent.vue';
 
-export default {
+const meta = preview.meta({
   component: MyComponent,
   parameters: {
     viewport: {
@@ -198,7 +203,25 @@ export default {
       options: INITIAL_VIEWPORTS,
     },
   },
-};
+});
+```
+
+```ts filename="MyComponent.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+import { INITIAL_VIEWPORTS } from 'storybook/viewport';
+
+import preview from '../.storybook/preview';
+
+import MyComponent from './MyComponent.vue';
+
+const meta = preview.meta({
+  component: MyComponent,
+  parameters: {
+    viewport: {
+      //👇 Set available viewports for every story in the file
+      options: INITIAL_VIEWPORTS,
+    },
+  },
+});
 ```
 
 ```ts filename="MyComponent.stories.ts" renderer="vue" language="ts" tabTitle="CSF 3"
@@ -221,15 +244,29 @@ const meta = {
 export default meta;
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```js filename="MyComponent.stories.js" renderer="vue" language="js" tabTitle="CSF 3"
+import { INITIAL_VIEWPORTS } from 'storybook/viewport';
+
+import MyComponent from './MyComponent.vue';
+
+export default {
+  component: MyComponent,
+  parameters: {
+    viewport: {
+      //👇 Set available viewports for every story in the file
+      options: INITIAL_VIEWPORTS,
+    },
+  },
+};
+```
+
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 
 import preview from '../.storybook/preview';
 
-import MyComponent from './MyComponent.vue';
-
 const meta = preview.meta({
-  component: MyComponent,
+  component: 'my-component',
   parameters: {
     viewport: {
       //👇 Set available viewports for every story in the file
@@ -239,17 +276,13 @@ const meta = preview.meta({
 });
 ```
 
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
-
-```js filename="MyComponent.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 
 import preview from '../.storybook/preview';
 
-import MyComponent from './MyComponent.vue';
-
 const meta = preview.meta({
-  component: MyComponent,
+  component: 'my-component',
   parameters: {
     viewport: {
       //👇 Set available viewports for every story in the file
@@ -291,46 +324,15 @@ const meta: Meta = {
 export default meta;
 ```
 
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 3"
+// Replace your-framework with the framework you are using, e.g. react-vite, nextjs, nextjs-vite, etc.
+import type { Meta } from '@storybook/your-framework';
+
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
-
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'my-component',
-  parameters: {
-    viewport: {
-      //👇 Set available viewports for every story in the file
-      options: INITIAL_VIEWPORTS,
-    },
-  },
-});
-```
-
-```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import { INITIAL_VIEWPORTS } from 'storybook/viewport';
-
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'my-component',
-  parameters: {
-    viewport: {
-      //👇 Set available viewports for every story in the file
-      options: INITIAL_VIEWPORTS,
-    },
-  },
-});
-```
-
-```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
-import { INITIAL_VIEWPORTS } from 'storybook/viewport';
-
-import preview from '../.storybook/preview';
 
 import { MyComponent } from './MyComponent';
 
-const meta = preview.meta({
+const meta = {
   component: MyComponent,
   parameters: {
     viewport: {
@@ -338,19 +340,17 @@ const meta = preview.meta({
       options: INITIAL_VIEWPORTS,
     },
   },
-});
+} satisfies Meta<typeof MyComponent>;
+
+export default meta;
 ```
 
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
-
-```js filename="MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 3"
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
-
-import preview from '../.storybook/preview';
 
 import { MyComponent } from './MyComponent';
 
-const meta = preview.meta({
+export default {
   component: MyComponent,
   parameters: {
     viewport: {
@@ -358,5 +358,5 @@ const meta = preview.meta({
       options: INITIAL_VIEWPORTS,
     },
   },
-});
+};
 ```

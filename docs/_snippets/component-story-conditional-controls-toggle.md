@@ -1,3 +1,21 @@
+```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Button } from './button.component';
+
+const meta = preview.meta({
+  component: Button,
+  argTypes: {
+    label: { control: 'text' }, // Always shows the control
+    advanced: { control: 'boolean' },
+    // Only enabled if advanced is true
+    margin: { control: 'number', if: { arg: 'advanced' } },
+    padding: { control: 'number', if: { arg: 'advanced' } },
+    cornerRadius: { control: 'number', if: { arg: 'advanced' } },
+  },
+});
+```
+
 ```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta } from '@storybook/angular';
 
@@ -16,24 +34,6 @@ const meta: Meta<Button> = {
 };
 
 export default meta;
-```
-
-```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { Button } from './button.component';
-
-const meta = preview.meta({
-  component: Button,
-  argTypes: {
-    label: { control: 'text' }, // Always shows the control
-    advanced: { control: 'boolean' },
-    // Only enabled if advanced is true
-    margin: { control: 'number', if: { arg: 'advanced' } },
-    padding: { control: 'number', if: { arg: 'advanced' } },
-    cornerRadius: { control: 'number', if: { arg: 'advanced' } },
-  },
-});
 ```
 
 ```svelte filename="Button.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -150,38 +150,6 @@ const meta = {
 export default meta;
 ```
 
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
-  component: 'demo-button',
-  argTypes: {
-    label: { control: 'text' }, // Always shows the control
-    advanced: { control: 'boolean' },
-    // Only enabled if advanced is true
-    margin: { control: 'number', if: { arg: 'advanced' } },
-    padding: { control: 'number', if: { arg: 'advanced' } },
-    cornerRadius: { control: 'number', if: { arg: 'advanced' } },
-  },
-};
-```
-
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
-import type { Meta } from '@storybook/web-components-vite';
-
-const meta: Meta = {
-  component: 'demo-button',
-  argTypes: {
-    label: { control: 'text' }, // Always shows the control
-    advanced: { control: 'boolean' },
-    // Only enabled if advanced is true
-    margin: { control: 'number', if: { arg: 'advanced' } },
-    padding: { control: 'number', if: { arg: 'advanced' } },
-    cornerRadius: { control: 'number', if: { arg: 'advanced' } },
-  },
-};
-
-export default meta;
-```
-
 ```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
 import preview from '../.storybook/preview';
 
@@ -212,6 +180,38 @@ const meta = preview.meta({
     cornerRadius: { control: 'number', if: { arg: 'advanced' } },
   },
 });
+```
+
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
+  component: 'demo-button',
+  argTypes: {
+    label: { control: 'text' }, // Always shows the control
+    advanced: { control: 'boolean' },
+    // Only enabled if advanced is true
+    margin: { control: 'number', if: { arg: 'advanced' } },
+    padding: { control: 'number', if: { arg: 'advanced' } },
+    cornerRadius: { control: 'number', if: { arg: 'advanced' } },
+  },
+};
+```
+
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
+import type { Meta } from '@storybook/web-components-vite';
+
+const meta: Meta = {
+  component: 'demo-button',
+  argTypes: {
+    label: { control: 'text' }, // Always shows the control
+    advanced: { control: 'boolean' },
+    // Only enabled if advanced is true
+    margin: { control: 'number', if: { arg: 'advanced' } },
+    padding: { control: 'number', if: { arg: 'advanced' } },
+    cornerRadius: { control: 'number', if: { arg: 'advanced' } },
+  },
+};
+
+export default meta;
 ```
 
 ```ts filename="Button.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"

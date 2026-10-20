@@ -1,3 +1,63 @@
+```ts filename="YourPage.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import { http, HttpResponse, delay } from 'msw';
+
+import preview from '../.storybook/preview';
+
+import { DocumentScreen } from './your-page.component';
+
+const meta = preview.meta({
+  component: DocumentScreen,
+});
+
+// 👇 The mocked data that will be used in the story
+const TestData = {
+  user: {
+    userID: 1,
+    name: 'Someone',
+  },
+  document: {
+    id: 1,
+    userID: 1,
+    title: 'Something',
+    brief: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    status: 'approved',
+  },
+  subdocuments: [
+    {
+      id: 1,
+      userID: 1,
+      title: 'Something',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      status: 'approved',
+    },
+  ],
+};
+
+export const MockedSuccess = meta.story({
+  beforeEach({ msw }) {
+    msw.use(
+      http.get('https://your-restful-endpoint/', () => {
+        return HttpResponse.json(TestData);
+      }),
+    );
+  },
+});
+
+export const MockedError = meta.story({
+  beforeEach({ msw }) {
+    msw.use(
+      http.get('https://your-restful-endpoint', async () => {
+        await delay(800);
+        return new HttpResponse(null, {
+          status: 403,
+        });
+      }),
+    );
+  },
+});
+```
+
 ```ts filename="YourPage.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import { http, HttpResponse, delay } from 'msw';
 
@@ -59,66 +119,6 @@ export const MockedError: Story = {
     );
   },
 };
-```
-
-```ts filename="YourPage.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import { http, HttpResponse, delay } from 'msw';
-
-import preview from '../.storybook/preview';
-
-import { DocumentScreen } from './your-page.component';
-
-const meta = preview.meta({
-  component: DocumentScreen,
-});
-
-// 👇 The mocked data that will be used in the story
-const TestData = {
-  user: {
-    userID: 1,
-    name: 'Someone',
-  },
-  document: {
-    id: 1,
-    userID: 1,
-    title: 'Something',
-    brief: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    status: 'approved',
-  },
-  subdocuments: [
-    {
-      id: 1,
-      userID: 1,
-      title: 'Something',
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      status: 'approved',
-    },
-  ],
-};
-
-export const MockedSuccess = meta.story({
-  beforeEach({ msw }) {
-    msw.use(
-      http.get('https://your-restful-endpoint/', () => {
-        return HttpResponse.json(TestData);
-      }),
-    );
-  },
-});
-
-export const MockedError = meta.story({
-  beforeEach({ msw }) {
-    msw.use(
-      http.get('https://your-restful-endpoint', async () => {
-        await delay(800);
-        return new HttpResponse(null, {
-          status: 403,
-        });
-      }),
-    );
-  },
-});
 ```
 
 ```svelte filename="YourPage.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -493,12 +493,14 @@ export const MockedError: Story = {
 };
 ```
 
-```js filename="YourPage.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+```js filename="YourPage.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
 import { http, HttpResponse, delay } from 'msw';
 
-export default {
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
   component: 'demo-document-screen',
-};
+});
 
 // 👇 The mocked data that will be used in the story
 const TestData = {
@@ -525,7 +527,7 @@ const TestData = {
   ],
 };
 
-export const MockedSuccess = {
+export const MockedSuccess = meta.story({
   beforeEach({ msw }) {
     msw.use(
       http.get('https://your-restful-endpoint/', () => {
@@ -533,9 +535,9 @@ export const MockedSuccess = {
       }),
     );
   },
-};
+});
 
-export const MockedError = {
+export const MockedError = meta.story({
   beforeEach({ msw }) {
     msw.use(
       http.get('https://your-restful-endpoint', async () => {
@@ -546,7 +548,65 @@ export const MockedError = {
       }),
     );
   },
+});
+```
+
+```ts filename="YourPage.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import { http, HttpResponse, delay } from 'msw';
+
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-document-screen',
+});
+
+// 👇 The mocked data that will be used in the story
+const TestData = {
+  user: {
+    userID: 1,
+    name: 'Someone',
+  },
+  document: {
+    id: 1,
+    userID: 1,
+    title: 'Something',
+    brief: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    status: 'approved',
+  },
+  subdocuments: [
+    {
+      id: 1,
+      userID: 1,
+      title: 'Something',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      status: 'approved',
+    },
+  ],
 };
+
+export const MockedSuccess = meta.story({
+  beforeEach({ msw }) {
+    msw.use(
+      http.get('https://your-restful-endpoint/', () => {
+        return HttpResponse.json(TestData);
+      }),
+    );
+  },
+});
+
+export const MockedError = meta.story({
+  beforeEach({ msw }) {
+    msw.use(
+      http.get('https://your-restful-endpoint', async () => {
+        await delay(800);
+        return new HttpResponse(null, {
+          status: 403,
+        });
+      }),
+    );
+  },
+});
 ```
 
 ```ts filename="YourPage.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
@@ -610,14 +670,12 @@ export const MockedError: Story = {
 };
 ```
 
-```ts filename="YourPage.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```js filename="YourPage.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
 import { http, HttpResponse, delay } from 'msw';
 
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
+export default {
   component: 'demo-document-screen',
-});
+};
 
 // 👇 The mocked data that will be used in the story
 const TestData = {
@@ -644,7 +702,7 @@ const TestData = {
   ],
 };
 
-export const MockedSuccess = meta.story({
+export const MockedSuccess = {
   beforeEach({ msw }) {
     msw.use(
       http.get('https://your-restful-endpoint/', () => {
@@ -652,67 +710,9 @@ export const MockedSuccess = meta.story({
       }),
     );
   },
-});
-
-export const MockedError = meta.story({
-  beforeEach({ msw }) {
-    msw.use(
-      http.get('https://your-restful-endpoint', async () => {
-        await delay(800);
-        return new HttpResponse(null, {
-          status: 403,
-        });
-      }),
-    );
-  },
-});
-```
-
-```js filename="YourPage.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import { http, HttpResponse, delay } from 'msw';
-
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-document-screen',
-});
-
-// 👇 The mocked data that will be used in the story
-const TestData = {
-  user: {
-    userID: 1,
-    name: 'Someone',
-  },
-  document: {
-    id: 1,
-    userID: 1,
-    title: 'Something',
-    brief: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    status: 'approved',
-  },
-  subdocuments: [
-    {
-      id: 1,
-      userID: 1,
-      title: 'Something',
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      status: 'approved',
-    },
-  ],
 };
 
-export const MockedSuccess = meta.story({
-  beforeEach({ msw }) {
-    msw.use(
-      http.get('https://your-restful-endpoint/', () => {
-        return HttpResponse.json(TestData);
-      }),
-    );
-  },
-});
-
-export const MockedError = meta.story({
+export const MockedError = {
   beforeEach({ msw }) {
     msw.use(
       http.get('https://your-restful-endpoint', async () => {
@@ -723,7 +723,7 @@ export const MockedError = meta.story({
       }),
     );
   },
-});
+};
 ```
 
 ```ts filename="YourPage.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"

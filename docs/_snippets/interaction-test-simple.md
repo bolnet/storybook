@@ -1,3 +1,24 @@
+```ts filename="Dialog.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import { fn, expect } from 'storybook/test';
+
+import preview from '../.storybook/preview';
+
+import { Dialog } from './dialog.component';
+
+const meta = preview.meta({
+  component: Dialog,
+});
+
+export const Opens = meta.story({
+  play: async ({ canvas, userEvent }) => {
+    // Click on a button and assert that a dialog appears
+    const button = canvas.getByRole('button', { text: 'Open Modal' });
+    await userEvent.click(button);
+    await expect(canvas.getByRole('dialog')).toBeInTheDocument();
+  },
+});
+```
+
 ```ts filename="Dialog.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 import { expect } from 'storybook/test';
@@ -19,27 +40,6 @@ export const Opens: Story = {
     await expect(canvas.getByRole('dialog')).toBeInTheDocument();
   },
 };
-```
-
-```ts filename="Dialog.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import { fn, expect } from 'storybook/test';
-
-import preview from '../.storybook/preview';
-
-import { Dialog } from './dialog.component';
-
-const meta = preview.meta({
-  component: Dialog,
-});
-
-export const Opens = meta.story({
-  play: async ({ canvas, userEvent }) => {
-    // Click on a button and assert that a dialog appears
-    const button = canvas.getByRole('button', { text: 'Open Modal' });
-    await userEvent.click(button);
-    await expect(canvas.getByRole('dialog')).toBeInTheDocument();
-  },
-});
 ```
 
 ```ts filename="Dialog.stories.ts" renderer="common" language="ts" tabTitle="CSF 3"
@@ -172,42 +172,23 @@ export const Opens = {
 };
 ```
 
-```ts filename="Dialog.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
-import { expect } from 'storybook/test';
+```ts filename="Dialog.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import { fn, expect } from 'storybook/test';
 
-const meta: Meta = {
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
   component: 'demo-dialog',
-};
-export default meta;
+});
 
-type Story = StoryObj;
-
-export const Opens: Story = {
+export const Opens = meta.story({
   play: async ({ canvas, userEvent }) => {
     // Click on a button and assert that a dialog appears
     const button = canvas.getByRole('button', { name: 'Open Modal' });
     await userEvent.click(button);
     await expect(canvas.getByRole('dialog')).toBeInTheDocument();
   },
-};
-```
-
-```js filename="Dialog.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-import { expect } from 'storybook/test';
-
-export default {
-  component: 'demo-dialog',
-};
-
-export const Opens = {
-  play: async ({ canvas, userEvent }) => {
-    // Click on a button and assert that a dialog appears
-    const button = canvas.getByRole('button', { name: 'Open Modal' });
-    await userEvent.click(button);
-    await expect(canvas.getByRole('dialog')).toBeInTheDocument();
-  },
-};
+});
 ```
 
 ```js filename="Dialog.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
@@ -229,23 +210,42 @@ export const Opens = meta.story({
 });
 ```
 
-```ts filename="Dialog.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import { fn, expect } from 'storybook/test';
+```js filename="Dialog.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+import { expect } from 'storybook/test';
 
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
+export default {
   component: 'demo-dialog',
-});
+};
 
-export const Opens = meta.story({
+export const Opens = {
   play: async ({ canvas, userEvent }) => {
     // Click on a button and assert that a dialog appears
     const button = canvas.getByRole('button', { name: 'Open Modal' });
     await userEvent.click(button);
     await expect(canvas.getByRole('dialog')).toBeInTheDocument();
   },
-});
+};
+```
+
+```ts filename="Dialog.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import { expect } from 'storybook/test';
+
+const meta: Meta = {
+  component: 'demo-dialog',
+};
+export default meta;
+
+type Story = StoryObj;
+
+export const Opens: Story = {
+  play: async ({ canvas, userEvent }) => {
+    // Click on a button and assert that a dialog appears
+    const button = canvas.getByRole('button', { name: 'Open Modal' });
+    await userEvent.click(button);
+    await expect(canvas.getByRole('dialog')).toBeInTheDocument();
+  },
+};
 ```
 
 ```ts filename="Dialog.stories.ts" renderer="react" language="ts" tabTitle="CSF Next 🧪"

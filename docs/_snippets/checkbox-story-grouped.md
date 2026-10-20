@@ -1,3 +1,18 @@
+```ts filename="Checkbox.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Checkbox } from './checkbox.component';
+
+const meta = preview.meta({
+  /* 👇 The title prop is optional.
+   * See https://storybook.js.org/docs/configure/#configure-story-loading
+   * to learn how to generate automatic titles
+   */
+  title: 'Design System/Atoms/Checkbox',
+  component: Checkbox,
+});
+```
+
 ```ts filename="Checkbox.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -13,21 +28,6 @@ const meta: Meta<Checkbox> = {
 };
 
 export default meta;
-```
-
-```ts filename="Checkbox.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { Checkbox } from './checkbox.component';
-
-const meta = preview.meta({
-  /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/configure/#configure-story-loading
-   * to learn how to generate automatic titles
-   */
-  title: 'Design System/Atoms/Checkbox',
-  component: Checkbox,
-});
 ```
 
 ```svelte filename="Checkbox.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -126,24 +126,6 @@ const meta = {
 export default meta;
 ```
 
-```js filename="Checkbox.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
-  title: 'Design System/Atoms/Checkbox',
-  component: 'demo-checkbox',
-};
-```
-
-```ts filename="Checkbox.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
-import type { Meta } from '@storybook/web-components-vite';
-
-const meta: Meta = {
-  title: 'Design System/Atoms/Checkbox',
-  component: 'demo-checkbox',
-};
-
-export default meta;
-```
-
 ```js filename="Checkbox.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
 import preview from '../.storybook/preview';
 
@@ -160,6 +142,24 @@ const meta = preview.meta({
   title: 'Design System/Atoms/Checkbox',
   component: 'demo-checkbox',
 });
+```
+
+```js filename="Checkbox.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
+  title: 'Design System/Atoms/Checkbox',
+  component: 'demo-checkbox',
+};
+```
+
+```ts filename="Checkbox.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
+import type { Meta } from '@storybook/web-components-vite';
+
+const meta: Meta = {
+  title: 'Design System/Atoms/Checkbox',
+  component: 'demo-checkbox',
+};
+
+export default meta;
 ```
 
 ```ts filename="Checkbox.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"

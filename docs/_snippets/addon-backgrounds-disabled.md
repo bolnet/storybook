@@ -188,6 +188,34 @@ export const Large = meta.story({
 });
 ```
 
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-button',
+});
+
+export const Large = meta.story({
+  parameters: {
+    backgrounds: { disable: true },
+  },
+});
+```
+
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-button',
+});
+
+export const Large = meta.story({
+  parameters: {
+    backgrounds: { disable: true },
+  },
+});
+```
+
 ```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
 export default {
   component: 'demo-button',
@@ -215,32 +243,4 @@ export const Large: Story = {
     backgrounds: { disable: true },
   },
 };
-```
-
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-button',
-});
-
-export const Large = meta.story({
-  parameters: {
-    backgrounds: { disable: true },
-  },
-});
-```
-
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-button',
-});
-
-export const Large = meta.story({
-  parameters: {
-    backgrounds: { disable: true },
-  },
-});
 ```

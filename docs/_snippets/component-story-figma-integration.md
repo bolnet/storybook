@@ -1,3 +1,23 @@
+```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { MyComponent } from './my-component.component';
+
+// More on default export: https://storybook.js.org/docs/writing-stories/#default-export
+const meta = preview.meta({
+  component: MyComponent,
+});
+
+export const Example = meta.story({
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/Sample-File',
+    },
+  },
+});
+```
+
 ```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -21,12 +41,13 @@ export const Example: Story = {
 };
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+<!-- JS snippets still needed while providing both CSF 3 & Next -->
+
+```js filename="MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
 import preview from '../.storybook/preview';
 
-import { MyComponent } from './my-component.component';
+import { MyComponent } from './MyComponent';
 
-// More on default export: https://storybook.js.org/docs/writing-stories/#default-export
 const meta = preview.meta({
   component: MyComponent,
 });
@@ -41,46 +62,24 @@ export const Example = meta.story({
 });
 ```
 
-```js filename="MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 3"
+```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
 import { MyComponent } from './MyComponent';
 
 // More on default export: https://storybook.js.org/docs/writing-stories/#default-export
-export default {
+const meta = preview.meta({
   component: MyComponent,
-};
+});
 
-export const Example = {
+export const Example = meta.story({
   parameters: {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/Sample-File',
     },
   },
-};
-```
-
-```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 3"
-// Replace your-framework with the framework you are using, e.g. react-vite, nextjs, nextjs-vite, etc.
-import type { Meta, StoryObj } from '@storybook/your-framework';
-
-import { MyComponent } from './MyComponent';
-
-// More on default export: https://storybook.js.org/docs/writing-stories/#default-export
-const meta = {
-  component: MyComponent,
-} satisfies Meta<typeof MyComponent>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Example: Story = {
-  parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/Sample-File',
-    },
-  },
-};
+});
 ```
 
 ```js filename="MyComponent.stories.js|jsx" renderer="solid" language="js"
@@ -208,22 +207,46 @@ export const Example: Story = {
 };
 ```
 
-```js filename="MyComponent.stories.js" renderer="vue" language="js" tabTitle="CSF 3"
+<!-- JS snippets still needed while providing both CSF 3 & Next -->
+
+```js filename="MyComponent.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
 import MyComponent from './MyComponent.vue';
 
 // More on default export: https://storybook.js.org/docs/writing-stories/#default-export
-export default {
+const meta = preview.meta({
   component: MyComponent,
-};
+});
 
-export const Example = {
+export const Example = meta.story({
   parameters: {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/Sample-File',
     },
   },
-};
+});
+```
+
+```ts filename="MyComponent.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import MyComponent from './MyComponent.vue';
+
+// More on default export: https://storybook.js.org/docs/writing-stories/#default-export
+const meta = preview.meta({
+  component: MyComponent,
+});
+
+export const Example = meta.story({
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/Sample-File',
+    },
+  },
+});
 ```
 
 ```ts filename="MyComponent.stories.ts" renderer="vue" language="ts" tabTitle="CSF 3"
@@ -249,14 +272,29 @@ export const Example: Story = {
 };
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
+```js filename="MyComponent.stories.js" renderer="vue" language="js" tabTitle="CSF 3"
 import MyComponent from './MyComponent.vue';
 
 // More on default export: https://storybook.js.org/docs/writing-stories/#default-export
-const meta = preview.meta({
+export default {
   component: MyComponent,
+};
+
+export const Example = {
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/Sample-File',
+    },
+  },
+};
+```
+
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'my-component',
 });
 
 export const Example = meta.story({
@@ -269,16 +307,11 @@ export const Example = meta.story({
 });
 ```
 
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
-
-```js filename="MyComponent.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
 import preview from '../.storybook/preview';
 
-import MyComponent from './MyComponent.vue';
-
-// More on default export: https://storybook.js.org/docs/writing-stories/#default-export
 const meta = preview.meta({
-  component: MyComponent,
+  component: 'my-component',
 });
 
 export const Example = meta.story({
@@ -326,77 +359,44 @@ export const Example: Story = {
 };
 ```
 
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'my-component',
-});
-
-export const Example = meta.story({
-  parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/Sample-File',
-    },
-  },
-});
-```
-
-```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'my-component',
-});
-
-export const Example = meta.story({
-  parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/Sample-File',
-    },
-  },
-});
-```
-
-```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
+```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 3"
+// Replace your-framework with the framework you are using, e.g. react-vite, nextjs, nextjs-vite, etc.
+import type { Meta, StoryObj } from '@storybook/your-framework';
 
 import { MyComponent } from './MyComponent';
 
 // More on default export: https://storybook.js.org/docs/writing-stories/#default-export
-const meta = preview.meta({
+const meta = {
   component: MyComponent,
-});
+} satisfies Meta<typeof MyComponent>;
 
-export const Example = meta.story({
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Example: Story = {
   parameters: {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/Sample-File',
     },
   },
-});
+};
 ```
 
-<!-- JS snippets still needed while providing both CSF 3 & Next -->
-
-```js filename="MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
+```js filename="MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 3"
 import { MyComponent } from './MyComponent';
 
-const meta = preview.meta({
+// More on default export: https://storybook.js.org/docs/writing-stories/#default-export
+export default {
   component: MyComponent,
-});
+};
 
-export const Example = meta.story({
+export const Example = {
   parameters: {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/Sample-File',
     },
   },
-});
+};
 ```

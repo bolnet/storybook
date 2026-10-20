@@ -1,3 +1,18 @@
+```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { MyComponent } from './my-component.component';
+
+const meta = preview.meta({
+  component: MyComponent,
+});
+
+export const Simple = meta.story({
+  name: 'So simple!',
+  // ...
+});
+```
+
 ```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -14,21 +29,6 @@ export const Simple: Story = {
   name: 'So simple!',
   // ...
 };
-```
-
-```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { MyComponent } from './my-component.component';
-
-const meta = preview.meta({
-  component: MyComponent,
-});
-
-export const Simple = meta.story({
-  name: 'So simple!',
-  // ...
-});
 ```
 
 ```js filename="MyComponent.stories.js|jsx" renderer="common" language="js" tabTitle="CSF 3"
@@ -123,15 +123,30 @@ export const Simple = meta.story({
 });
 ```
 
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
-  component: 'my-component',
-};
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
 
-export const Simple = {
+const meta = preview.meta({
+  component: 'my-component',
+});
+
+export const Simple = meta.story({
   name: 'So simple!',
   // ...
-};
+});
+```
+
+```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'my-component',
+});
+
+export const Simple = meta.story({
+  name: 'So simple!',
+  // ...
+});
 ```
 
 ```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
@@ -150,28 +165,13 @@ export const Simple: Story = {
 };
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
   component: 'my-component',
-});
+};
 
-export const Simple = meta.story({
+export const Simple = {
   name: 'So simple!',
   // ...
-});
-```
-
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'my-component',
-});
-
-export const Simple = meta.story({
-  name: 'So simple!',
-  // ...
-});
+};
 ```

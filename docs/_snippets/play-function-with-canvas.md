@@ -1,3 +1,21 @@
+```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { MyComponent } from './my-component.component';
+
+const meta = preview.meta({
+  component: MyComponent,
+});
+
+export const ExampleStory = meta.story({
+  play: async ({ canvas, userEvent }) => {
+    // Starts querying from the component's root element
+    await userEvent.type(canvas.getByTestId('example-element'), 'something');
+    await userEvent.click(canvas.getByRole('button'));
+  },
+});
+```
+
 ```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -17,24 +35,6 @@ export const ExampleStory: Story = {
     await userEvent.click(canvas.getByRole('button'));
   },
 };
-```
-
-```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { MyComponent } from './my-component.component';
-
-const meta = preview.meta({
-  component: MyComponent,
-});
-
-export const ExampleStory = meta.story({
-  play: async ({ canvas, userEvent }) => {
-    // Starts querying from the component's root element
-    await userEvent.type(canvas.getByTestId('example-element'), 'something');
-    await userEvent.click(canvas.getByRole('button'));
-  },
-});
 ```
 
 ```svelte filename="MyComponent.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -153,6 +153,38 @@ export const ExampleStory: Story = {
 };
 ```
 
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-my-component',
+});
+
+export const ExampleStory = meta.story({
+  play: async ({ canvas, userEvent }) => {
+    // Starts querying from the component's root element
+    await userEvent.type(canvas.getByTestId('example-element'), 'something');
+    await userEvent.click(canvas.getByRole('button'));
+  },
+});
+```
+
+```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-my-component',
+});
+
+export const ExampleStory = meta.story({
+  play: async ({ canvas, userEvent }) => {
+    // Starts querying from the component's root element
+    await userEvent.type(canvas.getByTestId('example-element'), 'something');
+    await userEvent.click(canvas.getByRole('button'));
+  },
+});
+```
+
 ```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
 export default {
   component: 'demo-my-component',
@@ -184,38 +216,6 @@ export const ExampleStory: Story = {
     await userEvent.click(canvas.getByRole('button'));
   },
 };
-```
-
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-my-component',
-});
-
-export const ExampleStory = meta.story({
-  play: async ({ canvas, userEvent }) => {
-    // Starts querying from the component's root element
-    await userEvent.type(canvas.getByTestId('example-element'), 'something');
-    await userEvent.click(canvas.getByRole('button'));
-  },
-});
-```
-
-```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-my-component',
-});
-
-export const ExampleStory = meta.story({
-  play: async ({ canvas, userEvent }) => {
-    // Starts querying from the component's root element
-    await userEvent.type(canvas.getByTestId('example-element'), 'something');
-    await userEvent.click(canvas.getByRole('button'));
-  },
-});
 ```
 
 ```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"

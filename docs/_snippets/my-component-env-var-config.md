@@ -1,3 +1,19 @@
+```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { MyComponent } from './MyComponent';
+
+const meta = preview.meta({
+  component: MyComponent,
+});
+
+export const Basic = meta.story({
+  args: {
+    exampleProp: process.env.EXAMPLE_VAR,
+  },
+});
+```
+
 ```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -15,22 +31,6 @@ export const Basic: Story = {
     exampleProp: process.env.EXAMPLE_VAR,
   },
 };
-```
-
-```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { MyComponent } from './MyComponent';
-
-const meta = preview.meta({
-  component: MyComponent,
-});
-
-export const Basic = meta.story({
-  args: {
-    exampleProp: process.env.EXAMPLE_VAR,
-  },
-});
 ```
 
 ```js filename="MyComponent.stories.js|jsx" renderer="common" language="js" tabTitle="CSF 3"
@@ -67,16 +67,32 @@ export const Basic: Story = {
 };
 ```
 
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
-  component: 'my-component',
-};
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
 
-export const Basic = {
+const meta = preview.meta({
+  component: 'my-component',
+});
+
+export const Basic = meta.story({
   args: {
     exampleProp: process.env.EXAMPLE_VAR,
   },
-};
+});
+```
+
+```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'my-component',
+});
+
+export const Basic = meta.story({
+  args: {
+    exampleProp: process.env.EXAMPLE_VAR,
+  },
+});
 ```
 
 ```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
@@ -96,32 +112,16 @@ export const Basic: Story = {
 };
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
   component: 'my-component',
-});
+};
 
-export const Basic = meta.story({
+export const Basic = {
   args: {
     exampleProp: process.env.EXAMPLE_VAR,
   },
-});
-```
-
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'my-component',
-});
-
-export const Basic = meta.story({
-  args: {
-    exampleProp: process.env.EXAMPLE_VAR,
-  },
-});
+};
 ```
 
 ```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"

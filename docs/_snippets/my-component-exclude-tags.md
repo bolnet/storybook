@@ -1,3 +1,20 @@
+```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { MyComponent } from './my-component.component';
+
+const meta = preview.meta({
+  component: MyComponent,
+  //👇 Provides the `no-tests` tag to all stories in this file
+  tags: ['no-tests'],
+});
+
+export const ExcludeStory = meta.story({
+  //👇 Adds the `no-tests` tag to this story to exclude it from the tests when enabled in the test-runner configuration
+  tags: ['no-tests'],
+});
+```
+
 ```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -16,23 +33,6 @@ export const ExcludeStory: Story = {
   //👇 Adds the `no-tests` tag to this story to exclude it from the tests when enabled in the test-runner configuration
   tags: ['no-tests'],
 };
-```
-
-```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { MyComponent } from './my-component.component';
-
-const meta = preview.meta({
-  component: MyComponent,
-  //👇 Provides the `no-tests` tag to all stories in this file
-  tags: ['no-tests'],
-});
-
-export const ExcludeStory = meta.story({
-  //👇 Adds the `no-tests` tag to this story to exclude it from the tests when enabled in the test-runner configuration
-  tags: ['no-tests'],
-});
 ```
 
 ```js filename="MyComponent.stories.js|jsx" renderer="common" language="js" tabTitle="CSF 3"
@@ -141,17 +141,34 @@ export const ExcludeStory = meta.story({
 });
 ```
 
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
   component: 'my-component',
   //👇 Provides the `no-tests` tag to all stories in this file
   tags: ['no-tests'],
-};
+});
 
-export const ExcludeStory = {
+export const ExcludeStory = meta.story({
   //👇 Adds the `no-tests` tag to this story to exclude it from the tests when enabled in the test-runner configuration
   tags: ['no-tests'],
-};
+});
+```
+
+```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'my-component',
+  //👇 Provides the `no-tests` tag to all stories in this file
+  tags: ['no-tests'],
+});
+
+export const ExcludeStory = meta.story({
+  //👇 Adds the `no-tests` tag to this story to exclude it from the tests when enabled in the test-runner configuration
+  tags: ['no-tests'],
+});
 ```
 
 ```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
@@ -172,32 +189,15 @@ export const ExcludeStory: Story = {
 };
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
   component: 'my-component',
   //👇 Provides the `no-tests` tag to all stories in this file
   tags: ['no-tests'],
-});
+};
 
-export const ExcludeStory = meta.story({
+export const ExcludeStory = {
   //👇 Adds the `no-tests` tag to this story to exclude it from the tests when enabled in the test-runner configuration
   tags: ['no-tests'],
-});
-```
-
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'my-component',
-  //👇 Provides the `no-tests` tag to all stories in this file
-  tags: ['no-tests'],
-});
-
-export const ExcludeStory = meta.story({
-  //👇 Adds the `no-tests` tag to this story to exclude it from the tests when enabled in the test-runner configuration
-  tags: ['no-tests'],
-});
+};
 ```

@@ -1,3 +1,40 @@
+```ts filename="RegistrationForm.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { RegistrationForm } from './registration-form.component';
+
+const meta = preview.meta({
+  component: RegistrationForm,
+});
+
+/*
+ * See https://storybook.js.org/docs/writing-stories/play-function#working-with-the-canvas
+ * to learn more about using the canvas to query the DOM
+ */
+export const FilledForm = meta.story({
+  play: async ({ canvas, userEvent }) => {
+    const emailInput = canvas.getByLabelText('email', {
+      selector: 'input',
+    });
+
+    await userEvent.type(emailInput, 'example-email@email.com', {
+      delay: 100,
+    });
+
+    const passwordInput = canvas.getByLabelText('password', {
+      selector: 'input',
+    });
+
+    await userEvent.type(passwordInput, 'ExamplePassword', {
+      delay: 100,
+    });
+
+    const submitButton = canvas.getByRole('button');
+    await userEvent.click(submitButton);
+  },
+});
+```
+
 ```ts filename="RegistrationForm.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
 import type { Meta, StoryObj } from '@storybook/angular';
 
@@ -36,43 +73,6 @@ export const FilledForm: Story = {
     await userEvent.click(submitButton);
   },
 };
-```
-
-```ts filename="RegistrationForm.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { RegistrationForm } from './registration-form.component';
-
-const meta = preview.meta({
-  component: RegistrationForm,
-});
-
-/*
- * See https://storybook.js.org/docs/writing-stories/play-function#working-with-the-canvas
- * to learn more about using the canvas to query the DOM
- */
-export const FilledForm = meta.story({
-  play: async ({ canvas, userEvent }) => {
-    const emailInput = canvas.getByLabelText('email', {
-      selector: 'input',
-    });
-
-    await userEvent.type(emailInput, 'example-email@email.com', {
-      delay: 100,
-    });
-
-    const passwordInput = canvas.getByLabelText('password', {
-      selector: 'input',
-    });
-
-    await userEvent.type(passwordInput, 'ExamplePassword', {
-      delay: 100,
-    });
-
-    const submitButton = canvas.getByRole('button');
-    await userEvent.click(submitButton);
-  },
-});
 ```
 
 ```svelte filename="RegistrationForm.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -307,16 +307,18 @@ export const FilledForm: Story = {
 };
 ```
 
-```js filename="RegistrationForm.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
+```js filename="RegistrationForm.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
   component: 'demo-registration-form',
-};
+});
 
 /*
  * See https://storybook.js.org/docs/writing-stories/play-function#working-with-the-canvas
  * to learn more about using the canvas to query the DOM
  */
-export const FilledForm = {
+export const FilledForm = meta.story({
   play: async ({ canvas, userEvent }) => {
     const emailInput = canvas.getByLabelText('email', {
       selector: 'input',
@@ -337,7 +339,42 @@ export const FilledForm = {
     const submitButton = canvas.getByRole('button');
     await userEvent.click(submitButton);
   },
-};
+});
+```
+
+```ts filename="RegistrationForm.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+const meta = preview.meta({
+  component: 'demo-registration-form',
+});
+
+/*
+ * See https://storybook.js.org/docs/writing-stories/play-function#working-with-the-canvas
+ * to learn more about using the canvas to query the DOM
+ */
+export const FilledForm = meta.story({
+  play: async ({ canvas, userEvent }) => {
+    const emailInput = canvas.getByLabelText('email', {
+      selector: 'input',
+    });
+
+    await userEvent.type(emailInput, 'example-email@email.com', {
+      delay: 100,
+    });
+
+    const passwordInput = canvas.getByLabelText('password', {
+      selector: 'input',
+    });
+
+    await userEvent.type(passwordInput, 'ExamplePassword', {
+      delay: 100,
+    });
+
+    const submitButton = canvas.getByRole('button');
+    await userEvent.click(submitButton);
+  },
+});
 ```
 
 ```ts filename="RegistrationForm.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
@@ -378,18 +415,16 @@ export const FilledForm: Story = {
 };
 ```
 
-```ts filename="RegistrationForm.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
+```js filename="RegistrationForm.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
   component: 'demo-registration-form',
-});
+};
 
 /*
  * See https://storybook.js.org/docs/writing-stories/play-function#working-with-the-canvas
  * to learn more about using the canvas to query the DOM
  */
-export const FilledForm = meta.story({
+export const FilledForm = {
   play: async ({ canvas, userEvent }) => {
     const emailInput = canvas.getByLabelText('email', {
       selector: 'input',
@@ -410,42 +445,7 @@ export const FilledForm = meta.story({
     const submitButton = canvas.getByRole('button');
     await userEvent.click(submitButton);
   },
-});
-```
-
-```js filename="RegistrationForm.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-registration-form',
-});
-
-/*
- * See https://storybook.js.org/docs/writing-stories/play-function#working-with-the-canvas
- * to learn more about using the canvas to query the DOM
- */
-export const FilledForm = meta.story({
-  play: async ({ canvas, userEvent }) => {
-    const emailInput = canvas.getByLabelText('email', {
-      selector: 'input',
-    });
-
-    await userEvent.type(emailInput, 'example-email@email.com', {
-      delay: 100,
-    });
-
-    const passwordInput = canvas.getByLabelText('password', {
-      selector: 'input',
-    });
-
-    await userEvent.type(passwordInput, 'ExamplePassword', {
-      delay: 100,
-    });
-
-    const submitButton = canvas.getByRole('button');
-    await userEvent.click(submitButton);
-  },
-});
+};
 ```
 
 ```ts filename="RegistrationForm.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
