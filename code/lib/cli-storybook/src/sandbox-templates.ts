@@ -610,6 +610,9 @@ export const baseTemplates = {
       builder: '@storybook/builder-vite',
     },
     modifications: {
+      // Svelte docgen needs the `typescript` peer. npm and pnpm install it with svelte2tsx, which
+      // Yarn does not, so the sandbox adds it like a JavaScript project installed with npm has it.
+      extraDependencies: ['typescript@^6'],
       useCsfFactory: true,
     },
     skipTasks: ['e2e-tests', 'bench'],
@@ -624,6 +627,7 @@ export const baseTemplates = {
     },
     modifications: {
       useCsfFactory: true,
+      mainConfig: { features: { componentsManifest: true } },
     },
     // Remove smoke-test from the list once https://github.com/storybookjs/storybook/issues/19351 is fixed.
     skipTasks: ['smoke-test', 'bench'],
@@ -1148,6 +1152,7 @@ export const enablesDocgenServer = (key: string, template: Template): boolean =>
     template.expected.renderer === '@storybook/react' ||
     template.expected.renderer === '@storybook/vue3' ||
     template.expected.renderer === '@storybook/web-components' ||
+    template.expected.renderer === '@storybook/svelte' ||
     template.expected.framework === '@storybook/angular-vite';
   return supported && features?.componentsManifest === true && features.docgenServer !== false;
 };
