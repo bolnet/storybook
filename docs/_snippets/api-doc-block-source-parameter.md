@@ -16,25 +16,20 @@ export const Basic = meta.story({
 });
 ```
 
-```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
-import type { Meta, StoryObj } from '@storybook/angular';
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
 
-import { Button } from './button.component';
+const meta = preview.meta({
+  component: 'demo-button',
+});
 
-const meta: Meta<Button> = {
-  component: Button,
-};
-
-export default meta;
-type Story = StoryObj<Button>;
-
-export const Basic: Story = {
+export const Basic = meta.story({
   parameters: {
     docs: {
-      source: { language: 'ts' },
+      source: { language: 'tsx' },
     },
   },
-};
+});
 ```
 
 ```svelte filename="Button.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -57,36 +52,38 @@ export const Basic: Story = {
   }} />
 ```
 
-```js filename="Button.stories.js" renderer="svelte" language="js" tabTitle="CSF 3"
-import Button from './Button.svelte';
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
 
-export default {
+const meta = preview.meta({
+  component: 'demo-button',
+});
+
+export const Basic = meta.story({
+  parameters: {
+    docs: {
+      source: { language: 'tsx' },
+    },
+  },
+});
+```
+
+```js filename="Button.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Button } from './Button';
+
+const meta = preview.meta({
   component: Button,
-};
+});
 
-export const Basic = {
+export const Basic = meta.story({
   parameters: {
     docs: {
       source: { language: 'jsx' },
     },
   },
-};
-```
-
-```js filename="Button.stories.js|jsx" renderer="common" language="js" tabTitle="CSF 3"
-import { Button } from './Button';
-
-export default {
-  component: Button,
-};
-
-export const Basic = {
-  parameters: {
-    docs: {
-      source: { language: 'js' },
-    },
-  },
-};
+});
 ```
 
 ```svelte filename="Button.stories.svelte" renderer="svelte" language="ts" tabTitle="Svelte CSF"
@@ -107,6 +104,97 @@ export const Basic = {
       source: { language: 'tsx' },
     },
   }} />
+```
+
+```ts filename="Button.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import { Button } from './Button';
+
+const meta = preview.meta({
+  component: Button,
+});
+
+export const Basic = meta.story({
+  parameters: {
+    docs: {
+      source: { language: 'tsx' },
+    },
+  },
+});
+```
+
+```ts filename="Button.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import Button from './Button.vue';
+
+const meta = preview.meta({
+  component: Button,
+});
+
+export const Basic = meta.story({
+  parameters: {
+    docs: {
+      source: { language: 'vue' },
+    },
+  },
+});
+```
+
+```js filename="Button.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
+import Button from './Button.vue';
+
+const meta = preview.meta({
+  component: Button,
+});
+
+export const Basic = meta.story({
+  parameters: {
+    docs: {
+      source: { language: 'vue' },
+    },
+  },
+});
+```
+
+```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
+import type { Meta, StoryObj } from '@storybook/angular';
+
+import { Button } from './button.component';
+
+const meta: Meta<Button> = {
+  component: Button,
+};
+
+export default meta;
+type Story = StoryObj<Button>;
+
+export const Basic: Story = {
+  parameters: {
+    docs: {
+      source: { language: 'ts' },
+    },
+  },
+};
+```
+
+```js filename="Button.stories.js" renderer="svelte" language="js" tabTitle="CSF 3"
+import Button from './Button.svelte';
+
+export default {
+  component: Button,
+};
+
+export const Basic = {
+  parameters: {
+    docs: {
+      source: { language: 'jsx' },
+    },
+  },
+};
 ```
 
 ```ts filename="Button.stories.ts" renderer="svelte" language="ts" tabTitle="CSF 3"
@@ -153,41 +241,11 @@ export const Basic: Story = {
 };
 ```
 
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
+```js filename="Button.stories.js|jsx" renderer="common" language="js" tabTitle="CSF 3"
+import { Button } from './Button';
 
-const meta = preview.meta({
-  component: 'demo-button',
-});
-
-export const Basic = meta.story({
-  parameters: {
-    docs: {
-      source: { language: 'tsx' },
-    },
-  },
-});
-```
-
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'demo-button',
-});
-
-export const Basic = meta.story({
-  parameters: {
-    docs: {
-      source: { language: 'tsx' },
-    },
-  },
-});
-```
-
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
 export default {
-  component: 'demo-button',
+  component: Button,
 };
 
 export const Basic = {
@@ -218,74 +276,16 @@ export const Basic: Story = {
 };
 ```
 
-```ts filename="Button.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
+  component: 'demo-button',
+};
 
-import { Button } from './Button';
-
-const meta = preview.meta({
-  component: Button,
-});
-
-export const Basic = meta.story({
+export const Basic = {
   parameters: {
     docs: {
-      source: { language: 'tsx' },
+      source: { language: 'js' },
     },
   },
-});
-```
-
-```js filename="Button.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { Button } from './Button';
-
-const meta = preview.meta({
-  component: Button,
-});
-
-export const Basic = meta.story({
-  parameters: {
-    docs: {
-      source: { language: 'jsx' },
-    },
-  },
-});
-```
-
-```ts filename="Button.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import Button from './Button.vue';
-
-const meta = preview.meta({
-  component: Button,
-});
-
-export const Basic = meta.story({
-  parameters: {
-    docs: {
-      source: { language: 'vue' },
-    },
-  },
-});
-```
-
-```js filename="Button.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import Button from './Button.vue';
-
-const meta = preview.meta({
-  component: Button,
-});
-
-export const Basic = meta.story({
-  parameters: {
-    docs: {
-      source: { language: 'vue' },
-    },
-  },
-});
+};
 ```

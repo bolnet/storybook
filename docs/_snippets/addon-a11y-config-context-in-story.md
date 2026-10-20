@@ -1,7 +1,11 @@
-```ts filename="Button.stories.ts" renderer="common" language="ts" tabTitle="CSF 3"
-// ...rest of story file
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
 
-export const ExampleStory: Story = {
+const meta = preview.meta({
+  component: 'demo-button',
+});
+
+export const ExampleStory = meta.story({
   parameters: {
     a11y: {
       /*
@@ -15,7 +19,7 @@ export const ExampleStory: Story = {
       },
     },
   },
-};
+});
 ```
 
 ```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
@@ -42,11 +46,13 @@ export const ExampleStory = meta.story({
 });
 ```
 
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
 import preview from '../.storybook/preview';
 
+import { Button } from './button.component';
+
 const meta = preview.meta({
-  component: 'demo-button',
+  component: Button,
 });
 
 export const ExampleStory = meta.story({
@@ -86,10 +92,16 @@ export const ExampleStory = {
 };
 ```
 
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
-// ...rest of story file
+```ts filename="Button.stories.ts" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
 
-export const ExampleStory: Story = {
+import Button from './Button';
+
+const meta = preview.meta({
+  component: Button,
+});
+
+export const ExampleStory = meta.story({
   parameters: {
     a11y: {
       /*
@@ -103,13 +115,13 @@ export const ExampleStory: Story = {
       },
     },
   },
-};
+});
 ```
 
-```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Button.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
 import preview from '../.storybook/preview';
 
-import { Button } from './button.component';
+import Button from './Button.vue';
 
 const meta = preview.meta({
   component: Button,
@@ -181,7 +193,7 @@ export const ExampleStory = {
 />
 ```
 
-```ts filename="Button.stories.ts" renderer="svelte" language="ts" tabTitle="CSF 3"
+```ts filename="Button.stories.ts" renderer="common" language="ts" tabTitle="CSF 3"
 // ...rest of story file
 
 export const ExampleStory: Story = {
@@ -250,16 +262,10 @@ export const ExampleStory = {
 };
 ```
 
-```ts filename="Button.stories.ts" renderer="react" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
+// ...rest of story file
 
-import Button from './Button';
-
-const meta = preview.meta({
-  component: Button,
-});
-
-export const ExampleStory = meta.story({
+export const ExampleStory: Story = {
   parameters: {
     a11y: {
       /*
@@ -273,7 +279,7 @@ export const ExampleStory = meta.story({
       },
     },
   },
-});
+};
 ```
 
 ```js filename="Button.stories.js" renderer="react" language="js" tabTitle="CSF Next 🧪"
@@ -302,16 +308,10 @@ export const ExampleStory = meta.story({
 });
 ```
 
-```ts filename="Button.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
+```ts filename="Button.stories.ts" renderer="svelte" language="ts" tabTitle="CSF 3"
+// ...rest of story file
 
-import Button from './Button.vue';
-
-const meta = preview.meta({
-  component: Button,
-});
-
-export const ExampleStory = meta.story({
+export const ExampleStory: Story = {
   parameters: {
     a11y: {
       /*
@@ -325,7 +325,7 @@ export const ExampleStory = meta.story({
       },
     },
   },
-});
+};
 ```
 
 ```js filename="Button.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"

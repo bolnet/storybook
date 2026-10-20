@@ -32,41 +32,36 @@ export const RegexExclude = meta.story({
 });
 ```
 
-```ts filename="YourComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
-import type { Meta, StoryObj } from '@storybook/angular';
+```ts filename="YourComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
 
-import { YourComponent } from './your-component.component';
+const meta = preview.meta({
+  component: 'your-component',
+});
 
-const meta: Meta<YourComponent> = {
-  component: YourComponent,
-};
-
-export default meta;
-type Story = StoryObj<YourComponent>;
-
-export const ArrayInclude: Story = {
+export const ArrayInclude = meta.story({
   parameters: {
     controls: { include: ['foo', 'bar'] },
   },
-};
+});
 
-export const RegexInclude: Story = {
+export const RegexInclude = meta.story({
   parameters: {
     controls: { include: /^hello*/ },
   },
-};
+});
 
-export const ArrayExclude: Story = {
+export const ArrayExclude = meta.story({
   parameters: {
     controls: { exclude: ['foo', 'bar'] },
   },
-};
+});
 
-export const RegexExclude: Story = {
+export const RegexExclude = meta.story({
   parameters: {
     controls: { exclude: /^hello*/ },
   },
-};
+});
 ```
 
 ```svelte filename="YourComponent.stories.svelte" renderer="svelte" language="js" tabTitle="Svelte CSF"
@@ -109,68 +104,70 @@ export const RegexExclude: Story = {
 />
 ```
 
-```js filename="YourComponent.stories.js" renderer="svelte" language="js" tabTitle="CSF 3"
-import YourComponent from './YourComponent.svelte';
+```js filename="YourComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
 
-export default {
-  component: YourComponent,
-};
+const meta = preview.meta({
+  component: 'your-component',
+});
 
-export const ArrayInclude = {
+export const ArrayInclude = meta.story({
   parameters: {
     controls: { include: ['foo', 'bar'] },
   },
-};
+});
 
-export const RegexInclude = {
+export const RegexInclude = meta.story({
   parameters: {
     controls: { include: /^hello*/ },
   },
-};
+});
 
-export const ArrayExclude = {
+export const ArrayExclude = meta.story({
   parameters: {
     controls: { exclude: ['foo', 'bar'] },
   },
-};
+});
 
-export const RegexExclude = {
+export const RegexExclude = meta.story({
   parameters: {
     controls: { exclude: /^hello*/ },
   },
-};
+});
 ```
 
-```js filename="YourComponent.stories.js|jsx" renderer="common" language="js" tabTitle="CSF 3"
+```js filename="YourComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+import preview from '../.storybook/preview';
+
 import { YourComponent } from './YourComponent';
 
-export default {
+const meta = preview.meta({
   component: YourComponent,
-};
+});
 
-export const ArrayInclude = {
+export const ArrayInclude = meta.story({
   parameters: {
     controls: { include: ['foo', 'bar'] },
   },
-};
+});
 
-export const RegexInclude = {
+export const RegexInclude = meta.story({
   parameters: {
     controls: { include: /^hello*/ },
   },
-};
+});
 
-export const ArrayExclude = {
+export const ArrayExclude = meta.story({
   parameters: {
     controls: { exclude: ['foo', 'bar'] },
   },
-};
+});
 
-export const RegexExclude = {
+export const RegexExclude = meta.story({
   parameters: {
     controls: { exclude: /^hello*/ },
   },
-};
+});
 ```
 
 ```svelte filename="YourComponent.stories.svelte" renderer="svelte" language="ts" tabTitle="Svelte CSF"
@@ -213,246 +210,7 @@ export const RegexExclude = {
 />
 ```
 
-```ts filename="YourComponent.stories.ts" renderer="svelte" language="ts" tabTitle="CSF 3"
-// Replace your-framework with svelte-vite or sveltekit
-import type { Meta, StoryObj } from '@storybook/your-framework';
-
-import YourComponent from './YourComponent.svelte';
-
-const meta = {
-  component: YourComponent,
-} satisfies Meta<typeof YourComponent>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const ArrayInclude: Story = {
-  parameters: {
-    controls: { include: ['foo', 'bar'] },
-  },
-};
-
-export const RegexInclude: Story = {
-  parameters: {
-    controls: { include: /^hello*/ },
-  },
-};
-
-export const ArrayExclude: Story = {
-  parameters: {
-    controls: { exclude: ['foo', 'bar'] },
-  },
-};
-
-export const RegexExclude: Story = {
-  parameters: {
-    controls: { exclude: /^hello*/ },
-  },
-};
-```
-
-```ts filename="YourComponent.stories.ts|tsx" renderer="common" language="ts" tabTitle="CSF 3"
-// Replace your-framework with the framework you are using, e.g. react-vite, nextjs, vue3-vite, etc.
-import type { Meta, StoryObj } from '@storybook/your-framework';
-
-import { YourComponent } from './YourComponent';
-
-const meta = {
-  component: YourComponent,
-} satisfies Meta<typeof YourComponent>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const ArrayInclude: Story = {
-  parameters: {
-    controls: { include: ['foo', 'bar'] },
-  },
-};
-
-export const RegexInclude: Story = {
-  parameters: {
-    controls: { include: /^hello*/ },
-  },
-};
-
-export const ArrayExclude: Story = {
-  parameters: {
-    controls: { exclude: ['foo', 'bar'] },
-  },
-};
-
-export const RegexExclude: Story = {
-  parameters: {
-    controls: { exclude: /^hello*/ },
-  },
-};
-```
-
-```js filename="YourComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'your-component',
-});
-
-export const ArrayInclude = meta.story({
-  parameters: {
-    controls: { include: ['foo', 'bar'] },
-  },
-});
-
-export const RegexInclude = meta.story({
-  parameters: {
-    controls: { include: /^hello*/ },
-  },
-});
-
-export const ArrayExclude = meta.story({
-  parameters: {
-    controls: { exclude: ['foo', 'bar'] },
-  },
-});
-
-export const RegexExclude = meta.story({
-  parameters: {
-    controls: { exclude: /^hello*/ },
-  },
-});
-```
-
-```ts filename="YourComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-const meta = preview.meta({
-  component: 'your-component',
-});
-
-export const ArrayInclude = meta.story({
-  parameters: {
-    controls: { include: ['foo', 'bar'] },
-  },
-});
-
-export const RegexInclude = meta.story({
-  parameters: {
-    controls: { include: /^hello*/ },
-  },
-});
-
-export const ArrayExclude = meta.story({
-  parameters: {
-    controls: { exclude: ['foo', 'bar'] },
-  },
-});
-
-export const RegexExclude = meta.story({
-  parameters: {
-    controls: { exclude: /^hello*/ },
-  },
-});
-```
-
-```js filename="YourComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
-export default {
-  component: 'your-component',
-};
-
-export const ArrayInclude = {
-  parameters: {
-    controls: { include: ['foo', 'bar'] },
-  },
-};
-
-export const RegexInclude = {
-  parameters: {
-    controls: { include: /^hello*/ },
-  },
-};
-
-export const ArrayExclude = {
-  parameters: {
-    controls: { exclude: ['foo', 'bar'] },
-  },
-};
-
-export const RegexExclude = {
-  parameters: {
-    controls: { exclude: /^hello*/ },
-  },
-};
-```
-
-```ts filename="YourComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
-
-const meta: Meta = {
-  component: 'your-component',
-};
-
-export default meta;
-type Story = StoryObj;
-
-export const ArrayInclude: Story = {
-  parameters: {
-    controls: { include: ['foo', 'bar'] },
-  },
-};
-
-export const RegexInclude: Story = {
-  parameters: {
-    controls: { include: /^hello*/ },
-  },
-};
-
-export const ArrayExclude: Story = {
-  parameters: {
-    controls: { exclude: ['foo', 'bar'] },
-  },
-};
-
-export const RegexExclude: Story = {
-  parameters: {
-    controls: { exclude: /^hello*/ },
-  },
-};
-```
-
 ```ts filename="YourComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
-import preview from '../.storybook/preview';
-
-import { YourComponent } from './YourComponent';
-
-const meta = preview.meta({
-  component: YourComponent,
-});
-
-export const ArrayInclude = meta.story({
-  parameters: {
-    controls: { include: ['foo', 'bar'] },
-  },
-});
-
-export const RegexInclude = meta.story({
-  parameters: {
-    controls: { include: /^hello*/ },
-  },
-});
-
-export const ArrayExclude = meta.story({
-  parameters: {
-    controls: { exclude: ['foo', 'bar'] },
-  },
-});
-
-export const RegexExclude = meta.story({
-  parameters: {
-    controls: { exclude: /^hello*/ },
-  },
-});
-```
-
-```js filename="YourComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
 import preview from '../.storybook/preview';
 
 import { YourComponent } from './YourComponent';
@@ -552,4 +310,246 @@ export const RegexExclude = meta.story({
     controls: { exclude: /^hello*/ },
   },
 });
+```
+
+```ts filename="YourComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF 3"
+import type { Meta, StoryObj } from '@storybook/angular';
+
+import { YourComponent } from './your-component.component';
+
+const meta: Meta<YourComponent> = {
+  component: YourComponent,
+};
+
+export default meta;
+type Story = StoryObj<YourComponent>;
+
+export const ArrayInclude: Story = {
+  parameters: {
+    controls: { include: ['foo', 'bar'] },
+  },
+};
+
+export const RegexInclude: Story = {
+  parameters: {
+    controls: { include: /^hello*/ },
+  },
+};
+
+export const ArrayExclude: Story = {
+  parameters: {
+    controls: { exclude: ['foo', 'bar'] },
+  },
+};
+
+export const RegexExclude: Story = {
+  parameters: {
+    controls: { exclude: /^hello*/ },
+  },
+};
+```
+
+```js filename="YourComponent.stories.js" renderer="svelte" language="js" tabTitle="CSF 3"
+import YourComponent from './YourComponent.svelte';
+
+export default {
+  component: YourComponent,
+};
+
+export const ArrayInclude = {
+  parameters: {
+    controls: { include: ['foo', 'bar'] },
+  },
+};
+
+export const RegexInclude = {
+  parameters: {
+    controls: { include: /^hello*/ },
+  },
+};
+
+export const ArrayExclude = {
+  parameters: {
+    controls: { exclude: ['foo', 'bar'] },
+  },
+};
+
+export const RegexExclude = {
+  parameters: {
+    controls: { exclude: /^hello*/ },
+  },
+};
+```
+
+```ts filename="YourComponent.stories.ts" renderer="svelte" language="ts" tabTitle="CSF 3"
+// Replace your-framework with svelte-vite or sveltekit
+import type { Meta, StoryObj } from '@storybook/your-framework';
+
+import YourComponent from './YourComponent.svelte';
+
+const meta = {
+  component: YourComponent,
+} satisfies Meta<typeof YourComponent>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const ArrayInclude: Story = {
+  parameters: {
+    controls: { include: ['foo', 'bar'] },
+  },
+};
+
+export const RegexInclude: Story = {
+  parameters: {
+    controls: { include: /^hello*/ },
+  },
+};
+
+export const ArrayExclude: Story = {
+  parameters: {
+    controls: { exclude: ['foo', 'bar'] },
+  },
+};
+
+export const RegexExclude: Story = {
+  parameters: {
+    controls: { exclude: /^hello*/ },
+  },
+};
+```
+
+```ts filename="YourComponent.stories.ts|tsx" renderer="common" language="ts" tabTitle="CSF 3"
+// Replace your-framework with the framework you are using, e.g. react-vite, nextjs, vue3-vite, etc.
+import type { Meta, StoryObj } from '@storybook/your-framework';
+
+import { YourComponent } from './YourComponent';
+
+const meta = {
+  component: YourComponent,
+} satisfies Meta<typeof YourComponent>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const ArrayInclude: Story = {
+  parameters: {
+    controls: { include: ['foo', 'bar'] },
+  },
+};
+
+export const RegexInclude: Story = {
+  parameters: {
+    controls: { include: /^hello*/ },
+  },
+};
+
+export const ArrayExclude: Story = {
+  parameters: {
+    controls: { exclude: ['foo', 'bar'] },
+  },
+};
+
+export const RegexExclude: Story = {
+  parameters: {
+    controls: { exclude: /^hello*/ },
+  },
+};
+```
+
+```js filename="YourComponent.stories.js|jsx" renderer="common" language="js" tabTitle="CSF 3"
+import { YourComponent } from './YourComponent';
+
+export default {
+  component: YourComponent,
+};
+
+export const ArrayInclude = {
+  parameters: {
+    controls: { include: ['foo', 'bar'] },
+  },
+};
+
+export const RegexInclude = {
+  parameters: {
+    controls: { include: /^hello*/ },
+  },
+};
+
+export const ArrayExclude = {
+  parameters: {
+    controls: { exclude: ['foo', 'bar'] },
+  },
+};
+
+export const RegexExclude = {
+  parameters: {
+    controls: { exclude: /^hello*/ },
+  },
+};
+```
+
+```ts filename="YourComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 3"
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+
+const meta: Meta = {
+  component: 'your-component',
+};
+
+export default meta;
+type Story = StoryObj;
+
+export const ArrayInclude: Story = {
+  parameters: {
+    controls: { include: ['foo', 'bar'] },
+  },
+};
+
+export const RegexInclude: Story = {
+  parameters: {
+    controls: { include: /^hello*/ },
+  },
+};
+
+export const ArrayExclude: Story = {
+  parameters: {
+    controls: { exclude: ['foo', 'bar'] },
+  },
+};
+
+export const RegexExclude: Story = {
+  parameters: {
+    controls: { exclude: /^hello*/ },
+  },
+};
+```
+
+```js filename="YourComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 3"
+export default {
+  component: 'your-component',
+};
+
+export const ArrayInclude = {
+  parameters: {
+    controls: { include: ['foo', 'bar'] },
+  },
+};
+
+export const RegexInclude = {
+  parameters: {
+    controls: { include: /^hello*/ },
+  },
+};
+
+export const ArrayExclude = {
+  parameters: {
+    controls: { exclude: ['foo', 'bar'] },
+  },
+};
+
+export const RegexExclude = {
+  parameters: {
+    controls: { exclude: /^hello*/ },
+  },
+};
 ```

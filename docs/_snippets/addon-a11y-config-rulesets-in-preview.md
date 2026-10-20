@@ -1,42 +1,3 @@
-```ts filename=".storybook/preview.ts|tsx" renderer="common" language="ts" tabTitle="CSF 3"
-// Replace your-framework with the framework you are using, e.g. react-vite, nextjs, vue3-vite, etc.
-import type { Preview } from '@storybook/your-framework';
-
-const preview: Preview = {
-  parameters: {
-    a11y: {
-      options: {
-        /*
-         * Opt in to running WCAG 2.x AAA rules
-         * Note that you must explicitly re-specify the defaults (all but the last array entry)
-         * See https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#options-parameter-examples for more details
-         */
-        runOnly: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice', 'wcag2aaa'],
-      },
-    },
-  },
-};
-
-export default preview;
-```
-
-```js filename=".storybook/preview.js|jsx" renderer="common" language="js" tabTitle="CSF 3"
-export default {
-  parameters: {
-    a11y: {
-      options: {
-        /*
-         * Opt in to running WCAG 2.x AAA rules
-         * Note that you must explicitly re-specify the defaults (all but the last array entry)
-         * See https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#options-parameter-examples for more details
-         */
-        runOnly: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice', 'wcag2aaa'],
-      },
-    },
-  },
-};
-```
-
 ```ts filename=".storybook/preview.tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
 // Replace your-framework with the framework you are using (e.g., react-vite, nextjs, nextjs-vite)
 import { definePreview } from '@storybook/your-framework';
@@ -144,6 +105,27 @@ export default definePreview({
 });
 ```
 
+```js filename=".storybook/preview.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+import { definePreview } from '@storybook/web-components-vite';
+import addonA11y from '@storybook/addon-a11y';
+
+export default definePreview({
+  addons: [addonA11y()],
+  parameters: {
+    a11y: {
+      options: {
+        /*
+         * Opt in to running WCAG 2.x AAA rules
+         * Note that you must explicitly re-specify the defaults (all but the last array entry)
+         * See https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#options-parameter-examples for more details
+         */
+        runOnly: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice', 'wcag2aaa'],
+      },
+    },
+  },
+});
+```
+
 ```ts filename=".storybook/preview.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
 import { definePreview } from '@storybook/web-components-vite';
 import addonA11y from '@storybook/addon-a11y';
@@ -165,12 +147,11 @@ export default definePreview({
 });
 ```
 
-```js filename=".storybook/preview.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
-import { definePreview } from '@storybook/web-components-vite';
-import addonA11y from '@storybook/addon-a11y';
+```ts filename=".storybook/preview.ts|tsx" renderer="common" language="ts" tabTitle="CSF 3"
+// Replace your-framework with the framework you are using, e.g. react-vite, nextjs, vue3-vite, etc.
+import type { Preview } from '@storybook/your-framework';
 
-export default definePreview({
-  addons: [addonA11y()],
+const preview: Preview = {
   parameters: {
     a11y: {
       options: {
@@ -183,5 +164,24 @@ export default definePreview({
       },
     },
   },
-});
+};
+
+export default preview;
+```
+
+```js filename=".storybook/preview.js|jsx" renderer="common" language="js" tabTitle="CSF 3"
+export default {
+  parameters: {
+    a11y: {
+      options: {
+        /*
+         * Opt in to running WCAG 2.x AAA rules
+         * Note that you must explicitly re-specify the defaults (all but the last array entry)
+         * See https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#options-parameter-examples for more details
+         */
+        runOnly: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice', 'wcag2aaa'],
+      },
+    },
+  },
+};
 ```
