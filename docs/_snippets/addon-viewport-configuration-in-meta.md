@@ -33,7 +33,7 @@ const meta = {
 export default meta;
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 
 import preview from '../.storybook/preview';
@@ -71,7 +71,7 @@ const meta: Meta<MyComponent> = {
 export default meta;
 ```
 
-```js filename="MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 
 import preview from '../.storybook/preview';
@@ -89,7 +89,7 @@ const meta = preview.meta({
 });
 ```
 
-```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 
 import preview from '../.storybook/preview';
@@ -184,7 +184,7 @@ const meta = {
 export default meta;
 ```
 
-```js filename="MyComponent.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="MyComponent.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 
 import preview from '../.storybook/preview';
@@ -202,7 +202,7 @@ const meta = preview.meta({
 });
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="MyComponent.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 
 import preview from '../.storybook/preview';
@@ -256,7 +256,7 @@ export default {
 };
 ```
 
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 
 import preview from '../.storybook/preview';
@@ -272,7 +272,7 @@ const meta = preview.meta({
 });
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 
 import preview from '../.storybook/preview';

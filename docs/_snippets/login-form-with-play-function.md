@@ -1,4 +1,4 @@
-```ts filename="LoginForm.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="LoginForm.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import { expect } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -67,7 +67,7 @@ export const FilledForm: Story = {
 };
 ```
 
-```js filename="LoginForm.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="LoginForm.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import { expect } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -100,7 +100,7 @@ export const FilledForm = meta.story({
 });
 ```
 
-```ts filename="LoginForm.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="LoginForm.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import { expect } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -348,7 +348,7 @@ export const FilledForm: Story = {
 };
 ```
 
-```js filename="LoginForm.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="LoginForm.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import { expect } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -390,7 +390,7 @@ export const FilledForm = meta.story({
 });
 ```
 
-```ts filename="LoginForm.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="LoginForm.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import { expect } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -517,7 +517,7 @@ export const FilledForm = {
 };
 ```
 
-```js filename="LoginForm.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="LoginForm.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import { expect } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -548,7 +548,7 @@ export const FilledForm = meta.story({
 });
 ```
 
-```ts filename="LoginForm.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="LoginForm.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import { expect } from 'storybook/test';
 
 import preview from '../.storybook/preview';

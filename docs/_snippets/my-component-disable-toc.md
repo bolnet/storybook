@@ -1,4 +1,4 @@
-```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { MyComponent } from './my-component.component';
@@ -16,7 +16,7 @@ const meta = preview.meta({
 });
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -52,7 +52,7 @@ const meta = preview.meta({
 </script>
 ```
 
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -68,7 +68,7 @@ const meta = preview.meta({
 });
 ```
 
-```js filename="MyComponent.stories.js" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="MyComponent.stories.js" renderer="react" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { MyComponent } from './MyComponent';
@@ -106,7 +106,7 @@ const meta = preview.meta({
 </script>
 ```
 
-```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { MyComponent } from './MyComponent';
@@ -124,7 +124,7 @@ const meta = preview.meta({
 });
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="MyComponent.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import MyComponent from './MyComponent.vue';
@@ -142,7 +142,7 @@ const meta = preview.meta({
 });
 ```
 
-```js filename="MyComponent.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="MyComponent.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import MyComponent from './MyComponent.vue';

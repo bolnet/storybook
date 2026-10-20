@@ -1,4 +1,4 @@
-```ts filename="FooBar.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="FooBar.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Foo } from './foo.component';
@@ -15,7 +15,7 @@ const meta = preview.meta({
 export const Baz = meta.story();
 ```
 
-```ts filename="FooBar.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="FooBar.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Foo } from './Foo';
@@ -51,7 +51,7 @@ export const Baz = meta.story();
 <Story name="Baz" />
 ```
 
-```js filename="FooBar.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="FooBar.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Foo } from './Foo';
@@ -68,7 +68,7 @@ const meta = preview.meta({
 export const Baz = meta.story();
 ```
 
-```js filename="FooBar.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="FooBar.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Foo from './Foo.vue';
@@ -104,7 +104,7 @@ export const Baz = meta.story();
 <Story name="Baz" />
 ```
 
-```ts filename="FooBar.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="FooBar.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Foo from './Foo.vue';
@@ -121,7 +121,7 @@ const meta = preview.meta({
 export const Baz = meta.story();
 ```
 
-```ts filename="FooBar.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="FooBar.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -156,7 +156,7 @@ type Story = StoryObj<Foo>;
 export const Baz: Story = {};
 ```
 
-```js filename="FooBar.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="FooBar.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({

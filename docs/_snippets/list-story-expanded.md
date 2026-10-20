@@ -1,4 +1,4 @@
-```ts filename="List.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="List.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import { CommonModule } from '@angular/common';
 
 import { moduleMetadata } from '@storybook/angular';
@@ -184,7 +184,7 @@ export const ManyItems: Story = {
 };
 ```
 
-```jsx filename="List.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```jsx filename="List.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { List } from './List';
@@ -220,7 +220,7 @@ export const ManyItems = meta.story({
 });
 ```
 
-```tsx filename="List.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```tsx filename="List.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { List } from './List';
@@ -395,7 +395,7 @@ export const ManyItems: Story = {
 </Story>
 ```
 
-```js filename="List.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="List.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import List from './ListComponent.vue';
@@ -440,7 +440,7 @@ export const ManyItems = meta.story({
 });
 ```
 
-```ts filename="List.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="List.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import List from './ListComponent.vue';
@@ -485,7 +485,7 @@ export const ManyItems = meta.story({
 });
 ```
 
-```js filename="List.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="List.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import { html } from 'lit';
 
 import preview from '../.storybook/preview';
@@ -517,7 +517,7 @@ export const ManyItems = meta.story({
 });
 ```
 
-```ts filename="List.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="List.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import { html } from 'lit';
 
 import preview from '../.storybook/preview';

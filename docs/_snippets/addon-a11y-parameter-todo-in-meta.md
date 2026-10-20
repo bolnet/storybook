@@ -1,4 +1,4 @@
-```ts filename="DataTable.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="DataTable.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { DataTable } from './data-table.component';
@@ -13,7 +13,7 @@ const meta = preview.meta({
 });
 ```
 
-```ts filename="DataTable.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="DataTable.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -26,7 +26,7 @@ const meta = preview.meta({
 });
 ```
 
-```ts filename="DataTable.stories.ts" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="DataTable.stories.ts" renderer="react" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { DataTable } from './DataTable';
@@ -41,7 +41,7 @@ const meta = preview.meta({
 });
 ```
 
-```js filename="DataTable.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="DataTable.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -71,7 +71,7 @@ const meta = preview.meta({
 </script>
 ```
 
-```ts filename="DataTable.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="DataTable.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import DataTable from './DataTable.vue';
@@ -103,7 +103,7 @@ const meta = preview.meta({
 </script>
 ```
 
-```js filename="DataTable.stories.js" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="DataTable.stories.js" renderer="react" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { DataTable } from './DataTable';
@@ -134,7 +134,7 @@ const meta: Meta<DataTable> = {
 export default meta;
 ```
 
-```js filename="DataTable.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="DataTable.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import DataTable from './DataTable.vue';

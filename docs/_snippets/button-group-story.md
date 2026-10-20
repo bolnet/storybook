@@ -1,4 +1,4 @@
-```ts filename="ButtonGroup.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="ButtonGroup.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import { CommonModule } from '@angular/common';
 
 import { moduleMetadata } from '@storybook/angular';
@@ -61,7 +61,7 @@ export const Pair: Story = {
 };
 ```
 
-```js filename="ButtonGroup.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="ButtonGroup.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { ButtonGroup } from '../ButtonGroup';
@@ -81,7 +81,7 @@ export const Pair = meta.story({
 });
 ```
 
-```ts filename="ButtonGroup.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="ButtonGroup.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { ButtonGroup } from '../ButtonGroup';
@@ -230,7 +230,7 @@ export const Pair: Story = {
 };
 ```
 
-```js filename="ButtonGroup.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="ButtonGroup.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import ButtonGroup from './ButtonGroup.vue';
@@ -257,7 +257,7 @@ export const Pair = meta.story({
 });
 ```
 
-```ts filename="ButtonGroup.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="ButtonGroup.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import ButtonGroup from './ButtonGroup.vue';
@@ -284,7 +284,7 @@ export const Pair = meta.story({
 });
 ```
 
-```js filename="ButtonGroup.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="ButtonGroup.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 // 👇 Imports the Button stories
@@ -302,7 +302,7 @@ export const Pair = meta.story({
 });
 ```
 
-```ts filename="ButtonGroup.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="ButtonGroup.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 // 👇 Imports the Button stories

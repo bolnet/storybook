@@ -1,4 +1,4 @@
-```ts filename="YourPage.stories.ts" renderer="angular" language="ts" tabTitle="story CSF Next 🧪"
+```ts filename="YourPage.stories.ts" renderer="angular" language="ts" tabTitle="story CSF 4"
 import { moduleMetadata } from '@storybook/angular';
 
 import { CommonModule } from '@angular/common';
@@ -207,7 +207,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
 export class MockGraphQLModule {}
 ```
 
-```jsx filename="YourPage.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```jsx filename="YourPage.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import * as React from 'react';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { graphql, HttpResponse, delay } from 'msw';
@@ -301,7 +301,7 @@ export const MockedError = meta.story({
 });
 ```
 
-```tsx filename="YourPage.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```tsx filename="YourPage.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import * as React from 'react';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { graphql, HttpResponse, delay } from 'msw';
@@ -1163,7 +1163,7 @@ export const MockedError = {
 };
 ```
 
-```ts filename="YourPage.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="YourPage.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import { graphql, HttpResponse, delay } from 'msw';
 
 import preview from '../.storybook/preview';
@@ -1238,7 +1238,7 @@ export const MockedError = meta.story({
 });
 ```
 
-```js filename="YourPage.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="YourPage.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import { graphql, HttpResponse, delay } from 'msw';
 
 import preview from '../.storybook/preview';

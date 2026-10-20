@@ -1,4 +1,4 @@
-```ts filename="Page.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Page.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import { mocked } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -20,7 +20,7 @@ export const Basic = meta.story({
 });
 ```
 
-```ts filename="Page.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Page.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import { mocked } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -60,7 +60,7 @@ export const Basic = meta.story({
 }} />
 ```
 
-```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 // 👇 Automocked module resolves to '../lib/__mocks__/session'
@@ -78,7 +78,7 @@ export const Basic = meta.story({
 });
 ```
 
-```js filename="Page.stories.js" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="Page.stories.js" renderer="react" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 // 👇 Automocked module resolves to '../lib/__mocks__/session'
@@ -119,7 +119,7 @@ export const Basic = meta.story({
 }} />
 ```
 
-```ts filename="Page.stories.ts" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Page.stories.ts" renderer="react" language="ts" tabTitle="CSF 4"
 import { mocked } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -141,7 +141,7 @@ export const Basic = meta.story({
 });
 ```
 
-```ts filename="Page.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Page.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import { mocked } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -163,7 +163,7 @@ export const Basic = meta.story({
 });
 ```
 
-```js filename="Page.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="Page.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 // 👇 Automocked module resolves to '../lib/__mocks__/session'
 import { getUserFromSession } from '../lib/session';

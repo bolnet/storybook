@@ -1,4 +1,4 @@
-```ts filename="Dialog.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Dialog.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import { screen } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -20,7 +20,7 @@ export const Open = meta.story({
 });
 ```
 
-```ts filename="Dialog.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Dialog.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import { screen } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -63,7 +63,7 @@ export const Open = meta.story({
   }} />
 ```
 
-```js filename="Dialog.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="Dialog.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import { screen } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -83,7 +83,7 @@ export const Open = meta.story({
 });
 ```
 
-```js filename="Dialog.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="Dialog.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import { screen } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -128,7 +128,7 @@ export const Open = meta.story({
   }} />
 ```
 
-```ts filename="Dialog.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Dialog.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import { screen } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -150,7 +150,7 @@ export const Open = meta.story({
 });
 ```
 
-```ts filename="Dialog.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Dialog.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import { screen } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -172,7 +172,7 @@ export const Open = meta.story({
 });
 ```
 
-```js filename="Dialog.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="Dialog.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import { screen } from 'storybook/test';
 
 import preview from '../.storybook/preview';

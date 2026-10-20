@@ -1,4 +1,4 @@
-```ts filename="Checkbox.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Checkbox.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Checkbox } from './checkbox.component';
@@ -13,7 +13,7 @@ const meta = preview.meta({
 });
 ```
 
-```ts filename="Checkbox.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Checkbox.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -39,7 +39,7 @@ const meta = preview.meta({
 </script>
 ```
 
-```js filename="Checkbox.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="Checkbox.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -48,7 +48,7 @@ const meta = preview.meta({
 });
 ```
 
-```js filename="Checkbox.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="Checkbox.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Checkbox } from './Checkbox';
@@ -80,7 +80,7 @@ const meta = preview.meta({
 </script>
 ```
 
-```ts filename="Checkbox.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Checkbox.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Checkbox } from './Checkbox';
@@ -95,7 +95,7 @@ const meta = preview.meta({
 });
 ```
 
-```ts filename="Checkbox.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Checkbox.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Checkbox from './Checkbox.vue';
@@ -110,7 +110,7 @@ const meta = preview.meta({
 });
 ```
 
-```js filename="Checkbox.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="Checkbox.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Checkbox from './Checkbox.vue';

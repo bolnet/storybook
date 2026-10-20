@@ -1,4 +1,4 @@
-```ts filename="Page.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Page.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import { CommonModule } from '@angular/common';
 
 import { moduleMetadata } from '@storybook/angular';
@@ -61,7 +61,7 @@ export const LoggedIn: Story = {
 };
 ```
 
-```js filename="Page.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="Page.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Page } from './Page';
@@ -80,7 +80,7 @@ export const LoggedIn = meta.story({
 });
 ```
 
-```ts filename="Page.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Page.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Page } from './Page';
@@ -210,7 +210,7 @@ export const LoggedIn: Story = {
 };
 ```
 
-```js filename="Page.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="Page.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Page from './Page.vue';
@@ -241,7 +241,7 @@ export const LoggedIn = meta.story({
 });
 ```
 
-```ts filename="Page.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Page.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Page from './Page.vue';
@@ -335,7 +335,7 @@ export const LoggedIn = {
 };
 ```
 
-```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 // 👇 Imports all Header stories
@@ -352,7 +352,7 @@ export const LoggedIn = meta.story({
 });
 ```
 
-```ts filename="Page.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Page.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 // 👇 Imports all Header stories

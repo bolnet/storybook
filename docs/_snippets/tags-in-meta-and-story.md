@@ -1,4 +1,4 @@
-```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Button } from './Button.component';
@@ -26,7 +26,7 @@ export const ExperimentalFeatureStory = meta.story({
 });
 ```
 
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -80,7 +80,7 @@ export const ExperimentalFeatureStory = meta.story({
 <Story name="ExperimentalFeatureStory" tags={['experimental']} />
 ```
 
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -106,7 +106,7 @@ export const ExperimentalFeatureStory = meta.story({
 });
 ```
 
-```js filename="Button.stories.js" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="Button.stories.js" renderer="react" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Button } from './Button';
@@ -163,7 +163,7 @@ export const ExperimentalFeatureStory = meta.story({
 <Story name="ExperimentalFeatureStory" tags={['experimental']} />
 ```
 
-```ts filename="Button.stories.ts" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Button.stories.ts" renderer="react" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Button } from './Button';
@@ -191,7 +191,7 @@ export const ExperimentalFeatureStory = meta.story({
 });
 ```
 
-```ts filename="Button.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Button.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Button from './Button.vue';
@@ -219,7 +219,7 @@ export const ExperimentalFeatureStory = meta.story({
 });
 ```
 
-```js filename="Button.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="Button.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Button from './Button.vue';

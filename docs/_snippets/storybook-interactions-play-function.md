@@ -1,4 +1,4 @@
-```ts filename="Form.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Form.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import { expect, fn, waitFor } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -34,7 +34,7 @@ export const Submitted = meta.story({
 });
 ```
 
-```ts filename="Form.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Form.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import { expect, fn, waitFor } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -107,7 +107,7 @@ export const Submitted = meta.story({
 />
 ```
 
-```js filename="Form.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="Form.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import { expect, fn, waitFor } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -141,7 +141,7 @@ export const Submitted = meta.story({
 });
 ```
 
-```js filename="Form.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="Form.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import { expect, fn, waitFor } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -217,7 +217,7 @@ export const Submitted = meta.story({
 />
 ```
 
-```ts filename="Form.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Form.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import { expect, fn, waitFor } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -253,7 +253,7 @@ export const Submitted = meta.story({
 });
 ```
 
-```ts filename="Form.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Form.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import { expect, fn, waitFor } from 'storybook/test';
 
 import preview from '../.storybook/preview';
@@ -289,7 +289,7 @@ export const Submitted = meta.story({
 });
 ```
 
-```js filename="Form.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="Form.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import { expect, fn, waitFor } from 'storybook/test';
 
 import preview from '../.storybook/preview';

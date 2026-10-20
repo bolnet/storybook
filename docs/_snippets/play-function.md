@@ -1,4 +1,4 @@
-```ts filename="RegistrationForm.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="RegistrationForm.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { RegistrationForm } from './registration-form.component';
@@ -35,7 +35,7 @@ export const FilledForm = meta.story({
 });
 ```
 
-```ts filename="RegistrationForm.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="RegistrationForm.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -110,7 +110,7 @@ export const FilledForm = meta.story({
 />
 ```
 
-```js filename="RegistrationForm.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="RegistrationForm.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -145,7 +145,7 @@ export const FilledForm = meta.story({
 });
 ```
 
-```js filename="RegistrationForm.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="RegistrationForm.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { RegistrationForm } from './RegistrationForm';
@@ -222,7 +222,7 @@ export const FilledForm = meta.story({
 />
 ```
 
-```ts filename="RegistrationForm.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="RegistrationForm.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { RegistrationForm } from './RegistrationForm';
@@ -259,7 +259,7 @@ export const FilledForm = meta.story({
 });
 ```
 
-```ts filename="RegistrationForm.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="RegistrationForm.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import RegistrationForm from './RegistrationForm.vue';
@@ -296,7 +296,7 @@ export const FilledForm = meta.story({
 });
 ```
 
-```js filename="RegistrationForm.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="RegistrationForm.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import RegistrationForm from './RegistrationForm.vue';

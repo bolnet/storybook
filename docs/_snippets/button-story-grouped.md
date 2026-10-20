@@ -1,4 +1,4 @@
-```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Button } from './button.component';
@@ -13,7 +13,7 @@ const meta = preview.meta({
 });
 ```
 
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -39,7 +39,7 @@ const meta = preview.meta({
 </script>
 ```
 
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -48,7 +48,7 @@ const meta = preview.meta({
 });
 ```
 
-```js filename="Button.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="Button.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Button } from './Button';
@@ -80,7 +80,7 @@ const meta = preview.meta({
 </script>
 ```
 
-```ts filename="Button.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Button.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Button } from './Button';
@@ -95,7 +95,7 @@ const meta = preview.meta({
 });
 ```
 
-```ts filename="Button.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Button.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Button from './Button.vue';
@@ -110,7 +110,7 @@ const meta = preview.meta({
 });
 ```
 
-```js filename="Button.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="Button.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Button from './Button.vue';

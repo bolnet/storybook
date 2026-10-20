@@ -1,4 +1,4 @@
-```tsx filename="Page.stories.tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```tsx filename="Page.stories.tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 // 👇 Automocked module resolves to '../lib/__mocks__/db'
@@ -28,7 +28,7 @@ export const Basic = meta.story({
 });
 ```
 
-```jsx filename="Page.stories.jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```jsx filename="Page.stories.jsx" renderer="react" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 // 👇 Automocked module resolves to '../lib/__mocks__/db'
 import db from '../lib/db';
@@ -59,7 +59,7 @@ export const Basic = meta.story({
 });
 ```
 
-```tsx filename="Page.stories.tsx" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```tsx filename="Page.stories.tsx" renderer="angular" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 // 👇 Automocked module resolves to '../lib/__mocks__/db'
@@ -188,7 +188,7 @@ export const Basic = {
 };
 ```
 
-```ts filename="Page.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Page.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 // 👇 Automocked module resolves to '../lib/__mocks__/db'
@@ -219,7 +219,7 @@ export const Basic = meta.story({
 });
 ```
 
-```js filename="Page.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="Page.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 // 👇 Automocked module resolves to '../lib/__mocks__/db'

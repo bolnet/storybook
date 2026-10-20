@@ -1,4 +1,4 @@
-```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import { componentWrapperDecorator } from '@storybook/angular';
 
 import { useChannel } from 'storybook/preview-api';
@@ -49,7 +49,7 @@ export const ScrollIntoView: Story = {
 };
 ```
 
-```js filename="MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import { useChannel } from 'storybook/preview-api';
 import { SCROLL_INTO_VIEW } from 'storybook/highlight';
 
@@ -72,7 +72,7 @@ export const ScrollIntoView = meta.story({
 });
 ```
 
-```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import { useChannel } from 'storybook/preview-api';
 import { SCROLL_INTO_VIEW } from 'storybook/highlight';
 
@@ -195,7 +195,7 @@ export const ScrollIntoView: Story = {
 };
 ```
 
-```js filename="MyComponent.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="MyComponent.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import { useChannel } from 'storybook/preview-api';
 import { SCROLL_INTO_VIEW } from 'storybook/highlight';
 
@@ -220,7 +220,7 @@ export const ScrollIntoView = meta.story({
 });
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="MyComponent.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import { useChannel } from 'storybook/preview-api';
 import { SCROLL_INTO_VIEW } from 'storybook/highlight';
 
@@ -245,7 +245,7 @@ export const ScrollIntoView = meta.story({
 });
 ```
 
-```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import { useChannel } from 'storybook/preview-api';
 import { SCROLL_INTO_VIEW } from 'storybook/highlight';
 
@@ -266,7 +266,7 @@ export const ScrollIntoView = meta.story({
 });
 ```
 
-```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import { useChannel } from 'storybook/preview-api';
 import { SCROLL_INTO_VIEW } from 'storybook/highlight';
 

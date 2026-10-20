@@ -1,4 +1,4 @@
-```ts filename="Page.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Page.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import { argsToTemplate } from '@storybook/angular';
 
 import preview from '../.storybook/preview';
@@ -53,7 +53,7 @@ export const CustomFooter: Story = {
 };
 ```
 
-```jsx filename="Page.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```jsx filename="Page.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Page } from './Page';
@@ -74,7 +74,7 @@ export const CustomFooter = meta.story({
 });
 ```
 
-```tsx filename="Page.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```tsx filename="Page.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Page } from './Page';
@@ -184,7 +184,7 @@ export const CustomFooter = {
 </Story>
 ```
 
-```js filename="Page.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="Page.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Page from './Page.vue';
@@ -213,7 +213,7 @@ export const CustomFooter = meta.story({
 });
 ```
 
-```ts filename="Page.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Page.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Page from './Page.vue';
@@ -305,7 +305,7 @@ export const CustomFooter = {
 };
 ```
 
-```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="Page.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import { html } from 'lit';
 
 import preview from '../.storybook/preview';
@@ -327,7 +327,7 @@ export const CustomFooter = meta.story({
 });
 ```
 
-```ts filename="Page.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Page.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import { html } from 'lit';
 
 import preview from '../.storybook/preview';

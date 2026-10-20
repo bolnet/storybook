@@ -1,4 +1,4 @@
-```ts filename="components/MyComponent/MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="components/MyComponent/MyComponent.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { MyComponent } from './my-component.component';
@@ -19,7 +19,7 @@ export const Basic = meta.story({
 });
 ```
 
-```ts filename="components/MyComponent/MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="components/MyComponent/MyComponent.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -49,7 +49,7 @@ export const Basic = meta.story({
 <Story name="Default" args={{ something: 'Something else' }} />
 ```
 
-```js filename="components/MyComponent/MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="components/MyComponent/MyComponent.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -64,7 +64,7 @@ export const Basic = meta.story({
 });
 ```
 
-```js filename="components/MyComponent/MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="components/MyComponent/MyComponent.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { MyComponent } from './MyComponent';
@@ -96,7 +96,7 @@ export const Basic = meta.story({
 <Story name="Default" args={{ something: 'Something else'}} />
 ```
 
-```ts filename="components/MyComponent/MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="components/MyComponent/MyComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { MyComponent } from './MyComponent';

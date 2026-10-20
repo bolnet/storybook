@@ -1,4 +1,4 @@
-```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Button.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Button } from './button.component';
@@ -65,7 +65,7 @@ export const Basic: Story = {
 };
 ```
 
-```jsx filename="Button.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```jsx filename="Button.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import * as React from 'react';
 
 import preview from '../.storybook/preview';
@@ -92,7 +92,7 @@ export const Basic = meta.story({
 });
 ```
 
-```tsx filename="Button.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```tsx filename="Button.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import * as React from 'react';
 
 import preview from '../.storybook/preview';
@@ -276,7 +276,7 @@ type Story = StoryObj<typeof meta>;
 export const Basic: Story = {};
 ```
 
-```js filename="Button.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="Button.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Button from './Button.vue';
@@ -309,7 +309,7 @@ export const Basic = meta.story({
 });
 ```
 
-```ts filename="Button.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Button.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Button from './Button.vue';
@@ -342,7 +342,7 @@ export const Basic = meta.story({
 });
 ```
 
-```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="Button.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import { html } from 'lit';
 
 import preview from '../.storybook/preview';
@@ -368,7 +368,7 @@ export const Basic = meta.story({
 });
 ```
 
-```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Button.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import { html } from 'lit';
 
 import preview from '../.storybook/preview';

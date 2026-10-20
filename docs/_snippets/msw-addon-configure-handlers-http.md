@@ -1,4 +1,4 @@
-```ts filename="YourPage.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="YourPage.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import { http, HttpResponse, delay } from 'msw';
 
 import preview from '../.storybook/preview';
@@ -58,7 +58,7 @@ export const MockedError = meta.story({
 });
 ```
 
-```ts filename="YourPage.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="YourPage.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import { http, HttpResponse, delay } from 'msw';
 
 import preview from '../.storybook/preview';
@@ -180,7 +180,7 @@ export const MockedError = meta.story({
 />
 ```
 
-```js filename="YourPage.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="YourPage.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import { http, HttpResponse, delay } from 'msw';
 
 import preview from '../.storybook/preview';
@@ -238,7 +238,7 @@ export const MockedError = meta.story({
 });
 ```
 
-```js filename="YourPage.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="YourPage.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import { http, HttpResponse, delay } from 'msw';
 
 import preview from '../.storybook/preview';
@@ -362,7 +362,7 @@ export const MockedError = meta.story({
 />
 ```
 
-```ts filename="YourPage.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="YourPage.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import { http, HttpResponse, delay } from 'msw';
 
 import preview from '../.storybook/preview';
@@ -422,7 +422,7 @@ export const MockedError = meta.story({
 });
 ```
 
-```ts filename="YourPage.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="YourPage.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import { http, HttpResponse, delay } from 'msw';
 
 import preview from '../.storybook/preview';
@@ -482,7 +482,7 @@ export const MockedError = meta.story({
 });
 ```
 
-```js filename="YourPage.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="YourPage.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import { http, HttpResponse, delay } from 'msw';
 
 import preview from '../.storybook/preview';

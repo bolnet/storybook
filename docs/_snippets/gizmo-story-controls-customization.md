@@ -1,4 +1,4 @@
-```ts filename="Gizmo.stories.ts" renderer="angular" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Gizmo.stories.ts" renderer="angular" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Gizmo } from './gizmo.component';
@@ -55,7 +55,7 @@ const meta = preview.meta({
 });
 ```
 
-```ts filename="Gizmo.stories.ts" renderer="web-components" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Gizmo.stories.ts" renderer="web-components" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -169,7 +169,7 @@ const meta = preview.meta({
 </script>
 ```
 
-```js filename="Gizmo.stories.js" renderer="web-components" language="js" tabTitle="CSF Next 🧪"
+```js filename="Gizmo.stories.js" renderer="web-components" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 const meta = preview.meta({
@@ -224,7 +224,7 @@ const meta = preview.meta({
 });
 ```
 
-```js filename="Gizmo.stories.js|jsx" renderer="react" language="js" tabTitle="CSF Next 🧪"
+```js filename="Gizmo.stories.js|jsx" renderer="react" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Gizmo } from './Gizmo';
@@ -340,7 +340,7 @@ const meta = preview.meta({
 </script>
 ```
 
-```ts filename="Gizmo.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Gizmo.stories.ts|tsx" renderer="react" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import { Gizmo } from './Gizmo';
@@ -397,7 +397,7 @@ const meta = preview.meta({
 });
 ```
 
-```ts filename="Gizmo.stories.ts" renderer="vue" language="ts" tabTitle="CSF Next 🧪"
+```ts filename="Gizmo.stories.ts" renderer="vue" language="ts" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Gizmo from './Gizmo.vue';
@@ -454,7 +454,7 @@ const meta = preview.meta({
 });
 ```
 
-```js filename="Gizmo.stories.js" renderer="vue" language="js" tabTitle="CSF Next 🧪"
+```js filename="Gizmo.stories.js" renderer="vue" language="js" tabTitle="CSF 4"
 import preview from '../.storybook/preview';
 
 import Gizmo from './Gizmo.vue';
