@@ -82,5 +82,10 @@ build:
   test_timeout_s: 3600   # compile of the touched packages + the dev server's first build + the suite
   test_cpus: 6
   test_memory: 6Gi     # compile of the touched packages + the dev server + Chromium; requested too, so two runs' pods queue on one node
+sandbox:                # browser acceptance tests (code/e2e-internal/e2e/) drive this Storybook
+  start: bash scripts/forge-sandbox.sh
+  port: 6006
+  health: /index.json
+  startup_timeout_s: 900
 tests:
   acceptance_root: code/e2e-internal
