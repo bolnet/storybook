@@ -1,0 +1,85 @@
+# forge's build config for this fork (bolnet/storybook): the internal Storybook UI and its Playwright e2e-internal
+# suite, the way CI's "Internal storybook E2E" job runs it (scripts/ci/common-jobs.ts).
+#
+# The image stage installs from the manifests alone, so every workspace member's package.json is a lockfile (yarn
+# needs them where they live), plus the yarn release and patches the lockfile points at. The build compiles the
+# monorepo once; its nx cache is kept in the image so a test run only recompiles the packages a change touched.
+build:
+  image: mcr.microsoft.com/playwright:v1.58.2-noble   # Chromium and its system libraries for @playwright/test 1.58.2
+  install: >-
+    (corepack --version || npm install -g corepack) && corepack enable && HUSKY=0 yarn install --immutable
+  build: >-
+    NX_NO_CLOUD=true NX_DAEMON=false yarn task --task compile --start-from=auto --no-link
+    && mkdir -p .nx/cache .nx/workspace-data
+  keep:
+    - .nx/cache
+    - .nx/workspace-data
+  lockfiles:
+    - package.json
+    - yarn.lock
+    - .yarnrc.yml
+    - .yarn/releases/yarn-4.18.0.cjs
+    - .yarn/patches/@7rulnik-react-element-to-jsx-string-npm-15.0.1-e53b67c4b3.patch
+    - .yarn/patches/@testing-library-user-event-npm-14.6.3-15ecebe390.patch
+    - .yarn/patches/@types-babel__traverse-npm-7.20.6-fac4243243.patch
+    - .yarn/patches/@vercel-agent-eval-npm-1.2.0-861deb21a0.patch
+    - .yarn/patches/@vitest-expect-npm-3.2.4-97c526d5cc.patch
+    - agent-eval/package.json
+    - code/addons/a11y/package.json
+    - code/addons/docs/package.json
+    - code/addons/links/package.json
+    - code/addons/mcp/package.json
+    - code/addons/onboarding/package.json
+    - code/addons/pseudo-states/package.json
+    - code/addons/themes/package.json
+    - code/addons/vitest/package.json
+    - code/builders/builder-vite/package.json
+    - code/builders/builder-webpack5/package.json
+    - code/core/package.json
+    - code/frameworks/angular-vite/package.json
+    - code/frameworks/angular/package.json
+    - code/frameworks/ember/package.json
+    - code/frameworks/html-vite/package.json
+    - code/frameworks/nextjs-vite/package.json
+    - code/frameworks/nextjs/package.json
+    - code/frameworks/preact-vite/package.json
+    - code/frameworks/react-native-web-vite/package.json
+    - code/frameworks/react-vite/package.json
+    - code/frameworks/react-webpack5/package.json
+    - code/frameworks/server-webpack5/package.json
+    - code/frameworks/svelte-vite/package.json
+    - code/frameworks/sveltekit/package.json
+    - code/frameworks/tanstack-react/package.json
+    - code/frameworks/vue3-vite/package.json
+    - code/frameworks/web-components-vite/package.json
+    - code/lib/angular-cm/package.json
+    - code/lib/angular-compodoc/package.json
+    - code/lib/claude-plugin/package.json
+    - code/lib/cli-sb/package.json
+    - code/lib/cli-storybook/package.json
+    - code/lib/codemod/package.json
+    - code/lib/codex-plugin/package.json
+    - code/lib/core-webpack/package.json
+    - code/lib/create-storybook/package.json
+    - code/lib/docgen-harness/package.json
+    - code/lib/eslint-plugin/package.json
+    - code/lib/mcp/package.json
+    - code/lib/vite-plugin-storybook-nextjs/package.json
+    - code/package.json
+    - code/presets/react-webpack/package.json
+    - code/presets/server-webpack/package.json
+    - code/renderers/html/package.json
+    - code/renderers/preact/package.json
+    - code/renderers/react/package.json
+    - code/renderers/server/package.json
+    - code/renderers/svelte/package.json
+    - code/renderers/vue3/package.json
+    - code/renderers/web-components/package.json
+    - scripts/package.json
+    - scripts/eslint-plugin-local-rules/package.json
+  test: bash scripts/forge-e2e-internal.sh
+  test_framework: playwright
+  test_timeout_s: 3600   # compile of the touched packages + the dev server's first build + the suite
+  test_cpus: 6
+tests:
+  acceptance_root: code/e2e-internal
