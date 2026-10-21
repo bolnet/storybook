@@ -81,5 +81,6 @@ build:
   test_framework: playwright
   test_timeout_s: 3600   # compile of the touched packages + the dev server's first build + the suite
   test_cpus: 6
+  test_memory: 6Gi     # compile of the touched packages + the dev server + Chromium; requested too, so two runs' pods queue on one node
 tests:
   acceptance_root: code/e2e-internal
