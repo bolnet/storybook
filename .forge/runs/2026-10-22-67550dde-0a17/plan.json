@@ -1,0 +1,100 @@
+{
+  "agent_digests": {
+    "acceptance_writer": "fd84fc889a5d",
+    "arbiter": "af9f5b7f2428",
+    "code_builder": "94d961795b5e",
+    "code_reviewer": "9aab8ec11def",
+    "plan_reviewer": "bac0506588fc",
+    "plan_writer": "9c8fb302f428",
+    "replay_fixer": "8a1c317b6b24",
+    "setup_writer": "35eb83d27e46",
+    "spec_reviewer": "89700cd89e2d",
+    "spec_writer": "905e1ca65941",
+    "task_reviewer": "1be0926f64ed",
+    "test_reviewer": "5f9cc73c507b",
+    "test_writer": "d98183c176e7",
+    "triage": "66dd6610c583",
+    "watcher": "9b683c12728a"
+  },
+  "description": "The defect is one predicate. `parseSerializedParam` in `code/core/src/manager-api/modules/url.ts:42-50` ends with `.filter(([key, value]) => key && value)`; an empty-string value is falsy, so the whole pair \u2014 key included \u2014 is thrown away. `mergeSerializedParams` (lines 52-58) is built on it and is what `getStoryHrefs` uses for `args` (line 282) and `globals` (line 285) when inheriting, so the link \"Open in isolation mode\" opens silently loses every argument a person deliberately emptied. Everything on either side of that filter already handles the empty string: `buildArgsParam` serializes `{ label: '' }` to `label:`, `buildNavigationUrl` filters only null and undefined, and the preview's `parseArgsParam` turns `label:` back into `{ label: '' }`.\n\nThe approach is to narrow the predicate to the key alone \u2014 a pair is discarded only when its key is empty, which keeps `''`, `';'` and `':x'` producing no pair at all and so keeps a bare `:` out of every built link \u2014 and to do it where forge can test it. The two helpers move, unchanged apart from that predicate, into `code/core/src/manager-api/lib/url.ts`, the dependency-free module `modules/url.ts` already imports `buildNavigationUrl` from; `mergeSerializedParams` becomes its exported surface and `parseSerializedParam` stays private to it. That move is what makes a unit test possible: the only runner forge has here is the Playwright config at `code/e2e-internal/playwright.config.ts`, which cannot load `modules/url.ts` (it pulls in `storybook/internal/*`, `@storybook/global` and `picoquery`) but can import by relative path a module that imports nothing. One task carries the whole change, because the whole change is that predicate.\n\nWhat this deliberately leaves alone: the serialized shape of `args` (pairs joined by `;`, key and value joined by `:`, values URI-encoded exactly as today), `buildArgsParam`, `buildNavigationUrl`, the preview-side parser, the toolbar button and its registration, the keyboard and clipboard paths, and the expectations in `code/core/src/manager-api/tests/url.test.js`, which stay at their current values rather than being relaxed around the fix.",
+  "out_of_scope": [
+    "Globals. Empty-string globals travel through the same helper and improve with it, since `getStoryHrefs` merges `globals` through the same call; that is accepted but no criterion asserts it and no separate work is done for it.",
+    "The keyboard shortcut and \"copy story link\". `openInIsolation` and `copyStoryLink` in `code/core/src/manager-api/modules/shortcuts.ts` use the same call and benefit, but clipboard and keyboard paths get no test here.",
+    "Composed Storybooks (`refId`) and the main preview iframe. Their behaviour must not change and nothing asserts it; `refId` handling in `getStoryHrefs` is untouched.",
+    "Other falsy values. `0`, `false`, `!null` and `!undefined` keep their existing encodings, and a pair written without a `:` keeps exactly what it produces today (`abc` stays `abc:undefined`).",
+    "Any change to the `args` URL format, to `buildArgsParam` (`code/core/src/router/utils.ts`), to `buildNavigationUrl`, or to the preview-side `parseArgsParam`.",
+    "Controls-panel behaviour: how a person clears a control, and the warning about unsafe URL args, are unchanged.",
+    "No new option, no new UI, no change to the \"Open in isolation mode\" button or to how args are written into the address bar.",
+    "No new vitest cases in `code/core/src/manager-api/tests/url.test.js`. forge's suite is Playwright and cannot collect vitest, so that file is forbidden to the task and its expectations stay exactly as they are.",
+    "No new stories or fixtures in product code. The tests use the internal Storybook's existing `core-basics--basic` and `controls-basics--defined` as they are.",
+    "No change to `scripts/forge-e2e-internal.sh`, `forge.yaml`, `code/e2e-internal/playwright.config.ts` or `code/e2e-internal/helpers.ts`, and no new service, account or network access.",
+    "Pair order inside the built `args` parameter is not asserted. The manager rewrites the address bar from the story's own argument order, so links are compared as sets of pairs."
+  ],
+  "planned_against_sha": "8d028acfba3183f818c53848ac95c50ba068be3a",
+  "rollback_plan": "On the run branch the work lands as task 001's `tests:` commit followed by its one or more `build:` commits, on top of the `acceptance:` commit that holds `code/e2e-internal/isolation-mode-empty-args.spec.ts` and the `forge:` commit that holds this plan. To undo before the pull request merges, revert task 001's `build:` commits newest first, then its `tests:` commit: that removes `code/e2e-internal/unit/serialized-params.spec.ts` and puts `parseSerializedParam` and `mergeSerializedParams` back inside `code/core/src/manager-api/modules/url.ts` with the `key && value` filter, leaving `code/core/src/manager-api/lib/url.ts` with `buildNavigationUrl` alone. To undo after the pull request has merged, revert its merge commit (`git revert -m 1 <merge sha>`), which takes the acceptance commit, the plan commit and the task's commits back out together. The change is confined to those commits: no data is migrated, no configuration, dependency or service is touched, and nothing is cached or persisted outside the repository, so reverting is the whole of the rollback.",
+  "tasks": [
+    {
+      "agent_minutes": 140,
+      "consumes": [],
+      "definition_of_done": "`code/core/src/manager-api/lib/url.ts` exports `mergeSerializedParams(params: string, extraParams: string): string` beside the existing `buildNavigationUrl`. It splits each `;`-separated pair of both arguments on `:`, URI-encodes the value as the current code does, discards a pair only when its key is empty, lets a key present in `extraParams` override the same key from `params`, and joins the result back with `;`. So `'label:'` round-trips to `'label:'`, `'text:;radio:'` keeps both pairs, `''`, `';'` and `':x'` each yield no pair and therefore no bare `:` in any built link, `'equal:g=h'` still yields `'equal:g%3Dh'`, and `'abc'` still yields `'abc:undefined'`. `parseSerializedParam` is private to that module.\n\n`code/core/src/manager-api/modules/url.ts` no longer defines either helper: it extends its existing `import { buildNavigationUrl } from '../lib/url.ts'` to bring in `mergeSerializedParams`, and `getStoryHrefs` calls it exactly as before for both `args` and `globals`, with the rest of the function unchanged.\n\nThe unit spec is a new file under the task's test root (`code/e2e-internal/unit/serialized-params.spec.ts`) and reaches the helper at call time rather than through a static import, so that at the `tests:` commit \u2014 where the export does not exist yet \u2014 every one of its tests fails on an `expect`, not on a module error: `const mod = await import('../../core/src/manager-api/lib/url.ts').catch(() => ({}))`, then `const mergeSerializedParams = (mod as any).mergeSerializedParams ?? (() => undefined)`, and each test asserts on what that call returns.\n\nGreen state: every test collected by `code/e2e-internal/unit/serialized-params.spec.ts` passes, and all five tests of `code/e2e-internal/isolation-mode-empty-args.spec.ts` pass. AC-05 in that file is the invariant guard \u2014 it passes before this task and must still pass after, with the opened tab carrying no `args` parameter and no pair starting with `:` anywhere in its query. The expectations in `code/core/src/manager-api/tests/url.test.js` are not edited.",
+      "depends_on": [],
+      "forbidden_files": [
+        "code/core/src/manager-api/tests/url.test.js",
+        "code/core/src/router/utils.ts",
+        "code/core/src/preview-api/modules/preview-web/parseArgsParam.ts",
+        "code/core/src/manager/components/preview/tools/share.tsx",
+        "code/core/src/manager-api/modules/shortcuts.ts",
+        "code/e2e-internal/isolation-mode-empty-args.spec.ts",
+        "code/e2e-internal/playwright.config.ts",
+        "code/e2e-internal/helpers.ts",
+        "code/core/template/stories/basics.stories.ts",
+        "code/core/template/stories/controls/basics.stories.ts",
+        "scripts/forge-e2e-internal.sh",
+        "forge.yaml"
+      ],
+      "id": "001",
+      "intent": "Move the serialized-param merge into `code/core/src/manager-api/lib/url.ts` as an exported `mergeSerializedParams` that keeps a pair whose value is an empty string and still discards a pair whose key is empty, and have `getStoryHrefs` call it.",
+      "produces": [
+        "mergeSerializedParams(params: string, extraParams: string): string, exported from code/core/src/manager-api/lib/url.ts"
+      ],
+      "rationale": "Spec \"Decisions and evidence\": the `key && value` filter in `parseSerializedParam` (`modules/url.ts:49`) throws away empty-string args, which is AC-01 to AC-04; AC-05 guards that empty keys stay discarded and nothing empty is invented.",
+      "target_files": [
+        "code/core/src/manager-api/lib/url.ts",
+        "code/core/src/manager-api/modules/url.ts"
+      ],
+      "test_roots": [
+        "code/e2e-internal"
+      ],
+      "unit_tests": "required",
+      "verification": [
+        {
+          "command": "npx playwright test code/e2e-internal/unit/serialized-params.spec.ts",
+          "expect_exit_code": 0,
+          "names_tests": [
+            "code/e2e-internal/unit/serialized-params.spec.ts > mergeSerializedParams > keeps a pair whose value is an empty string",
+            "code/e2e-internal/unit/serialized-params.spec.ts > mergeSerializedParams > keeps two empty-valued pairs in one parameter",
+            "code/e2e-internal/unit/serialized-params.spec.ts > mergeSerializedParams > returns an empty string for an empty parameter",
+            "code/e2e-internal/unit/serialized-params.spec.ts > mergeSerializedParams > discards a pair whose key is empty and keeps the pair beside it",
+            "code/e2e-internal/unit/serialized-params.spec.ts > mergeSerializedParams > builds no pair from a lone separator",
+            "code/e2e-internal/unit/serialized-params.spec.ts > mergeSerializedParams > lets an empty extra value override the inherited value",
+            "code/e2e-internal/unit/serialized-params.spec.ts > mergeSerializedParams > lets a non-empty extra value override an inherited empty value",
+            "code/e2e-internal/unit/serialized-params.spec.ts > mergeSerializedParams > re-encodes a decoded value as it does today",
+            "code/e2e-internal/unit/serialized-params.spec.ts > mergeSerializedParams > keeps the current form of a pair written without a colon"
+          ]
+        },
+        {
+          "command": "npx playwright test code/e2e-internal/isolation-mode-empty-args.spec.ts",
+          "expect_exit_code": 0,
+          "names_tests": [
+            "code/e2e-internal/isolation-mode-empty-args.spec.ts > isolation mode keeps empty-string args > AC-01 the opened tab keeps an argument whose value is an empty string",
+            "code/e2e-internal/isolation-mode-empty-args.spec.ts > isolation mode keeps empty-string args > AC-02 the story in the opened tab renders with the empty value",
+            "code/e2e-internal/isolation-mode-empty-args.spec.ts > isolation mode keeps empty-string args > AC-03 an empty-value argument and a non-empty one both reach the opened tab",
+            "code/e2e-internal/isolation-mode-empty-args.spec.ts > isolation mode keeps empty-string args > AC-04 the opened tab holds the same arguments the manager URL held",
+            "code/e2e-internal/isolation-mode-empty-args.spec.ts > isolation mode keeps empty-string args > AC-05 a story with no arguments opens a tab with no args parameter"
+          ]
+        }
+      ]
+    }
+  ],
+  "workspace_image_digest": "localhost:5000/forge/ws@sha256:32b99d2498d10ecc9c2e04294c65d2af27f8d09793f5c0356fd75fdfdd91cdcc"
+}
