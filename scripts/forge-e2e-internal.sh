@@ -18,7 +18,9 @@ fi
 yarn wait-on -t 600000 "$STORYBOOK_URL/index.json"
 
 set +e
-yarn playwright test -c e2e-internal/playwright.config.ts "$@"
+args=()
+for a in "$@"; do args+=("${a#code/}"); done   # forge names files from the repository root; Playwright runs in code/
+yarn playwright test -c e2e-internal/playwright.config.ts "${args[@]}"
 status=$?
 set -e
 if [ -n "$server" ]; then kill "$server" 2> /dev/null || true; fi
