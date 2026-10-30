@@ -1,0 +1,98 @@
+{
+  "agent_digests": {
+    "acceptance_writer": "52bcf5056e55",
+    "arbiter": "af9f5b7f2428",
+    "code_builder": "94d961795b5e",
+    "code_reviewer": "9aab8ec11def",
+    "plan_reviewer": "d08bfea9be3f",
+    "plan_writer": "f154dbab4433",
+    "replay_fixer": "8a1c317b6b24",
+    "setup_writer": "35eb83d27e46",
+    "spec_reviewer": "89700cd89e2d",
+    "spec_writer": "fec4beccd0ff",
+    "task_reviewer": "1be0926f64ed",
+    "test_reviewer": "5f9cc73c507b",
+    "test_writer": "d98183c176e7",
+    "triage": "66dd6610c583",
+    "ui_reviewer": "f2dbf81139f4",
+    "watcher": "9b683c12728a"
+  },
+  "description": "One defect, one change. The reader that parses the `args` and `globals` already present in the address throws away any pair whose value is an empty string, so clearing the Label control and clicking \"Open in isolation mode\" opens a tab with no `args` at all. That reader is the module-private `parseSerializedParam` in `code/core/src/manager-api/modules/url.ts:42-50`, ending `.filter(([key, value]) => key && value)`; `mergeSerializedParams` (url.ts:52-58) calls it for both the existing and the extra params, and `getStoryHrefs` calls that for args (url.ts:281-283) and globals (url.ts:284-286). The plan drops the `value` half of that predicate and keeps the `key` half, so `label:` survives and `:orphan` is still dropped.\n\nThe reader moves into a new leaf module, `code/core/src/manager-api/lib/serialized-param.ts`, exporting `parseSerializedParam` and `mergeSerializedParams`; `url.ts` imports them instead of defining them. The move is behaviour-neutral and follows this directory's own precedent, `code/core/src/manager-api/lib/filter-param.ts`, which is the same shape: a pure parser for a semicolon-separated URL parameter with no further imports. Its reason here is testability. forge runs this repository's tests with Playwright Test only, and `url.ts` pulls in `storybook/internal/core-events`, `storybook/internal/router`, `@storybook/global`, `dequal`, `es-toolkit` and `picoquery`; a leaf module with no imports can be reached from a Playwright spec at call time through one dynamic import, which is what lets the reader's own boundaries be asserted on their return values instead of only through a browser.\n\nEverything else stays. The `encodeURIComponent` step on each value is untouched and a pair with no colon keeps today's behaviour, so `a:!hex(f00)` and `a` parse exactly as before. The preview's parsing of `args`, the validation in `code/core/src/router/utils.ts`, the address the current tab keeps (`code/core/src/manager-api/lib/url.ts`), and the toolbar button and keyboard shortcut that call `window.open` are all read as evidence and left alone. Globals go through the same reader and inherit the fix for free, as the spec's constraints record; no criterion tests them. No dependency is added, and the existing vitest suite `code/core/src/manager-api/tests/url.test.js` is not edited \u2014 none of its cases passes an empty value, so it keeps passing over the move.\n\nThe work is one task: two implementation files, a unit spec over the reader's boundaries, and the three committed browser acceptance tests. Splitting it would mean a task that leaves the reader half-moved, which is not independently verifiable.",
+  "out_of_scope": [
+    "An arg whose encoded value contains a colon, such as `!date(2001-02-03T04:05:06.789Z)`, which the same reader splits wrongly today; the spec names it a separate defect and it is left as it is.",
+    "Pairs with an empty name, such as `:orphan`: they stay dropped, and no criterion covers them because the manager rewrites such an address before the toolbar button can be clicked.",
+    "Copying a story link, composed Storybook refs, and the `openInIsolation` keyboard shortcut: all run through the same reader and inherit the fix, but no test is added for them.",
+    "Globals whose value is an empty string: the same reader serves them, so they are kept by the same change, and no test is added for them.",
+    "How the preview parses the `args` param, how args are validated, and how the current tab's address is built as controls change: all unchanged.",
+    "The `encodeURIComponent` step in the reader and the handling of a pair with no colon at all: both behave exactly as today.",
+    "Adding a dependency, or changing `forge.yaml`, `scripts/forge-e2e-internal.sh` or `code/e2e-internal/playwright.config.ts`.",
+    "Editing the committed acceptance spec `code/e2e-internal/e2e/isolation-mode-empty-args.spec.ts` or the existing vitest suite `code/core/src/manager-api/tests/url.test.js`.",
+    "Any visible change beyond the issue: the current tab's address and the story shown in it are untouched when the toolbar button is clicked."
+  ],
+  "planned_against_sha": "9aa61ad4fba9153830138b85f3cae787519811b5",
+  "rollback_plan": "The change lands on the run branch as task 001's `tests:` commit followed by its one or more `build:` commits. To undo it before the run's pull request merges: `git revert` task 001's `build:` commits newest first, then its `tests:` commit. After the pull request has merged, revert its merge commit instead (`git revert -m 1 <merge sha>`), which removes the new file `code/core/src/manager-api/lib/serialized-param.ts`, restores `parseSerializedParam` and `mergeSerializedParams` inside `code/core/src/manager-api/modules/url.ts` with their original `key && value` filter, and removes `code/e2e-internal/serialized-param.spec.ts`. Nothing outside those three files changes, there is no migration, no dependency and no configuration to unwind, so the revert is complete on its own; the committed acceptance spec `code/e2e-internal/e2e/isolation-mode-empty-args.spec.ts` predates the task and goes back to failing, which is the state the run started from.",
+  "tasks": [
+    {
+      "agent_minutes": 120,
+      "consumes": [],
+      "definition_of_done": "`code/core/src/manager-api/lib/serialized-param.ts` exists and exports `parseSerializedParam(param: string): Record<string, string>` and `mergeSerializedParams(params: string, extraParams: string): string`, with the body moved out of `code/core/src/manager-api/modules/url.ts`; its filter keeps a pair whose name is non-empty whatever its value is, so `parseSerializedParam('label:')` returns `{ label: '' }` while `parseSerializedParam(':orphan')` returns `{}`. `code/core/src/manager-api/modules/url.ts` no longer defines either function and imports both from the new module, so `getStoryHrefs` builds `&args=label:` for a cleared Label and `&args=label:;size:large` when Size is also set. The `encodeURIComponent` step and the handling of a pair with no colon are byte-for-byte what they were. The new module has no imports of its own, and `code/e2e-internal/serialized-param.spec.ts` reaches it at call time with a dynamic import inside each test, falling back to a stub so that at the `tests:` commit every one of its tests fails on an `expect` over a returned value rather than on a missing module. Every test collected by `npx playwright test code/e2e-internal/serialized-param.spec.ts` passes, and so do the three acceptance tests in `code/e2e-internal/e2e/isolation-mode-empty-args.spec.ts`. The existing vitest suite `code/core/src/manager-api/tests/url.test.js` is unmodified.",
+      "depends_on": [],
+      "forbidden_files": [
+        "code/e2e-internal/e2e/isolation-mode-empty-args.spec.ts",
+        "code/e2e-internal/playwright.config.ts",
+        "code/core/src/manager-api/tests/url.test.js",
+        "code/core/src/manager-api/lib/url.ts",
+        "code/core/src/manager-api/lib/filter-param.ts",
+        "code/core/src/manager-api/modules/shortcuts.ts",
+        "code/core/src/manager/components/preview/tools/share.tsx",
+        "code/core/src/router/utils.ts",
+        "code/core/src/preview-api/modules/preview-web/parseArgsParam.ts",
+        "code/addons/onboarding/example-stories/Button.stories.tsx",
+        "scripts/forge-e2e-internal.sh",
+        "forge.yaml"
+      ],
+      "id": "001",
+      "intent": "Move the reader of the args and globals already in the address into its own module and make it keep a pair whose value is an empty string, dropping only pairs whose name is empty.",
+      "produces": [
+        "code/core/src/manager-api/lib/serialized-param.ts exporting `parseSerializedParam(param: string): Record<string, string>`",
+        "code/core/src/manager-api/lib/serialized-param.ts exporting `mergeSerializedParams(params: string, extraParams: string): string`"
+      ],
+      "rationale": "The spec's fix: `parseSerializedParam` (`code/core/src/manager-api/modules/url.ts:42-50`) filters on `key && value`, so `label:` is lost before the new tab's link is built. Serves AC-01, AC-02 and AC-03.",
+      "target_files": [
+        "code/core/src/manager-api/lib/serialized-param.ts",
+        "code/core/src/manager-api/modules/url.ts"
+      ],
+      "test_roots": [
+        "code/e2e-internal"
+      ],
+      "unit_tests": "required",
+      "verification": [
+        {
+          "command": "npx playwright test code/e2e-internal/serialized-param.spec.ts",
+          "names_tests": [
+            "code/e2e-internal/serialized-param.spec.ts > the serialized args and globals reader > reads a pair whose value is an empty string",
+            "code/e2e-internal/serialized-param.spec.ts > the serialized args and globals reader > reads two pairs whose values are both empty",
+            "code/e2e-internal/serialized-param.spec.ts > the serialized args and globals reader > drops a pair whose name is empty",
+            "code/e2e-internal/serialized-param.spec.ts > the serialized args and globals reader > reads nothing out of an empty param",
+            "code/e2e-internal/serialized-param.spec.ts > the serialized args and globals reader > merges nothing out of two empty params",
+            "code/e2e-internal/serialized-param.spec.ts > the serialized args and globals reader > encodes values the way it did before",
+            "code/e2e-internal/serialized-param.spec.ts > the serialized args and globals reader > keeps a pair with no colon the way it did before",
+            "code/e2e-internal/serialized-param.spec.ts > the serialized args and globals reader > merges an extra empty value over an existing value",
+            "code/e2e-internal/serialized-param.spec.ts > the serialized args and globals reader > merges an extra value over an existing empty value",
+            "code/e2e-internal/serialized-param.spec.ts > the serialized args and globals reader > merges two empty-valued pairs beside a pair that carries a value",
+            "code/e2e-internal/serialized-param.spec.ts > the serialized args and globals reader > merges pairs that carry values exactly as before"
+          ]
+        },
+        {
+          "command": "npx playwright test code/e2e-internal/e2e/isolation-mode-empty-args.spec.ts",
+          "names_tests": [
+            "code/e2e-internal/e2e/isolation-mode-empty-args.spec.ts > opening a story in isolation mode > AC-01 the new tab address keeps an arg whose value is an empty string",
+            "code/e2e-internal/e2e/isolation-mode-empty-args.spec.ts > opening a story in isolation mode > AC-02 the story in the new tab renders with the empty label it was opened with",
+            "code/e2e-internal/e2e/isolation-mode-empty-args.spec.ts > opening a story in isolation mode > AC-03 the opened tab carries over every arg pair in the current address"
+          ]
+        }
+      ]
+    }
+  ],
+  "workspace_image_digest": "localhost:5000/forge/ws@sha256:e553449a2995da146fda06578455d8abe41d5ad7dcfc8b9bc23e1f44aac551e7"
+}
