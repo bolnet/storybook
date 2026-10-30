@@ -1,0 +1,84 @@
+# forge's build config for bolnet/storybook, run branch for storybookjs/storybook#37078 (server docgen array control).
+# Unit tests run under Vitest from the repository root, the way `yarn test <pattern>` does. The image installs from
+# the manifests alone (every workspace member's package.json, the yarn release and patches) and compiles once.
+# This file stays on the fork: the upstream PR carries only the fix and its tests.
+build:
+  image: mcr.microsoft.com/playwright:v1.58.2-noble
+  install: >-
+    (corepack --version || npm install -g corepack) && corepack enable && HUSKY=0 yarn install --immutable
+  build: >-
+    NX_NO_CLOUD=true NX_DAEMON=false yarn task --task compile --start-from=auto --no-link
+    && mkdir -p .nx/cache .nx/workspace-data
+  keep:
+    - .nx/cache
+    - .nx/workspace-data
+  lockfiles:
+    - package.json
+    - yarn.lock
+    - .yarnrc.yml
+    - .yarn/releases/yarn-4.18.0.cjs
+    - .yarn/patches/@7rulnik-react-element-to-jsx-string-npm-15.0.1-e53b67c4b3.patch
+    - .yarn/patches/@testing-library-user-event-npm-14.6.3-15ecebe390.patch
+    - .yarn/patches/@types-babel__traverse-npm-7.20.6-fac4243243.patch
+    - .yarn/patches/@vercel-agent-eval-npm-1.2.0-861deb21a0.patch
+    - .yarn/patches/@vitest-expect-npm-3.2.4-97c526d5cc.patch
+    - .yarn/patches/buffer-equal-constant-time-npm-1.0.1-41826f3419.patch
+    - agent-eval/package.json
+    - code/addons/a11y/package.json
+    - code/addons/docs/package.json
+    - code/addons/links/package.json
+    - code/addons/mcp/package.json
+    - code/addons/onboarding/package.json
+    - code/addons/pseudo-states/package.json
+    - code/addons/themes/package.json
+    - code/addons/vitest/package.json
+    - code/builders/builder-vite/package.json
+    - code/builders/builder-webpack5/package.json
+    - code/core/package.json
+    - code/frameworks/angular-vite/package.json
+    - code/frameworks/angular/package.json
+    - code/frameworks/ember/package.json
+    - code/frameworks/html-vite/package.json
+    - code/frameworks/nextjs-vite/package.json
+    - code/frameworks/nextjs/package.json
+    - code/frameworks/preact-vite/package.json
+    - code/frameworks/react-native-web-vite/package.json
+    - code/frameworks/react-vite/package.json
+    - code/frameworks/react-webpack5/package.json
+    - code/frameworks/server-webpack5/package.json
+    - code/frameworks/svelte-vite/package.json
+    - code/frameworks/sveltekit/package.json
+    - code/frameworks/tanstack-react/package.json
+    - code/frameworks/vue3-vite/package.json
+    - code/frameworks/web-components-vite/package.json
+    - code/lib/angular-cm/package.json
+    - code/lib/angular-compodoc/package.json
+    - code/lib/claude-plugin/package.json
+    - code/lib/cli-sb/package.json
+    - code/lib/cli-storybook/package.json
+    - code/lib/codemod/package.json
+    - code/lib/codex-plugin/package.json
+    - code/lib/core-webpack/package.json
+    - code/lib/create-storybook/package.json
+    - code/lib/docgen-harness/package.json
+    - code/lib/eslint-plugin/package.json
+    - code/lib/mcp/package.json
+    - code/lib/vite-plugin-storybook-nextjs/package.json
+    - code/package.json
+    - code/presets/react-webpack/package.json
+    - code/presets/server-webpack/package.json
+    - code/renderers/html/package.json
+    - code/renderers/preact/package.json
+    - code/renderers/react/package.json
+    - code/renderers/server/package.json
+    - code/renderers/svelte/package.json
+    - code/renderers/vue3/package.json
+    - code/renderers/web-components/package.json
+    - scripts/package.json
+  test: bash scripts/forge-vitest.sh
+  test_framework: vitest
+  test_timeout_s: 1800
+  test_cpus: 6
+  test_memory: 6Gi
+tests:
+  acceptance_root: code/renderers/react/src
