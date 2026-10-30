@@ -75,6 +75,7 @@ build:
     - code/renderers/vue3/package.json
     - code/renderers/web-components/package.json
     - scripts/package.json
+    - scripts/eslint-plugin-local-rules/package.json   # a portal: dependency of scripts; yarn reads its manifest
   test: bash scripts/forge-vitest.sh
   test_framework: vitest
   test_timeout_s: 1800
