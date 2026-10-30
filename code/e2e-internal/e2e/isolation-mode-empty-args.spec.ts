@@ -37,11 +37,17 @@ function argsPairs(target: Page): string[] {
   return param === '' ? [] : param.split(';');
 }
 
+/**
+ * The Controls row for one arg: the row whose first cell is that arg's name. A `filter({ has })`
+ * locator is resolved relative to the row it filters, so the inner locator is built from `page`
+ * and names a cell alone — rooting it in the panel would ask for a panel nested inside the row.
+ */
 function controlRow(page: Page, argName: string) {
-  const panel = page.getByRole('tabpanel', { name: 'Controls' });
-  return panel
+  return page
+    .getByRole('tabpanel', { name: 'Controls' })
     .getByRole('row')
-    .filter({ has: panel.getByRole('cell', { name: argName, exact: true }) });
+    .filter({ has: page.getByRole('cell', { name: argName, exact: true }) })
+    .first();
 }
 
 /** Shows Example / Button, Primary with its Controls panel ready to drive. */
