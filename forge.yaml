@@ -1,7 +1,9 @@
 # forge's build config for bolnet/storybook, run branch for storybookjs/storybook#37078 (server docgen array control).
-# Unit tests run under Vitest from the repository root, the way `yarn test <pattern>` does. The image installs from
-# the manifests alone (every workspace member's package.json, the yarn release and patches) and compiles once.
-# This file stays on the fork: the upstream PR carries only the fix and its tests.
+# Unit tests run under Vitest scoped to the react renderer's own vitest.config.ts (tests.acceptance_root), the way
+# nx's own "vitest" target runs any package's suite - see scripts/forge-vitest.sh for why the repository root's
+# Vitest workspace config can't be used here. The image installs from the manifests alone (every workspace member's
+# package.json, the yarn release and patches) and compiles once. This file stays on the fork: the upstream PR
+# carries only the fix and its tests.
 build:
   image: mcr.microsoft.com/playwright:v1.58.2-noble
   install: >-
