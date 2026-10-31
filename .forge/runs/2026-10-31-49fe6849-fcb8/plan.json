@@ -1,0 +1,85 @@
+{
+  "agent_digests": {
+    "acceptance_writer": "52bcf5056e55",
+    "arbiter": "af9f5b7f2428",
+    "code_builder": "94d961795b5e",
+    "code_reviewer": "9aab8ec11def",
+    "plan_reviewer": "d08bfea9be3f",
+    "plan_writer": "f154dbab4433",
+    "replay_fixer": "8a1c317b6b24",
+    "setup_writer": "35eb83d27e46",
+    "spec_reviewer": "89700cd89e2d",
+    "spec_writer": "7f34733739d3",
+    "task_reviewer": "1be0926f64ed",
+    "test_reviewer": "5f9cc73c507b",
+    "test_writer": "d98183c176e7",
+    "triage": "66dd6610c583",
+    "ui_reviewer": "f2dbf81139f4",
+    "watcher": "9b683c12728a"
+  },
+  "description": "The issue is one line. `parseSerializedParam` in `code/core/src/manager-api/modules/url.ts` (lines 42-50) ends with `.filter(([key, value]) => key && value)`, and an empty string is falsy, so a pair written `text:` is thrown away while the args string for the link is taken apart and rebuilt. Its only caller is `mergeSerializedParams` (lines 52-58), which `getStoryHrefs` (lines 281-286) uses for both `args` and `globals`; both `managerHref` and `previewHref` are built from the result, so the toolbar button Open in isolation mode, the `openInIsolation` shortcut and `copyStoryLink` all lose the empty value together. The approach is to keep only the name check in that filter, so a pair whose value is empty is carried through and a pair with no name is still dropped. Nothing else changes: `buildArgsParam` already emits `text:` for an empty string, `parseArgsParam('text:')` on the preview end already reads it back as `''`, and `parseSerializedParam('')` still yields no pairs because its only key is empty, so `argsParam` stays empty and a story with nothing changed still produces a link with no `args` parameter. Values that are not empty rebuild exactly as they do today, and the other falsy encodings (`!false`, `!null`, `!undefined`, digits) are non-empty strings in the args string and are untouched. A global set to an empty string survives as a consequence of the one shared step, which is what the spec asks for rather than a second change. The work is a single task: one line of product code in one file, proven by the four committed browser acceptance tests plus the task's own tests in the internal Storybook suite, which drive the same button and shortcut against the running app so the changed line is executed by tests outside the acceptance root. No API is added or exported for testing, no story or test configuration is edited, and forge's own test script, sandbox script and `forge.yaml` are left alone.",
+  "out_of_scope": [
+    "An args pair written with no colon, such as args=text: it is still merged as text:undefined, exactly as today.",
+    "Values containing spaces or characters that get percent-encoded on the way into the link; their encoding does not change and no test covers it.",
+    "Other falsy values. Numbers, false, null and undefined have their own non-empty encodings in the args string and none of them changes.",
+    "How args are validated and which characters buildArgsParam allows; VALIDATION_REGEXP is untouched.",
+    "A unit test of parseSerializedParam or mergeSerializedParams in the repository's vitest suite: this run's suite is the Playwright internal-Storybook suite, so the task's tests drive the running app instead.",
+    "A test for an empty global surviving the merge. The spec states globals as a consequence of the one shared step, and no criterion observes it.",
+    "Exporting parseSerializedParam or mergeSerializedParams, or adding any other seam for testing.",
+    "Changes to forge.yaml, scripts/forge-e2e-internal.sh, scripts/forge-sandbox.sh or code/e2e-internal/playwright.config.ts.",
+    "Changes to the story core-controls-basics--defined or to any control component, including addons/docs Text.tsx.",
+    "The copyStoryLink shortcut's clipboard contents: it is fixed by the same line, but reading the clipboard is not asserted by any test here."
+  ],
+  "planned_against_sha": "9468914a912e9feef9455d13bcb11167ff804b32",
+  "rollback_plan": "Revert on the run branch, newest first: the `build:` commit or commits of task 001 (each fix round added one), then its `tests:` commit, which removes `code/e2e-internal/isolation-mode-link-args.spec.ts`; `git revert --no-commit <each sha newest first>` then one commit restores `parseSerializedParam`'s `.filter(([key, value]) => key && value)` and leaves the `acceptance:` and `forge:` commits in place. After the run's pull request has merged into `next`, revert its merge commit instead (`git revert -m 1 <merge sha>`), which undoes the whole branch including the acceptance tests. Either way the only product file touched is `code/core/src/manager-api/modules/url.ts`, so nothing else has to be unwound.",
+  "tasks": [
+    {
+      "agent_minutes": 120,
+      "consumes": [],
+      "definition_of_done": "parseSerializedParam in code/core/src/manager-api/modules/url.ts filters on the name alone, so mergeSerializedParams rebuilds a pair written as a name, a colon and nothing after it, and getStoryHrefs puts it in both managerHref and previewHref; a pair with no name is still dropped, so parseSerializedParam('') still yields no pairs and argsParam stays empty. The four acceptance tests in code/e2e-internal/e2e/isolation-mode-empty-arg.spec.ts pass (AC-01 and AC-02, which are red before this change, and the guards AC-03 and AC-04, which stay green). Every collected test in the new file code/e2e-internal/isolation-mode-link-args.spec.ts passes: all three named tests live in that one file under describe 'Open in isolation mode link args', drive the story core-controls-basics--defined in the running internal Storybook read from process.env.STORYBOOK_URL (falling back to http://localhost:6006, as code/e2e-internal/navigation.spec.ts does), record the addresses window.open is called with through an init script as the acceptance file does, and each fails on its own expect before the change. 'keeps an empty value beside a value that is not empty in one link' clears the text control and sets the select control to c, presses Open in isolation mode once, and asserts the opened address carries both text with a colon and nothing after it and select:c, so a link that kept only the last pair fails it. 'nothing changed opens with no args and clearing the text control adds args=text:' presses the button on the untouched story and asserts that address has no args= parameter at all, then clears the text control and presses again and asserts the second address carries args=text:, so the empty instance and the added behaviour are both on the same test. 'the open in isolation shortcut keeps the empty value too' clears the text control, moves focus off the control so the manager's shortcut handler sees the keystroke, presses alt+shift+I, and asserts the address that shortcut opens carries args=text:. No file other than code/core/src/manager-api/modules/url.ts changes outside the test roots, the acceptance spec is untouched, and the repository is formatted with cd code && yarn fmt:write.",
+      "depends_on": [],
+      "forbidden_files": [
+        "code/e2e-internal/e2e/isolation-mode-empty-arg.spec.ts",
+        "code/e2e-internal/playwright.config.ts",
+        "code/e2e-internal/helpers.ts",
+        "code/core/template/stories/controls/basics.stories.ts",
+        "code/core/src/router/utils.ts"
+      ],
+      "id": "001",
+      "intent": "Change the args and globals merge step in code/core/src/manager-api/modules/url.ts so it discards only pairs with no name, keeping a pair whose value is the empty string.",
+      "produces": [
+        "parseSerializedParam in code/core/src/manager-api/modules/url.ts keeps a pair whose value is the empty string and drops only a pair with no name",
+        "code/e2e-internal/isolation-mode-link-args.spec.ts drives the internal Storybook at process.env.STORYBOOK_URL"
+      ],
+      "rationale": "The spec's fix: parseSerializedParam ends with .filter(([key, value]) => key && value), and an empty string is falsy, so the empty value is lost on the way into the link. Serves AC-01, AC-02, AC-03 and AC-04.",
+      "target_files": [
+        "code/core/src/manager-api/modules/url.ts"
+      ],
+      "test_roots": [
+        "code/e2e-internal",
+        "code/e2e-internal/e2e"
+      ],
+      "unit_tests": "required",
+      "verification": [
+        {
+          "command": "npx playwright test code/e2e-internal/e2e/isolation-mode-empty-arg.spec.ts",
+          "names_tests": [
+            "code/e2e-internal/e2e/isolation-mode-empty-arg.spec.ts > Open in isolation mode and an empty args value > AC-01 the new tab address keeps args=text: when the text control is cleared",
+            "code/e2e-internal/e2e/isolation-mode-empty-arg.spec.ts > Open in isolation mode and an empty args value > AC-02 the story in the new tab renders the text arg as an empty string",
+            "code/e2e-internal/e2e/isolation-mode-empty-arg.spec.ts > Open in isolation mode and an empty args value > AC-03 the new tab address keeps args=text:world when the text control is set to world",
+            "code/e2e-internal/e2e/isolation-mode-empty-arg.spec.ts > Open in isolation mode and an empty args value > AC-04 the new tab address carries no args parameter when no control was changed"
+          ]
+        },
+        {
+          "command": "npx playwright test code/e2e-internal/isolation-mode-link-args.spec.ts",
+          "names_tests": [
+            "code/e2e-internal/isolation-mode-link-args.spec.ts > Open in isolation mode link args > keeps an empty value beside a value that is not empty in one link",
+            "code/e2e-internal/isolation-mode-link-args.spec.ts > Open in isolation mode link args > nothing changed opens with no args and clearing the text control adds args=text:",
+            "code/e2e-internal/isolation-mode-link-args.spec.ts > Open in isolation mode link args > the open in isolation shortcut keeps the empty value too"
+          ]
+        }
+      ]
+    }
+  ],
+  "workspace_image_digest": "localhost:5000/forge/ws@sha256:7c6baadc8111d8f56acae32b92e266f853eda141d4962def964e0393b14af146"
+}
