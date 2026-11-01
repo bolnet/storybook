@@ -1,0 +1,86 @@
+{
+  "agent_digests": {
+    "acceptance_writer": "52bcf5056e55",
+    "arbiter": "af9f5b7f2428",
+    "code_builder": "94d961795b5e",
+    "code_reviewer": "9aab8ec11def",
+    "plan_reviewer": "d08bfea9be3f",
+    "plan_writer": "f154dbab4433",
+    "replay_fixer": "8a1c317b6b24",
+    "setup_writer": "35eb83d27e46",
+    "spec_reviewer": "89700cd89e2d",
+    "spec_writer": "7f34733739d3",
+    "task_reviewer": "1be0926f64ed",
+    "test_reviewer": "5f9cc73c507b",
+    "test_writer": "d98183c176e7",
+    "triage": "66dd6610c583",
+    "ui_reviewer": "f2dbf81139f4",
+    "watcher": "9b683c12728a"
+  },
+  "description": "This is a follow-up round: task 001 landed the whole product fix (one line in `code/core/src/manager-api/modules/url.ts`, so `parseSerializedParam` keeps a pair whose value is the empty string) and all four acceptance tests in `code/e2e-internal/e2e/isolation-mode-args.spec.ts` are green. The only red acceptance id left is `forge:ui_check`, which reports one introduced fault: at `/` on desktop light, `main > div > div > a` \u2014 the \"Skip to sidebar\" link rendered by `code/core/src/manager/components/preview/FramesRenderer.tsx` \u2014 is cut off by the preview wrapper (`#storybook-preview-wrapper`, from `IframeWrapper` in `code/core/src/manager/components/preview/Wrappers.tsx`), which hides it and does not scroll. The fault is real and reachable: `SkipToSidebarLink` hides itself while unfocused with `transform: translateY(-100px)` (FramesRenderer.tsx:21-36) while sitting `position: absolute; top: 10; right: 15` inside `#storybook-preview-wrapper`, which is `overflow: auto`. Its box therefore lies about 90px above the wrapper's content box, where the wrapper clips it and no scroll can bring it back \u2014 a keyboard user's only way to the link is a focus that moves it, and any check of reachable geometry sees a clipped, unscrollable box. One honest note on where it came from, so no one hunts for a connection that is not there: the fault is not caused by task 001. At `/` the address carries no args and no globals part, so `parseSerializedParam` is only ever handed `''` there and returns the same empty list before and after the change; the empty-value branch the fix added needs a cleared control, which `/` has none of. The hidden-state technique predates the run, and the base capture evidently missed the link because it only renders once a story is selected. Fixing it is still the right response and the only way the gate goes green, and the follow-up round asks for exactly that, so this plan fixes it in full. The fix copies the repository's own answer to the same problem. One directory over, the sidebar's sibling skip link `SkipToCanvasLink` (`code/core/src/manager/components/sidebar/Heading.tsx:49-78`) hides itself *in place* \u2014 `width: 1, height: 1, padding: 0, margin: -1, overflow: hidden, clip: rect(0, 0, 0, 0), opacity: 0` with a 150ms opacity transition \u2014 and restores a real box in `&:focus`, unsetting every one of those declarations. That link is inside the sidebar heading, is never translated out of its container, and is not among the faults the UI check reports. Task 002 gives `SkipToSidebarLink` the same shape: hidden in place at its existing anchor (`top: 10, right: 15`, `display: block` only from 600px wide), with a `&:focus` reset that restores `padding: '10px 15px'`, `width: 'auto'`, `height: 'auto'`, `margin: 0`, `clip: 'unset'`, `overflow: 'unset'`, `opacity: 1` and keeps `zIndex: 1`. `transform` disappears from both states. The focused link keeps the place, the padding, the font size and the text it has today; the one difference anyone can see is that it now fades in over 150ms instead of popping in, which is the same entrance the sidebar's skip link and the preview's own skip links already have. `height: 'auto'` is deliberate rather than `SkipToCanvasLink`'s `height: 'inherit'`: inheriting from `#storybook-preview-wrapper` (`height: 100%`) would stretch the focused link down the whole preview. Verification. forge's test command is the Playwright e2e-internal suite, whose config collects `code/e2e-internal` only, so the task's own tests are a new spec `code/e2e-internal/skip-to-sidebar-link.spec.ts` beside the existing internal specs; it drives the internal Storybook the test script serves and measures boxes with `boundingBox()` against `#storybook-preview-wrapper`. `unit_tests` is `required`: the change is a rule with two states and a breakpoint, not wiring, and `forge:ui_check` is a check forge runs itself rather than a test file, so without the spec the mutation gate would see the changed lines unexercised. The task adds no operation that records or changes state, so the rule about doing an operation to two targets in one instance has nothing to bind to; the boundaries get both sides instead. The unfocused state is pinned at the very address the UI check captures (`/`, which is docs view mode, where the link renders too) and again in story view; the focused state is pinned as a real box \u2014 at least 60px wide and 24px high, anchored 10\u00b14px below the wrapper's top and 15\u00b14px inside its right edge, computed opacity 1 \u2014 so a fix that leaked the hiding declarations into the focused state fails; focus then moves to the sidebar search field and the link must go back to hidden in place, so a fix that simply leaves the link visible fails too; and the 600px media query is checked on both sides, 600px wide (hidden in place, inside the wrapper) and 599px wide (not displayed at all). Each of the three tests is red at the `tests:` commit on the unfocused half, where today's box sits above the wrapper with full size and opacity 1.",
+  "out_of_scope": [
+    "No change to task 001's product fix: code/core/src/manager-api/modules/url.ts keeps the filter on the name alone, and the committed acceptance spec code/e2e-internal/e2e/isolation-mode-args.spec.ts and task 001's spec code/e2e-internal/isolation-mode-href.spec.ts are not edited.",
+    "No change to the global sr-only helpers or the hidden-until-focus rules in code/core/src/theming/global.ts, and none to the preview's own copies in code/core/assets/server/base-preview-head.html.",
+    "No change to the sidebar's own skip link (SkipToCanvasLink in code/core/src/manager/components/sidebar/Heading.tsx); it is the precedent this task copies, and it stays as it is.",
+    "No change to the skip link's target, text, tab order, font size or focused placement: it stays an anchor to #<storyId>, reads Skip to sidebar, and sits at top 10 / right 15 with padding 10px 15px.",
+    "No change to when the link renders: FramesRenderer still shows it only when the sidebar is shown, a story is selected and the preview is not fullscreen, and still not below 600px wide.",
+    "The 97 UI faults the check reports as kept from the run's base are not addressed; this task clears the one introduced fault at / and adds none.",
+    "No vitest or Storybook-story coverage is added for FramesRenderer: forge's test command runs only the Playwright e2e-internal suite, so a vitest case would be unverified here.",
+    "No change to forge.yaml, scripts/forge-e2e-internal.sh, code/e2e-internal/playwright.config.ts or code/e2e-internal/helpers.ts, which the new spec imports unchanged.",
+    "No pointer-events or z-index change for the unfocused link beyond what hiding it in place implies; it keeps the zIndex 1 it has on focus today.",
+    "The 150ms opacity fade the focused link gains on entrance is accepted, not avoided: it is the entrance the repository's other skip links already have."
+  ],
+  "planned_against_sha": "24001fdc74902d16dd38c2823752aa7eb8b418a8",
+  "rollback_plan": "The change is a styled-component rule in one file plus one new test file, with no data, config or feature-flag component, so rollback is a revert of task 002's commits on the run branch, newest first: every build: commit of task 002 (one per fix round) with git revert <sha>, then its tests: commit, which is the one that adds code/e2e-internal/skip-to-sidebar-link.spec.ts. That restores transform: translateY(-100px) on SkipToSidebarLink in code/core/src/manager/components/preview/FramesRenderer.tsx and removes the new spec, leaving task 001's commits (the url.ts fix and code/e2e-internal/isolation-mode-href.spec.ts), the acceptance: commit and the forge: commits in place, so the four acceptance tests in code/e2e-internal/e2e/isolation-mode-args.spec.ts stay green and only forge:ui_check goes red again, which is the signal that this fix is gone on purpose. To undo the whole run instead, revert the pull request's merge commit with git revert -m 1 <merge sha>; add the acceptance: and forge: commits to that revert only if the acceptance spec should go too. Nothing needs re-running or re-seeding beyond the normal build, because the reverted rule is emitted by the manager bundle at render time.",
+  "tasks": [
+    {
+      "agent_minutes": 150,
+      "consumes": [],
+      "definition_of_done": "SkipToSidebarLink in code/core/src/manager/components/preview/FramesRenderer.tsx no longer uses transform in either state. It hides the link in place the way SkipToCanvasLink in code/core/src/manager/components/sidebar/Heading.tsx already does for the sidebar's skip link \u2014 width 1, height 1, padding 0, margin -1, overflow hidden, clip rect(0, 0, 0, 0), opacity 0 with a 150ms opacity transition \u2014 at its existing anchor (position absolute, top 10, right 15, display block only from 600px wide, fontSize theme.typography.size.s1), and its &:focus rule restores a real box by unsetting every one of those declarations: padding '10px 15px', width 'auto', height 'auto' (not 'inherit', which would stretch it down the whole preview), margin 0, clip 'unset', overflow 'unset', opacity 1, keeping zIndex 1. The observable state, measured inside #storybook-preview-wrapper (the IframeWrapper from code/core/src/manager/components/preview/Wrappers.tsx): while unfocused the link's bounding box lies within that element's own box (within 1px on every side) and is at most 2px wide and 2px high with computed opacity 0, so nothing is clipped away above the wrapper; while focused it is at least 60px wide and at least 24px high (padding 10px 15px around a 12px line gives about 115x32), its top 10\u00b14px below the wrapper's top, its right edge 15\u00b14px inside the wrapper's right edge, computed opacity 1, and it reads 'Skip to sidebar'; when focus moves on it returns to hidden in place; below 600px wide it is not displayed at all. code/e2e-internal/skip-to-sidebar-link.spec.ts exists under the task's test root and every test it collects passes, among them the three named in verification: the first loads the manager root (the address the UI check captures, which is docs view mode) and pins the unfocused state there; the second loads ?path=/story/example-button--primary, pins the unfocused state, focuses the link and pins the focused box, then moves focus to the sidebar search field and pins the unfocused state again; the third pins the unfocused state at a 600px-wide viewport and then expects the link hidden at 599px. The spec drives the internal Storybook that scripts/forge-e2e-internal.sh serves (its address from process.env.STORYBOOK_URL, default http://localhost:6006), scopes the link to page.locator('#storybook-preview-wrapper').getByRole('link', { name: 'Skip to sidebar' }), reads geometry with boundingBox() and computed opacity with evaluate, and uses expect.poll so the focus transition settles rather than any fixed wait. It adds no new module and imports nothing the task itself produces: @playwright/test, node's process and { waitForPreviewReady } from './helpers.ts', which it must not change; all three exist at the tests: commit, and the spec reaches the behaviour at call time over HTTP through page.goto, so each of its tests fails there on an expect (today's unfocused box sits about 90px above the wrapper at full size with opacity 1), not on an import error. forge:ui_check is green: the layout:unreachable fault at / for main > div > div > a is gone and no new fault stands in its place. Every test in code/e2e-internal/e2e/isolation-mode-args.spec.ts and in code/e2e-internal/isolation-mode-href.spec.ts still passes, both files unchanged. No file outside code/core/src/manager/components/preview/FramesRenderer.tsx and the new spec changes.",
+      "depends_on": [],
+      "forbidden_files": [
+        "code/core/src/manager-api/modules/url.ts",
+        "code/e2e-internal/e2e/isolation-mode-args.spec.ts",
+        "code/e2e-internal/isolation-mode-href.spec.ts",
+        "code/e2e-internal/helpers.ts",
+        "code/e2e-internal/playwright.config.ts",
+        "scripts/forge-e2e-internal.sh",
+        "forge.yaml",
+        "code/core/src/theming/global.ts",
+        "code/core/assets/server/base-preview-head.html",
+        "code/core/src/manager/components/sidebar/Heading.tsx",
+        "code/core/src/manager/components/preview/Wrappers.tsx",
+        "code/core/src/manager/components/preview/Preview.tsx",
+        "code/core/src/manager/components/preview/utils/components.ts",
+        "code/core/src/manager/components/preview/FramesRenderer.stories.tsx",
+        "code/core/src/components/components/Button/Button.tsx"
+      ],
+      "id": "002",
+      "intent": "Hide the Skip to sidebar link in place in code/core/src/manager/components/preview/FramesRenderer.tsx, the way the sidebar's own SkipToCanvasLink does, instead of translating it 100px above the preview area where the wrapper clips it.",
+      "produces": [
+        "SkipToSidebarLink in code/core/src/manager/components/preview/FramesRenderer.tsx hides the Skip to sidebar link in place inside #storybook-preview-wrapper and restores a full-size button at top 10 / right 15 on focus, with no transform in either state",
+        "code/e2e-internal/skip-to-sidebar-link.spec.ts covering the link's unfocused, focused and 600px-breakpoint states"
+      ],
+      "rationale": "forge:ui_check reports layout:unreachable at / desktop light for main > div > div > a: the Skip to sidebar link is cut off by the preview wrapper, which hides it and does not scroll.",
+      "target_files": [
+        "code/core/src/manager/components/preview/FramesRenderer.tsx"
+      ],
+      "test_roots": [
+        "code/e2e-internal"
+      ],
+      "unit_tests": "required",
+      "verification": [
+        {
+          "command": "bash scripts/forge-e2e-internal.sh code/e2e-internal/skip-to-sidebar-link.spec.ts",
+          "names_tests": [
+            "code/e2e-internal/skip-to-sidebar-link.spec.ts > skip to sidebar link > at the manager root the unfocused link is hidden inside the preview area",
+            "code/e2e-internal/skip-to-sidebar-link.spec.ts > skip to sidebar link > focusing the link shows a full-size button at the top right of the preview area",
+            "code/e2e-internal/skip-to-sidebar-link.spec.ts > skip to sidebar link > at 600px wide the hidden link is inside the preview area and at 599px it is not displayed",
+            "forge:ui_check"
+          ]
+        }
+      ]
+    }
+  ],
+  "workspace_image_digest": "localhost:5000/forge/ws@sha256:7c6baadc8111d8f56acae32b92e266f853eda141d4962def964e0393b14af146"
+}
