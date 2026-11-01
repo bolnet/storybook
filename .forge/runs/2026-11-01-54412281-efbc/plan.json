@@ -1,0 +1,90 @@
+{
+  "agent_digests": {
+    "acceptance_writer": "52bcf5056e55",
+    "arbiter": "af9f5b7f2428",
+    "code_builder": "94d961795b5e",
+    "code_reviewer": "9aab8ec11def",
+    "plan_reviewer": "d08bfea9be3f",
+    "plan_writer": "f154dbab4433",
+    "replay_fixer": "8a1c317b6b24",
+    "setup_writer": "35eb83d27e46",
+    "spec_reviewer": "89700cd89e2d",
+    "spec_writer": "7f34733739d3",
+    "task_reviewer": "1be0926f64ed",
+    "test_reviewer": "5f9cc73c507b",
+    "test_writer": "d98183c176e7",
+    "triage": "66dd6610c583",
+    "ui_reviewer": "f2dbf81139f4",
+    "watcher": "9b683c12728a"
+  },
+  "description": "The issue is one line: `parseSerializedParam` in `code/core/src/manager-api/modules/url.ts` (line 42-50) maps every `name:value` pair of the address's args/globals list through `encodeURIComponent` and then keeps only the pairs where `key && value` are both truthy. After the map the value is always a string, so the only pair that test rejects beyond a nameless one is a pair whose value is the empty string \u2014 exactly the emptied Label control. The fix is to filter on the presence of the name alone, so `label:` survives while a pair with an empty name is still dropped and the input `''` (no args in the address) still parses to nothing, which is what keeps `argsParam = argsParam && ...` from inventing an args part. That single change is the whole product diff: `mergeSerializedParams` and `getStoryHrefs` above it are untouched, and so are the writer side (`buildArgsParam`, `buildNavigationUrl`), the preview's reader (`parseArgsParam`, which already turns `label:` into `{ label: '' }`) and the URL-safety check. Everything else the change reaches follows from it and is expected: the copy-story-link shortcut and composed-Storybook (refId) links use the same builder, an empty-string global survives the same way, and the manager's own preview iframe src (FramesRenderer passes the same inherited args) now carries `args=label:` as it already carries `args=label:Ship`. Verification. forge's test command is the Playwright e2e-internal suite (`bash scripts/forge-e2e-internal.sh`), whose config collects `code/e2e-internal` only; the repository's vitest suite is not run by it, so the task's own tests are a new Playwright spec `code/e2e-internal/isolation-mode-href.spec.ts` beside the existing internal specs. It drives the internal Storybook that the test script serves, stubs `window.open` through `page.addInitScript` so the toolbar button's href is recorded instead of opening a tab, and asserts that href's args part pair by pair \u2014 which is `getStoryHrefs`'s own return value, since `share.tsx` passes `previewHref` straight to `window.open`. The four committed acceptance tests in `code/e2e-internal/e2e/isolation-mode-args.spec.ts` cover the criteria end to end; two of them (AC-02, AC-04) describe behaviour that already holds today and are named so that no acceptance id is left to no task.",
+  "out_of_scope": [
+    "No change to how Storybook writes args into its own address: code/core/src/router/utils.ts buildArgsParam and code/core/src/manager-api/lib/url.ts buildNavigationUrl stay as they are.",
+    "No change to how the preview parses args (code/core/src/preview-api/modules/preview-web/parseArgsParam.ts) and no change to which values count as safe for a URL.",
+    "An args pair with no name (:x) and a pair written without a colon keep exactly today's behaviour, and no test drives them through the UI: the manager rewrites such an address into a well-formed one before the link is built, so the empty-name guard is pinned instead by the case where the address carries no args part at all.",
+    "Other falsy values are untouched: 0 still travels as 0, false as !false, null as !null.",
+    "An empty-string global survives the link for the same reason, and gets no test; the spec grants it no criterion.",
+    "The copy-story-link shortcut (code/core/src/manager-api/modules/shortcuts.ts) and composed-Storybook refId links gain the same behaviour from the one change and get no test of their own.",
+    "No case is added to the vitest suite code/core/src/manager-api/tests/url.test.js: forge's test command runs only the Playwright e2e-internal suite, so a vitest case would be unverified here.",
+    "No change to forge.yaml, scripts/forge-e2e-internal.sh, code/e2e-internal/playwright.config.ts, code/e2e-internal/helpers.ts or the committed acceptance spec.",
+    "No new toolbar surface, label or tooltip: the Open in isolation mode button and its handler in code/core/src/manager/components/preview/tools/share.tsx are unchanged."
+  ],
+  "planned_against_sha": "180638c072291464a0060a27eb32aea33e15c949",
+  "rollback_plan": "The change is one line of product code plus one new test file, with no data, config or feature-flag component, so rollback is a revert of this run's commits on the run branch, newest first: first every build: commit of task 001 (one per fix round) with git revert <sha>, then its tests: commit, which is the one that adds code/e2e-internal/isolation-mode-href.spec.ts. That restores the `key && value` filter at code/core/src/manager-api/modules/url.ts:49 and removes the new spec, leaving the acceptance: commit (code/e2e-internal/e2e/isolation-mode-args.spec.ts) and the forge: commit (this plan) in place; the four acceptance tests then go red again, which is the signal that the fix is gone on purpose. Once the run's pull request has merged, revert the merge commit instead \u2014 git revert -m 1 <merge sha> \u2014 which undoes the whole branch in one step; add the acceptance: and forge: commits to that revert only if the acceptance spec should go too. Nothing needs to be re-run or re-compiled beyond the normal build, because the reverted line is read at request time by the manager bundle.",
+  "tasks": [
+    {
+      "agent_minutes": 150,
+      "consumes": [],
+      "definition_of_done": "code/core/src/manager-api/modules/url.ts no longer rejects a pair by the truth of its value: the pair list read out of the address keeps `label:` as the name label with the empty string, still drops a pair whose name is empty, and still parses the input '' to nothing, so getStoryHrefs adds no args part for a story whose address carries none. code/e2e-internal/isolation-mode-href.spec.ts exists under the task's test root and every test it collects passes. That spec drives the internal Storybook the test script serves (its address from process.env.STORYBOOK_URL, default http://localhost:6006) for the story example-button--primary: it stubs window.open through page.addInitScript so the handler's href is recorded and no tab opens, waits for the preview to finish loading and for the manager's own args part to settle to the pairs the address was opened with, clicks the toolbar button Open in isolation mode, and asserts the recorded href's args part pair by pair. Its named tests cover the emptied value alone (args=label:), an emptied value together with a non-empty one in one href (label: with primary:!false), and a table over the args parts '', 'label:', 'label:Ship', 'primary:!false', 'label:;primary:!false' and 'backgroundColor:red;label:' that reports every pair the href dropped in one assertion, including the empty address, whose href must carry no args= at all. Every test in code/e2e-internal/e2e/isolation-mode-args.spec.ts passes. The new spec statically imports only @playwright/test, node's process and ./helpers.ts, all of which exist at the tests: commit, and reaches the behaviour under test at call time over HTTP by clicking the button, so each of its tests fails there on an expect, not on an import error. No file outside code/core/src/manager-api/modules/url.ts and the new spec changes.",
+      "depends_on": [],
+      "forbidden_files": [
+        "code/e2e-internal/e2e/isolation-mode-args.spec.ts",
+        "code/e2e-internal/helpers.ts",
+        "code/e2e-internal/playwright.config.ts",
+        "scripts/forge-e2e-internal.sh",
+        "forge.yaml",
+        "code/core/src/manager-api/tests/url.test.js",
+        "code/core/src/router/utils.ts",
+        "code/core/src/manager-api/lib/url.ts",
+        "code/core/src/preview-api/modules/preview-web/parseArgsParam.ts",
+        "code/core/src/manager/components/preview/tools/share.tsx",
+        "code/core/src/manager-api/modules/shortcuts.ts",
+        "code/core/src/manager/components/preview/FramesRenderer.tsx"
+      ],
+      "id": "001",
+      "intent": "Stop code/core/src/manager-api/modules/url.ts dropping an args or globals pair whose value is the empty string when parseSerializedParam reads the pair list out of Storybook's address, so getStoryHrefs carries that pair into the link it builds.",
+      "produces": [
+        "parseSerializedParam in code/core/src/manager-api/modules/url.ts keeps a pair whose value is the empty string, still drops a pair whose name is empty, and still yields an empty list for the input ''",
+        "getStoryHrefs(storyId, { base: 'origin', refId, inheritArgs: true }).previewHref carries every args pair of the current address, empty values included"
+      ],
+      "rationale": "The spec's single change: the filter at url.ts:49 tests the value for truth, so an emptied Label is lost from the Open in isolation mode link. Serves AC-01, AC-02, AC-03 and AC-04.",
+      "target_files": [
+        "code/core/src/manager-api/modules/url.ts"
+      ],
+      "test_roots": [
+        "code/e2e-internal"
+      ],
+      "unit_tests": "required",
+      "verification": [
+        {
+          "command": "bash scripts/forge-e2e-internal.sh code/e2e-internal/isolation-mode-href.spec.ts",
+          "names_tests": [
+            "code/e2e-internal/isolation-mode-href.spec.ts > isolation mode href > an emptied arg is carried into the href the toolbar button opens",
+            "code/e2e-internal/isolation-mode-href.spec.ts > isolation mode href > every args pair of the address is carried into the href with the same name and value",
+            "code/e2e-internal/isolation-mode-href.spec.ts > isolation mode href > an emptied arg and a non-empty arg are both carried in one href"
+          ]
+        },
+        {
+          "command": "bash scripts/forge-e2e-internal.sh code/e2e-internal/e2e/isolation-mode-args.spec.ts",
+          "names_tests": [
+            "code/e2e-internal/e2e/isolation-mode-args.spec.ts > open in isolation mode > AC-01 an emptied Label reaches the tab opened in isolation mode",
+            "code/e2e-internal/e2e/isolation-mode-args.spec.ts > open in isolation mode > AC-03 every args pair in Storybook address is carried into the opened tab",
+            "code/e2e-internal/e2e/isolation-mode-args.spec.ts > open in isolation mode > AC-02 a Label set to Ship reaches the tab opened in isolation mode",
+            "code/e2e-internal/e2e/isolation-mode-args.spec.ts > open in isolation mode > AC-04 a story with no args in the address opens a tab with no args part"
+          ]
+        }
+      ]
+    }
+  ],
+  "workspace_image_digest": "localhost:5000/forge/ws@sha256:7c6baadc8111d8f56acae32b92e266f853eda141d4962def964e0393b14af146"
+}
