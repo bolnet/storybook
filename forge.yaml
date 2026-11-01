@@ -90,3 +90,9 @@ sandbox:                # browser acceptance tests (code/e2e-internal/e2e/) driv
   startup_timeout_s: 900
 tests:
   acceptance_root: code/e2e-internal
+  # Fixtures an e2e-internal test may need: a story that reproduces the case, and its registration in the internal
+  # Storybook's config. Frozen with the tests (forge's tests.fixture_paths).
+  fixture_paths:
+    - "code/**/*.stories.tsx"
+    - "code/**/*.stories.ts"
+    - code/.storybook/main.ts
