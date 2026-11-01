@@ -46,7 +46,7 @@ const parseSerializedParam = (param: string) =>
       .map((pair) => pair.split(':'))
       // Encoding values ensures we don't break already encoded args/globals but also don't encode our own special characters like ; and :.
       .map(([key, value]) => [key, encodeURIComponent(value)])
-      .filter(([key, value]) => key && value)
+      .filter(([key]) => key)
   );
 
 const mergeSerializedParams = (params: string, extraParams: string) => {
