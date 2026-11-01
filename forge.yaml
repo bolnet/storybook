@@ -24,6 +24,7 @@ build:
     - .yarn/patches/@types-babel__traverse-npm-7.20.6-fac4243243.patch
     - .yarn/patches/@vercel-agent-eval-npm-1.2.0-861deb21a0.patch
     - .yarn/patches/@vitest-expect-npm-3.2.4-97c526d5cc.patch
+    - .yarn/patches/buffer-equal-constant-time-npm-1.0.1-41826f3419.patch
     - agent-eval/package.json
     - code/addons/a11y/package.json
     - code/addons/docs/package.json
